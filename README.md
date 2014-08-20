@@ -1,4 +1,4 @@
 iRIS
 ====
 
-KICKASS reporsitory for iRIS Application
+KICK*** reporsitory for iRIS Application
