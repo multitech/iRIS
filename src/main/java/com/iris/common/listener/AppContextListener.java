@@ -10,7 +10,7 @@ public class AppContextListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
     	System.out.println("-----------------------------");
     	System.out.println("-----------------------------");
-    	System.out.println("ReFrame - Startup");
+    	System.out.println("iRIS - Startup");
     	System.out.println("-----------------------------");
     	System.out.println("-----------------------------");
     	
@@ -20,7 +20,7 @@ public class AppContextListener implements ServletContextListener {
 	public void contextDestroyed(ServletContextEvent arg0) {
     	System.out.println("-----------------------------");
     	System.out.println("-----------------------------");
-    	System.out.println("ACT - Exit");
+    	System.out.println("iRIS - Exit");
     	System.out.println("-----------------------------");
     	System.out.println("-----------------------------");
 	}
