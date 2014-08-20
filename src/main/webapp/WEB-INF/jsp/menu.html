@@ -1,0 +1,29 @@
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span> 
+				<span class="icon-bar"></span> <span class="icon-bar"></span> 
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/home.htm">i<b>RIS</b></a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Profiles<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="${pageContext.request.contextPath}/createprofile.htm">Create</a></li>
+						<li><a href="${pageContext.request.contextPath}/modifyprofile.htm">Modify</a></li>
+					</ul>
+				</li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="${pageContext.request.contextPath}/createreport.htm">Create</a></li>
+						<li><a href="${pageContext.request.contextPath}/modifyreport.htm">Modify</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
