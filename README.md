@@ -2,4 +2,4 @@
 iRIS
 ====
 
-reporsitory for iRIS Application
+KICKASS reporsitory for iRIS Application
