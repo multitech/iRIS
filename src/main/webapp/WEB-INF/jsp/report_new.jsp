@@ -222,7 +222,7 @@
                       </a>
                       <ul class="sub">
                           <li><a  href="create_profile.htm">Create New</a></li>
-                          <li><a  href="buttons.html">Modify</a></li>
+                          <li><a  href="profile_edit_landing.htm">Modify</a></li>
                           <li><a  href="panels.html">View</a></li>
                       </ul>
                   </li>

@@ -39,4 +39,9 @@ public class ProfileController {
 		return "profile_new";
 	}
 	
+	@RequestMapping(value = "/profile_edit_landing.htm", method = RequestMethod.GET)
+	protected String showEditProfileLanding(ModelMap model, @ModelAttribute("profileVo") ProfileVo profileVo, HttpServletRequest req, HttpServletResponse resp){
+		return "profile_edit_landing";
+	}
+	
 }
