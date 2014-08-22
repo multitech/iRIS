@@ -64,28 +64,42 @@
                   <div class="col-lg-12">
                  	 <div class="form-panel">
                       <h4><i class="fa fa-angle-right"></i> Report Details </h4>
-                              <form class="cmxform form-horizontal style-form" id="commentForm" method="get" action=""><hr/>
+                              <form class="cmxform form-horizontal style-form" id="reportForm" method="post" action="${pageContext.request.contextPath}/save_report.htm"><hr/>
+                                                                                                      <%
+								    		String successMessage=(String) request.getAttribute("successMessage");
+								    		if(successMessage!=null){
+										%>
+                                      <div class="alert alert-success alert-dismissable" id="saveAlert">
+									  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									  <strong>Success!</strong> Report Template saved successfully.
+									  </div> 
+									  	    <%
+								    		}
+							      		%>
                                   <div class="form-group ">
-                                      <label for="profilename" class="control-label col-lg-2">Report Name (required)</label>
+                                      <label for="reportname" class="control-label col-lg-2">Report Name (required)</label>
                                       <div class="col-lg-10">
-                                          <input class=" form-control" id="profilename" placeholder="Please enter the name of the report" name="reportName" minlength="2" type="text" required />
+                                          <input class=" form-control" id="reportname" placeholder="Please enter the name of the report" name="reportName" minlength="2" type="text" required />
                                       </div>
                                   </div>
                                   <div class="form-group ">
                                   <label for="reportType" class="control-label col-lg-2">Report Type (required)</label>
                                   <div class="col-lg-10">
-	                                  <select id="reportType" name="reportType" class=" form-control">
-										  <option value='dep'>
-					                            Dependent
-					                        </option>
-					                    
-					                        <option value='indep'>
-					                            Independent
-					                        </option>
-					                    
-									</select></div>
+	                                  <div class="radio">
+										  <label>
+										    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+										    Independent
+										  </label>
+										</div>
+										<div class="radio">
+										  <label>
+										    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+										    Dependent - Select this option if the report depends on other independent reports
+										  </label>
+										</div>
+										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group" id="uploadReportDiv">
                                   <label class="control-label col-lg-2">Upload Report Template (Required) </label>
                                   <div class="controls col-md-9">
                                       <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -99,24 +113,6 @@
                                       </div>
                                   </div>
                               	</div>
-                                   <div class="form-group ">
-                                  <label for="reportType" class="control-label col-lg-2">Report Data Source (required)</label>
-                                  <div class="col-lg-10">
-	                                  <select id="reportType" name="reportType" class=" form-control">
-										  <option value='dbfetch'>
-					                            RAI Database Fetch
-					                        </option>
-					                    
-										  <option value='dbfetch'>
-					                            User Input
-					                        </option>
-					                    
-					                    	<option value='dbfetch'>
-					                            Report Design Template
-					                        </option>
-					                        
-									</select></div>
-									</div>
                                   
                                   <div class="form-group ">
                                       <label for="ccomment" class="control-label col-lg-2">Description (optional)</label>
@@ -170,7 +166,32 @@
 	<script src="js/ng/advanced-form-components.js"></script> 
 	
 	<img src="http:///-web.washer-/trans.gif?foo=1">
-  
+  <script type="text/javascript">
+// 		$(document).ready(function() {
+// 			$('#uploadReportDiv').hide();
+// 		});
+// 		$('input[name=optionsRadios]:radio').change(function() {
+// 			if($('#optionsRadios1').is(":checked")) {
+// 				$('#uploadReportDiv').slideUp();
+// 				$('#dataSourceDiv').slideDown();
+// 		    }else{
+// 		    	$('#uploadReportDiv').slideDown();
+// 		    	$('#dataSourceDiv').slideUp();
+// 		    }
+// 		});
+// 		$("#optionsRadios2").change(function() {
+// 			if(this.checked) {
+// 				$('#uploadReportDiv').slideDown();
+// 		    }else{
+// 		    	$('#uploadReportDiv').slideUp();
+// 		    }
+// 		});
+		$("#cancelButton").click(function() {
+			$('#saveAlert').slideUp();			
+			$('#reportForm')[0].reset();
+			$('#reportname').focus();
+		});
+	</script>
 
   </body>
 </html>

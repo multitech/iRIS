@@ -36,6 +36,20 @@ public class ReportController {
 	 */
 	@RequestMapping(value = "/create_report.htm", method = RequestMethod.GET)
 	protected String createReportAction(ModelMap model, @ModelAttribute("reportVo") ReportVo reportVo, HttpServletRequest req, HttpServletResponse resp) {
+		model.addAttribute("successMessage",null);
+		return "report_new";
+	}
+	
+	/**
+	 * Save report method
+	 * @param model
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	@RequestMapping(value = "/save_report.htm", method = RequestMethod.POST)
+	protected String saveReportAction(ModelMap model, @ModelAttribute("reportVo") ReportVo reportVo, HttpServletRequest req, HttpServletResponse resp) {
+		model.addAttribute("successMessage","Success");
 		return "report_new";
 	}
 }
