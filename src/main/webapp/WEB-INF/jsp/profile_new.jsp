@@ -26,7 +26,7 @@
     <link href="css/ng/style-responsive.css" rel="stylesheet">
 
     <script src="js/ng/Chart.js"></script>
-    
+  	
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -41,229 +41,14 @@
       TOP BAR CONTENT & NOTIFICATIONS
       *********************************************************************************************************************************************************** -->
       <!--header start-->
-      <header class="header black-bg">
-              <div class="sidebar-toggle-box">
-                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-              </div>
-            <!--logo start-->
-            <a href="" class="logo"><b>IRIS</b></a>
-            <!--logo end-->
-            <div class="nav notify-row" id="top_menu">
-                <!--  notification start -->
-                <ul class="nav top-menu">
-                    <!-- settings start -->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-                            <i class="fa fa-tasks"></i>
-                            <span class="badge bg-theme">4</span>
-                        </a>
-                        <ul class="dropdown-menu extended tasks-bar">
-                            <div class="notify-arrow notify-arrow-green"></div>
-                            <li>
-                                <p class="green">You have 4 pending tasks</p>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <div class="task-info">
-                                        <div class="desc">Upload market Risk data</div>
-                                        <div class="percent">40%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                            <span class="sr-only">40% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <div class="task-info">
-                                        <div class="desc">Database Fetch</div>
-                                        <div class="percent">60%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                            <span class="sr-only">60% Complete (warning)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <div class="task-info">
-                                        <div class="desc">Sign-off Credit Risk data</div>
-                                        <div class="percent">80%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Complete</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <div class="task-info">
-                                        <div class="desc">Priliminary Signed Off</div>
-                                        <div class="percent">70%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                            <span class="sr-only">70% Complete (Important)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="external">
-                                <a href="#">See All Tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- settings end -->
-                    <!-- inbox dropdown start-->
-                    <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-                            <i class="fa fa-envelope-o"></i>
-                            <span class="badge bg-theme">5</span>
-                        </a>
-                        <ul class="dropdown-menu extended inbox">
-                            <div class="notify-arrow notify-arrow-green"></div>
-                            <li>
-                                <p class="green">You have 5 new messages</p>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="img/user.png"></span>
-                                    <span class="subject">
-                                    <span class="from">Rai Test User</span>
-                                    <span class="time">Just now</span>
-                                    </span>
-                                    <span class="message">
-                                        Uploaded QIS5 Sheet
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="img/user.png"></span>
-                                    <span class="subject">
-                                    <span class="from">Balu Sabu</span>
-                                    <span class="time">40 mins.</span>
-                                    </span>
-                                    <span class="message">
-                                     	Uploaded Balance Sheet
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="img/user.png"></span>
-                                    <span class="subject">
-                                    <span class="from">Joseph Maliakkal</span>
-                                    <span class="time">2 hrs.</span>
-                                    </span>
-                                    <span class="message">
-                                        Downloaded QRT Solo
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="img/user.png"></span>
-                                    <span class="subject">
-                                    <span class="from">Joseph Maliakkal</span>
-                                    <span class="time">4 hrs.</span>
-                                    </span>
-                                    <span class="message">
-                                        Downloaded QIS5
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">See all messages</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- inbox dropdown end -->
-                </ul>
-                <!--  notification end -->
-            </div>
-            <div class="top-menu">
-            	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.htm">Logout</a></li>
-            	</ul>
-            </div>
-        </header>
+      <%@include file='home_top.html'%>
       <!--header end-->
       
       <!-- **********************************************************************************************************************************************************
       MAIN SIDEBAR MENU
       *********************************************************************************************************************************************************** -->
       <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu" id="nav-accordion">
-              
-              	  <p class="centered"><a href="profile.html"><img src="img/user.png" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Renjith Bhaskaran</h5>
-              	  	
-                  <li class="mt">
-                      <a class="active" href="index.html">
-                          <i class="fa fa-dashboard"></i>
-                          <span>Dashboard</span>
-                      </a>
-                  </li>
-
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-desktop"></i>
-                          <span>Profile</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="create_profile.htm">Create New</a></li>
-                          <li><a  href="buttons.html">Modify</a></li>
-                          <li><a  href="panels.html">View</a></li>
-                      </ul>
-                  </li>
-
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-cogs"></i>
-                          <span>Reports</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="create_report.htm">Create New</a></li>
-                          <li><a  href="buttons.html">Modify</a></li>
-                          <li><a  href="panels.html">View</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-book"></i>
-                          <span>Hierarchy</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="general.html">Create New</a></li>
-                          <li><a  href="buttons.html">Modify</a></li>
-                          <li><a  href="panels.html">View</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-tasks"></i>
-                          <span>Asignment Matrix</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="general.html">Create New</a></li>
-                          <li><a  href="buttons.html">Modify</a></li>
-                          <li><a  href="panels.html">View</a></li>
-                      </ul>
-                  </li>
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
+      <%@include file='home_left.html'%>
       <!--sidebar end-->
       
       <!-- **********************************************************************************************************************************************************
@@ -279,8 +64,19 @@
                   <div class="col-lg-12">
                  	 <div class="form-panel">
                       <h4><i class="fa fa-angle-right"></i> Profile Details </h4>
-                              <form class="cmxform form-horizontal style-form" id="commentForm" method="get" action=""><hr/>
+                              <form class="cmxform form-horizontal style-form" id="profileForm" method="post" action="${pageContext.request.contextPath}/save_profile.htm"><hr/>
                                   <div class="form-group ">
+                                                                        <%
+								    		String successMessage=(String) request.getAttribute("successMessage");
+								    		if(successMessage!=null){
+										%>
+                                      <div class="alert alert-success alert-dismissable" id="saveAlert">
+									  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									  <strong>Success!</strong> Profile saved successfully.
+									  </div> 
+									  	    <%
+								    		}
+							      		%>
                                       <label for="profilename" class="control-label col-lg-2">Profile Name (required)</label>
                                       <div class="col-lg-10">
                                           <input class=" form-control" id="profilename" placeholder="Please enter a unique profile name here" name="profileName" minlength="2" type="text" required />
@@ -412,17 +208,31 @@
 									</select></div>
 									</div>
                                       <div class="form-group ">
-                                  	<label for="reoprtingEvent" class="control-label col-lg-2">Reporting Event (required)</label>
+                                  	<label for="reportingEvent" class="control-label col-lg-2">Reporting Event (required)</label>
                                   		<div class="col-lg-10">
-	                                  <select id="reoprtingEvent" name="reoprtingEvent" class=" form-control">
+	                                  <select id="reportingEvent" name="reportingEvent" class=" form-control">
 										  <option value='264a_8700_RE'>
 					                            264a_8700_RE
 					                        </option>
                                       </select>
                                       </div>
                                   </div>
-                                  <div class="form-group">
-                                  <label class="control-label col-lg-2">Upload Hierarchy </label>
+                                  <div class="form-group ">
+                                  	<label class="control-label col-lg-2">Rollover Options</label>
+                                  		<div class="col-lg-10">
+	                                	<label class="checkbox-inline">
+										  <input type="checkbox" id="inlineCheckbox1" value="option1"> Hierarchy
+										</label>
+										<label class="checkbox-inline">
+										   <input type="checkbox" id="inlineCheckbox2" value="option2"> Report Templates
+										</label>
+										<label class="checkbox-inline">
+										  <input type="checkbox" id="inlineCheckbox3" value="option3" disabled="disabled"> Data (Only if report templates are rollovered)
+										</label>
+                                      </div>
+                                  </div>
+                                  <div class="form-group" id="uploadHierarchyDiv">
+                                  <label class="control-label col-lg-2">Upload Hierarchy (required)</label>
                                   <div class="controls col-md-9">
                                       <div class="fileupload fileupload-new" data-provides="fileupload">
                                         <span class="btn btn-theme02 btn-file">
@@ -433,21 +243,31 @@
                                           <span class="fileupload-preview" style="margin-left:5px;"></span>
                                           <a href="advanced_form_components.html#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
                                       </div>
-                                      <label>
-									    or
-									  </label>
-                                      <div class="checkbox">
-									  <label>
-									    <input type="checkbox" value="">
-									    Use previous
-									  </label>
-									  </div>
                                   </div>
                               	</div>
+                              	<div class="form-group " id="rolloverFromDiv" hidden="true">
+                                  	<label for="rollover1" class="control-label col-lg-2">Rollover from (required)</label>
+                                  		<div class="col-lg-10">
+	                                  <select id="rollover1" name="rollover1" class=" form-control">
+										  <option value='a'>
+					                            Profile for Q2 2014
+					                        </option>
+					                      <option value='b'>
+					                            Profile for Q1 2014
+					                        </option>
+					                        <option value='c'>
+					                            Profile for Q4 2013
+					                        </option>
+					               			<option value='d'>
+					                            Profile for Q3 2013
+					                        </option>
+                                      </select>
+                                      </div>
+                                  </div>
                               	<div class="form-group">
 		                          <label class="control-label col-lg-2">Valuation Date (required)</label>
 		                          <div class="col-md-3 col-xs-11">
-		                              <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="">
+		                              <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value=""  required>
 		                              <span class="help-block">Select date</span>
 		                          </div>
 		                     	 </div>
@@ -459,8 +279,8 @@
                                   </div>
                                   <div class="form-group">
                                       <div class="col-lg-offset-2 col-lg-10">
-                                          <button class="btn btn-theme" type="submit">Save</button>
-                                          <button class="btn btn-theme04" type="button">Cancel</button>
+                                          <button class="btn btn-theme" type="submit" id="saveButton">Save</button>
+                                          <button class="btn btn-theme04" type="button" id="cancelButton">Cancel</button>
                                       </div>
                                   </div>
                               </form>
@@ -475,14 +295,7 @@
 
       <!--main content end-->
       <!--footer start-->
-      <footer class="site-footer">
-          <div class="text-center">
-              2014 - iRIS
-              <a href="index.html#" class="go-top">
-                  <i class="fa fa-angle-up"></i>
-              </a>
-          </div>
-      </footer>
+      <%@include file='home_footer.html'%>
       <!--footer end-->
   </section>
 
@@ -510,7 +323,39 @@
 	<script src="js/ng/advanced-form-components.js"></script> 
 	
 	<img src="http:///-web.washer-/trans.gif?foo=1">
-  
+  <script type="text/javascript">
+// 		$(document).ready(function() {
+// 			$('#inlineCheckbox1').click(function() {
+// 				document.forms[0].submit();
+// 			});
+		$("#inlineCheckbox1").change(function() {
+			if(this.checked) {
+		    	$('#uploadHierarchyDiv').slideUp();
+		    	$('#rolloverFromDiv').slideDown();
+		    }else{
+		    	$('#uploadHierarchyDiv').slideDown();
+		    	if($('#inlineCheckbox2').is(":checked")==false){
+			    	$('#rolloverFromDiv').slideUp();		    		
+		    	}
+		    }
+		});
+		$("#inlineCheckbox2").change(function() {
+			$("#inlineCheckbox3").prop("disabled", !this.checked);
+		    if(this.checked) {
+		    	$('#rolloverFromDiv').slideDown();
+		    }else{
+		    	$('#inlineCheckbox3').prop('checked', false);
+		    	if($('#inlineCheckbox1').is(":checked")==false){
+			    	$('#rolloverFromDiv').slideUp();		    		
+		    	}
+		    }
+		});
+		$("#cancelButton").click(function() {
+			$('#saveAlert').slideUp();			
+			$('#profileForm')[0].reset();
+			$('#profilename').focus();
+		});
+	</script>
 
   </body>
 </html>

@@ -14,6 +14,8 @@ public class ProfileVo {
 	
 	private String valuationDate;
 
+	private boolean saveSuccess;
+	
 	public String getProfileId() {
 		return profileId;
 	}
@@ -60,6 +62,14 @@ public class ProfileVo {
 
 	public void setValuationDate(String valuationDate) {
 		this.valuationDate = valuationDate;
+	}
+
+	public boolean isSaveSuccess() {
+		return saveSuccess;
+	}
+
+	public void setSaveSuccess(boolean saveSuccess) {
+		this.saveSuccess = saveSuccess;
 	}
 	
 }
