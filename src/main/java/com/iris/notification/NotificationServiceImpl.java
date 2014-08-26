@@ -48,7 +48,7 @@ public class NotificationServiceImpl implements NotificationService {
 
 	@Override
 	public String getNotificationTasksList() {
-		return NotificationTaskListBuilder.getTasks(getAllMessages());
+		return NotificationTaskListBuilder.getTasks(getAllTasks());
 	}
 
 }

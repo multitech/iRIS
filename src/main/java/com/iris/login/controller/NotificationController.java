@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iris.login.bean.LoginVo;
 import com.iris.notification.NotificationService;
+import com.iris.notification.NotificationTask;
 
 
 @Controller
@@ -22,8 +23,13 @@ public class NotificationController {
 	private NotificationService notificationService;
 	
 	@RequestMapping(value = "/get-messages.htm", method = RequestMethod.GET)
-	protected @ResponseBody String setMessages(ModelMap model, @ModelAttribute("loginVo") LoginVo loginVo, HttpServletRequest req, HttpServletResponse resp) {
+	protected @ResponseBody String getMessages(ModelMap model, @ModelAttribute("loginVo") LoginVo loginVo, HttpServletRequest req, HttpServletResponse resp) {
 		return notificationService.getNotificationMessageList();
+	}
+	
+	@RequestMapping(value = "/get-tasks.htm", method = RequestMethod.GET)
+	protected @ResponseBody String getTasks(ModelMap model, @ModelAttribute("loginVo") LoginVo loginVo, HttpServletRequest req, HttpServletResponse resp) {
+		return notificationService.getNotificationTasksList();
 	}
 
 
