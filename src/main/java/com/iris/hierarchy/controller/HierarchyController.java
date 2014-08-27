@@ -28,7 +28,7 @@ public class HierarchyController {
 	private MessageSource messageSource;
 	
 	/**
-	 * Save profile method
+	 * Show Hierarchy method
 	 * @param model
 	 * @param req
 	 * @param resp
@@ -40,21 +40,33 @@ public class HierarchyController {
 		return new ModelAndView("hierarchy", "hierarchyVo", hierarchyVo);
 	}
 
+	/**
+	 * Show Assignment matrix method
+	 * @param model
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	@RequestMapping(value = "/assignment.htm", method = RequestMethod.GET)
+	protected String showAssignmentMatrixAction(ModelMap model) {
+		return "assignment";
+	}
+	
 	private HierarchyVo loadHierarchy() {
 		
 		HierarchyVo hierarchyVo=new HierarchyVo();
 		
 		List<HierarchyDetailsVo> hierarchies = new ArrayList<>();
 
-		HierarchyDetailsVo hierarchy1 = new HierarchyDetailsVo("Allianz","Allianz","Group",null,"EUR",false,false,false,true,"0");
-		HierarchyDetailsVo hierarchy2 = new HierarchyDetailsVo("S0405","Eurovida","ConsGroup",null,"EUR",true,true,true,false,"30");
-		HierarchyDetailsVo hierarchy3 = new HierarchyDetailsVo("S0890","Amaya","ConsGroup",null,"EUR",true,true,true,false,"30");
-		HierarchyDetailsVo hierarchy4 = new HierarchyDetailsVo("AZFrance","AZFrance","SubGroup",null,"EUR",false,true,true,true,"30");
-		HierarchyDetailsVo hierarchy5 = new HierarchyDetailsVo("RC340","Martin Maurel Vie, Paris","ConsGroup",null,"EUR",false,true,true,false,"60");
-		HierarchyDetailsVo hierarchy6 = new HierarchyDetailsVo("RC040","Allianz IARD","ConsGroup",null,"EUR",false,true,true,false,"60");
-		HierarchyDetailsVo hierarchy7 = new HierarchyDetailsVo("S0669","Luxembourg","ConsGroup",null,"EUR",true,true,true,false,"60");
-		HierarchyDetailsVo hierarchy8 = new HierarchyDetailsVo("AZItaly","AZItaly","SubGroup",null,"EUR",false,true,true,true,"30");
-		HierarchyDetailsVo hierarchy9 = new HierarchyDetailsVo("S0477","CreditRAS","ConsGroup",null,"EUR",false,true,true,false,"60");
+		HierarchyDetailsVo hierarchy1 = new HierarchyDetailsVo("Allianz","Allianz","Group",null,"EUR",null,false,false,true,"0");
+		HierarchyDetailsVo hierarchy2 = new HierarchyDetailsVo("S0405","Eurovida","ConsGroup","Life","EUR","Y",true,true,false,"30");
+		HierarchyDetailsVo hierarchy3 = new HierarchyDetailsVo("S0890","Amaya","ConsGroup","Life","EUR","Y",true,true,false,"30");
+		HierarchyDetailsVo hierarchy4 = new HierarchyDetailsVo("AZFrance","AZFrance","SubGroup",null,"EUR",null,true,true,true,"30");
+		HierarchyDetailsVo hierarchy5 = new HierarchyDetailsVo("RC340","Martin Maurel Vie, Paris","ConsGroup","Life","EUR","N",true,true,false,"60");
+		HierarchyDetailsVo hierarchy6 = new HierarchyDetailsVo("RC040","Allianz IARD","ConsGroup","Composite","EUR","N",true,true,false,"60");
+		HierarchyDetailsVo hierarchy7 = new HierarchyDetailsVo("S0669","Luxembourg","ConsGroup","Non-Life","EUR","Y",true,true,false,"60");
+		HierarchyDetailsVo hierarchy8 = new HierarchyDetailsVo("AZItaly","AZItaly","SubGroup",null,"EUR",null,true,true,true,"30");
+		HierarchyDetailsVo hierarchy9 = new HierarchyDetailsVo("S0477","CreditRAS","ConsGroup","Life","EUR","N",true,true,false,"60");
 		
 		
 		hierarchies.add(hierarchy1);

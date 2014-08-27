@@ -15,7 +15,7 @@ public class HierarchyDetailsVo {
 	
 	private String margin;
 	
-	private boolean smOnly;
+	private String smOnly;
 	
 	private boolean childNode;
 	
@@ -28,7 +28,7 @@ public class HierarchyDetailsVo {
 	}
 	
 	public HierarchyDetailsVo(String itemId, String itemName, String groupInfo,
-			String segment, String currency, boolean smOnly, boolean childNode, boolean childOfPrevious, boolean childExists,String padding) {
+			String segment, String currency, String smOnly, boolean childNode, boolean childOfPrevious, boolean childExists,String padding) {
 		this.setItemId(itemId);
 		this.setItemName(itemName);
 		this.setGroupInfo(groupInfo);
@@ -81,11 +81,11 @@ public class HierarchyDetailsVo {
 		this.currency = currency;
 	}
 
-	public boolean isSmOnly() {
+	public String getSmOnly() {
 		return smOnly;
 	}
 
-	public void setSmOnly(boolean smOnly) {
+	public void setSmOnly(String smOnly) {
 		this.smOnly = smOnly;
 	}
 

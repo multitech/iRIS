@@ -67,7 +67,7 @@
 						    <span class="sr-only">Toggle Dropdown</span>
 						  </button>
 						  <ul class="dropdown-menu" role="menu">
-						    <li><a href="" id="collapseButton">Collapse All</a></li>
+						    <li><a href="#" id="collapseButton" >Collapse All</a></li>
 						  </ul>
 						</div> 
 	                        
@@ -82,20 +82,43 @@
 
                                   <ul class="task-list">
 	                                  <c:forEach items="${hierarchyVo.hierarchies}" var="hierarchyDetailsVo">
-	                                      	<li  style="padding-left: ${hierarchyDetailsVo.margin}px !important" id="${hierarchyDetailsVo.itemId}Li" class="id="${hierarchyDetailsVo.groupInfo}Li">
+	                                      	<li  style="padding-left: ${hierarchyDetailsVo.margin}px !important" id="${hierarchyDetailsVo.itemId}Li" class="${hierarchyDetailsVo.groupInfo}Li">
 	                                      	  <div class="task-checkbox">
 	                                      	  	<c:if test="${hierarchyDetailsVo.childExists}" >
-	                                              <button class="btn btn-primary btn-xs"><i class="fa fa-minus"></i></button>
+	                                              <button class="btn btn-primary btn-xs"><i class=" ${hierarchyDetailsVo.groupInfo}Button fa fa-minus"></i></button>
 	                                            </c:if>
-	                                            <c:if test="${!hierarchyDetailsVo.childExists}" >
-	                                              <button class="btn btn-primary btn-xs"><i class="fa fa-check"></i></button>
-	                                            </c:if>
+	                                           
 	                                          </div>
 	                                          <div class="task-title">
 	                                              <span class="task-title-sp"><c:out value="${hierarchyDetailsVo.itemName}"/></span>
 	                                              <div class="pull-right hidden-phone">
-	                                                  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+	                                                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#${hierarchyDetailsVo.itemId}Modal"><i class="fa fa-pencil"></i></button>
 	                                                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+	                                                  
+	                                                  <!-- Modal -->
+														<div class="modal fade" id="${hierarchyDetailsVo.itemId}Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+														  <div class="modal-dialog">
+														    <div class="modal-content">
+														      <div class="modal-header">
+														        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+														        <h4 class="modal-title" id="myModalLabel">Edit Hierarchy Node - ${hierarchyDetailsVo.itemName} ${hierarchyDetailsVo.groupInfo}</h4>
+														      </div>
+														      <div class="modal-body">
+														          <p>Currency</p>
+								                                  <input class=" form-control" id="currency" value="${hierarchyDetailsVo.currency}" minlength="2" type="text" required />
+								                                  <br><p>Segment</p>
+								                                  <input class=" form-control" id="currency" value="${hierarchyDetailsVo.segment}" minlength="2" type="text" required />
+								                                  <br><p>SM Only</p>
+								                                  <input class=" form-control" id="currency" value="${hierarchyDetailsVo.smOnly}" minlength="2" type="text" required />
+														      </div>
+														      <div class="modal-footer">
+														        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+														        <button type="button" class="btn btn-primary">Save changes</button>
+														      </div>
+														    </div>
+														  </div>
+														</div>  
+						
 	                                              </div>
 	                                          </div>
 	                                      	</li>
@@ -104,6 +127,7 @@
                                   
                               </div>
                           </div>
+      				</div>
                       </section>
                   </div><!-- /col-md-12-->
               </div><!-- /row -->
@@ -137,41 +161,18 @@
 	
   
   <script type="text/javascript">
-		$(document).ready(function() {
-		$('#profilename').focus();
-	});
-// 			$('#inlineCheckbox1').click(function() {
-// 				document.forms[0].submit();
-// 			});
-		$("#inlineCheckbox1").change(function() {
-			if(this.checked) {
-		    	$('#uploadHierarchyDiv').slideUp();
-		    	$('#rolloverFromDiv').slideDown();
-		    }else{
-		    	$('#uploadHierarchyDiv').slideDown();
-		    	if($('#inlineCheckbox2').is(":checked")==false){
-			    	$('#rolloverFromDiv').slideUp();		    		
-		    	}
-		    }
-		});
-		$("#inlineCheckbox2").change(function() {
-			$("#inlineCheckbox3").prop("disabled", !this.checked);
-		    if(this.checked) {
-		    	$('#rolloverFromDiv').slideDown();
-		    }else{
-		    	$('#inlineCheckbox3').prop('checked', false);
-		    	if($('#inlineCheckbox1').is(":checked")==false){
-			    	$('#rolloverFromDiv').slideUp();		    		
-		    	}
-		    }
-		});
-		$("#cancelButton").click(function() {
-			$('#saveAlert').slideUp();			
-			$('#profileForm')[0].reset();
-			$('#profilename').focus();
-		});
 		$("#collapseButton").click(function() {
-			alert("Ok");
+			if($(this).text()=="Expand All"){
+				$('.SubGroupLi').slideDown();
+				$('.ConsGroupLi').slideDown();
+				$('.GroupButton').toggleClass('fa-plus fa-minus');
+				$(this).text("Collapse All");
+			}else{
+				$('.ConsGroupLi').slideUp();
+				$('.SubGroupLi').slideUp();
+				$('.GroupButton').toggleClass('fa-minus fa-plus');
+				$(this).text("Expand All");
+			}
 		});
 	</script>
 
