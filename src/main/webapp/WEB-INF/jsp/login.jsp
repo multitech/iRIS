@@ -1,6 +1,5 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%> 
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page session="true"%>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -36,10 +35,10 @@
 	  <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form class="form-login" action="login_submit.htm" method="post" >
+		      <form class="form-login" action="<c:url value='/j_spring_security_check' />" method="POST" >
 		        <h2 class="form-login-heading">Sign In</h2>
 		        <div class="login-wrap">
-		            <input type="text" class="form-control" name="userName" placeholder="User Name" autofocus>
+		            <input type="text" class="form-control" name="username" placeholder="User Name" autofocus>
 		            <br>
 		            <input type="password" class="form-control" name="password" placeholder="Password">
 		            <hr/>
