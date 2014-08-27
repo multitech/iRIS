@@ -36,21 +36,12 @@ public class ProfileController {
 	 */
 	@RequestMapping(value = "/create_profile.htm", method = RequestMethod.GET)
 	protected String createProfileAction(ModelMap model, @ModelAttribute("profileVo") ProfileVo profileVo, HttpServletRequest req, HttpServletResponse resp) {
-		model.addAttribute("successMessage",null);
 		return "profile_new";
 	}
 	
-	/**
-	 * Save profile method
-	 * @param model
-	 * @param req
-	 * @param resp
-	 * @return
-	 */
-	@RequestMapping(value = "/save_profile.htm", method = RequestMethod.POST)
-	protected String saveProfileAction(ModelMap model, @ModelAttribute("profileVo") ProfileVo profileVo, HttpServletRequest req, HttpServletResponse resp) {
-		model.addAttribute("successMessage","Success");
-		return "profile_new";
+	@RequestMapping(value = "/profile_edit_landing.htm", method = RequestMethod.GET)
+	protected String showEditProfileLanding(ModelMap model, @ModelAttribute("profileVo") ProfileVo profileVo, HttpServletRequest req, HttpServletResponse resp){
+		return "profile_edit_landing";
 	}
 	
 }

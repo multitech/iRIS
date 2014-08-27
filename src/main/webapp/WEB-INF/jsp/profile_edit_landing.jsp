@@ -222,7 +222,7 @@
                       </a>
                       <ul class="sub">
                           <li><a  href="create_profile.htm">Create New</a></li>
-                          <li><a  href="profile_edit_landing.htm">Modify</a></li>
+                          <li><a  href="buttons.html">Modify</a></li>
                           <li><a  href="panels.html">View</a></li>
                       </ul>
                   </li>
@@ -272,50 +272,157 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-          	<h3><i class="fa fa-angle-right"></i> Create New Report Template </h3>
+          	<h3><i class="fa fa-angle-right"></i> Create New Profile </h3>
           	
           	<!-- FORM VALIDATION -->
           	  <div class="row mt">
                   <div class="col-lg-12">
                  	 <div class="form-panel">
-                      <h4><i class="fa fa-angle-right"></i> Report Details </h4>
-                              <form class="cmxform form-horizontal style-form" id="reportForm" method="post" action="${pageContext.request.contextPath}/save_report.htm"><hr/>
-                                                                                                      <%
-								    		String successMessage=(String) request.getAttribute("successMessage");
-								    		if(successMessage!=null){
-										%>
-                                      <div class="alert alert-success alert-dismissable" id="saveAlert">
-									  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-									  <strong>Success!</strong> Report Template saved successfully.
-									  </div> 
-									  	    <%
-								    		}
-							      		%>
+                      <h4><i class="fa fa-angle-right"></i> Profile Details </h4>
+                              <form class="cmxform form-horizontal style-form" id="commentForm" method="get" action=""><hr/>
                                   <div class="form-group ">
-                                      <label for="reportname" class="control-label col-lg-2">Report Name (required)</label>
+                                      <label for="profilename" class="control-label col-lg-2">Profile Name (required)</label>
                                       <div class="col-lg-10">
-                                          <input class=" form-control" id="reportname" placeholder="Please enter the name of the report" name="reportName" minlength="2" type="text" required />
+                                          <input class=" form-control" id="profilename" placeholder="Please enter a unique profile name here" name="profileName" minlength="2" type="text" required />
                                       </div>
                                   </div>
                                   <div class="form-group ">
-                                  <label for="reportType" class="control-label col-lg-2">Report Type (required)</label>
+                                  <label for="environment" class="control-label col-lg-2">Environment (required)</label>
                                   <div class="col-lg-10">
-	                                  <div class="radio">
-										  <label>
-										    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-										    Independent
-										  </label>
-										</div>
-										<div class="radio">
-										  <label>
-										    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-										    Dependent - Select this option if the report depends on other independent reports
-										  </label>
-										</div>
-										</div>
+	                                  <select id="environment" name="environment" class=" form-control">
+										  <option value='20622'>
+					                            8751_Business_Test
+					                        </option>
+					                    
+					                        <option value='20601'>
+					                            RAI_Run_Q1_2014
+					                        </option>
+					                    
+					                        <option value='20643'>
+					                            CR281_Test1
+					                        </option>
+					                    
+					                        <option value='20628'>
+					                            8751_Test_01
+					                        </option>
+					                    
+					                        <option value='20625'>
+					                            8751_REPLI
+					                        </option>
+					                    
+					                        <option value='20642'>
+					                            8752_CPT_Test_01
+					                        </option>
+					                    
+					                        <option value='20581'>
+					                            RAI_Run_BoY_2014
+					                        </option>
+					                    
+					                        <option value='20561'>
+					                            RAI_Run_Q4_2013
+					                        </option>
+					                    
+					                        <option value='20621'>
+					                            8751_Defect_Retest
+					                        </option>
+					                    
+					                        <option value='20631'>
+					                            RES_ROL
+					                        </option>
+					                    
+					                        <option value='20641'>
+					                            8753_01_rollover_AutoENV
+					                        </option>
+					                    
+					                        <option value='20630'>
+					                            8751_CPT_Test_ENV
+					                        </option>
+					                    
+					                        <option value='20662'>
+					                            8754_CPT_Test_01
+					                        </option>
+					                    
+					                        <option value='20629'>
+					                            8751_RPL
+					                        </option>
+					                    
+					                        <option value='20627'>
+					                            8751_01_rollover_AutoENV
+					                        </option>
+					                    
+					                        <option value='20661'>
+					                            CR235_Test
+					                        </option>
+					                    
+					                        <option value='20623'>
+					                            8751_CPT_Test_01
+					                        </option>
+					                    
+					                        <option value='20644'>
+					                            ROLOVR
+					                        </option>
+					                    
+					                        <option value='20541'>
+					                            RAI_Run_Q3_2013
+					                        </option>
+					                    
+					                        <option value='20521'>
+					                            RAI_Run_Q2_2013
+					                        </option>
+					                    
+					                        <option value='20501'>
+					                            RAI_Run_Q1_2013
+					                        </option>
+					                    
+					                        <option value='20481'>
+					                            RAI_Run_Q4_2012
+					                        </option>
+					                    
+					                        <option value='20461'>
+					                            RAI_Run_Q3_2012
+					                        </option>
+					                    
+					                        <option value='20421'>
+					                            RAI_Run_Q2_2012
+					                        </option>
+					                    
+					                        <option value='20401'>
+					                            RAI_Run_Q1_2012
+					                        </option>
+					                    
+					                        <option value='20121'>
+					                            Parallel_Run_Env_4
+					                        </option>
+					                    
+					                        <option value='20085'>
+					                            Parallel_Run_Env_3
+					                        </option>
+					                    
+					                        <option value='20061'>
+					                            Parallel_Run_Env_2
+					                        </option>
+					                    
+					                        <option value='1000'>
+					                            DUMMY_ENV
+					                        </option>
+					                    
+					                        <option value='20001'>
+					                            Parallel_Run_ENV_1
+					                        </option>
+									</select></div>
 									</div>
-									<div class="form-group" id="uploadReportDiv">
-                                  <label class="control-label col-lg-2">Upload Report Template (Required) </label>
+                                      <div class="form-group ">
+                                  	<label for="reoprtingEvent" class="control-label col-lg-2">Reporting Event (required)</label>
+                                  		<div class="col-lg-10">
+	                                  <select id="reoprtingEvent" name="reoprtingEvent" class=" form-control">
+										  <option value='264a_8700_RE'>
+					                            264a_8700_RE
+					                        </option>
+                                      </select>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                  <label class="control-label col-lg-2">Upload Hierarchy </label>
                                   <div class="controls col-md-9">
                                       <div class="fileupload fileupload-new" data-provides="fileupload">
                                         <span class="btn btn-theme02 btn-file">
@@ -326,9 +433,24 @@
                                           <span class="fileupload-preview" style="margin-left:5px;"></span>
                                           <a href="advanced_form_components.html#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
                                       </div>
+                                      <label>
+									    or
+									  </label>
+                                      <div class="checkbox">
+									  <label>
+									    <input type="checkbox" value="">
+									    Use previous
+									  </label>
+									  </div>
                                   </div>
                               	</div>
-                                  
+                              	<div class="form-group">
+		                          <label class="control-label col-lg-2">Valuation Date (required)</label>
+		                          <div class="col-md-3 col-xs-11">
+		                              <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="">
+		                              <span class="help-block">Select date</span>
+		                          </div>
+		                     	 </div>
                                   <div class="form-group ">
                                       <label for="ccomment" class="control-label col-lg-2">Description (optional)</label>
                                       <div class="col-lg-10">
@@ -388,32 +510,7 @@
 	<script src="js/ng/advanced-form-components.js"></script> 
 	
 	<img src="http:///-web.washer-/trans.gif?foo=1">
-  <script type="text/javascript">
-// 		$(document).ready(function() {
-// 			$('#uploadReportDiv').hide();
-// 		});
-// 		$('input[name=optionsRadios]:radio').change(function() {
-// 			if($('#optionsRadios1').is(":checked")) {
-// 				$('#uploadReportDiv').slideUp();
-// 				$('#dataSourceDiv').slideDown();
-// 		    }else{
-// 		    	$('#uploadReportDiv').slideDown();
-// 		    	$('#dataSourceDiv').slideUp();
-// 		    }
-// 		});
-// 		$("#optionsRadios2").change(function() {
-// 			if(this.checked) {
-// 				$('#uploadReportDiv').slideDown();
-// 		    }else{
-// 		    	$('#uploadReportDiv').slideUp();
-// 		    }
-// 		});
-		$("#cancelButton").click(function() {
-			$('#saveAlert').slideUp();			
-			$('#reportForm')[0].reset();
-			$('#reportname').focus();
-		});
-	</script>
+  
 
   </body>
 </html>

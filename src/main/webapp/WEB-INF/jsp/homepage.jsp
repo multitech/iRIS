@@ -335,6 +335,66 @@
 
         return false;
         });
+        setInterval(function(){
+        	var xmlhttp;
+        	xmlhttp=new XMLHttpRequest();
+        	
+        	xmlhttp.onreadystatechange=function()
+        	{
+        	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        	    {
+        	    document.getElementById("messages-list").innerHTML=xmlhttp.responseText;
+        	    }
+        	  }
+        	xmlhttp.open("GET","/iRIS/get-messages.htm",true);
+        	xmlhttp.send();
+        
+        },1000);
+        setInterval(function(){
+        	var xmlhttp;
+        	xmlhttp=new XMLHttpRequest();
+        	
+        	xmlhttp.onreadystatechange=function()
+        	{
+        	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        	    {
+        	    document.getElementById("tasks-list").innerHTML=xmlhttp.responseText;
+        	    }
+        	  }
+        	xmlhttp.open("GET","/iRIS/get-tasks.htm",true);
+        	xmlhttp.send();
+        
+        },1000);
+        setInterval(function(){
+        	var xmlhttp;
+        	xmlhttp=new XMLHttpRequest();
+        	
+        	xmlhttp.onreadystatechange=function()
+        	{
+        	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        	    {
+        	    document.getElementById("message-count").innerHTML=xmlhttp.responseText;
+        	    }
+        	  }
+        	xmlhttp.open("GET","/iRIS/get-message-count.htm",true);
+        	xmlhttp.send();
+        
+        },1000);
+        setInterval(function(){
+        	var xmlhttp;
+        	xmlhttp=new XMLHttpRequest();
+        	
+        	xmlhttp.onreadystatechange=function()
+        	{
+        	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        	    {
+        	    document.getElementById("task-count").innerHTML=xmlhttp.responseText;
+        	    }
+        	  }
+        	xmlhttp.open("GET","/iRIS/get-task-count.htm",true);
+        	xmlhttp.send();
+        
+        },1000);
 	</script>
 	
 	<img src="http:///-web.washer-/trans.gif?foo=1">
