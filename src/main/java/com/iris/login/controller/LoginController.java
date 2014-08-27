@@ -9,13 +9,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iris.login.bean.LoginVo;
@@ -43,8 +43,10 @@ public class LoginController {
 	 * @return
 	 */
 	@RequestMapping(value = "/login.htm", method = RequestMethod.GET)
-	protected String viewLoginAction(ModelMap model, @ModelAttribute("loginVo") LoginVo loginVo, HttpServletRequest req, HttpServletResponse resp) {
-		return "login";
+	protected ModelAndView  viewLoginAction(ModelMap model, @ModelAttribute("loginVo") LoginVo loginVo, HttpServletRequest req, HttpServletResponse resp) {
+		ModelAndView modelView = new ModelAndView();
+		modelView.setViewName("login");
+		return modelView;
 	}
 	
 	/**
@@ -54,14 +56,18 @@ public class LoginController {
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(value = "/login_submit.htm", method = RequestMethod.POST)
+	@RequestMapping(value = "/login_welcome.htm", method = RequestMethod.GET)
 	public ModelAndView loginAction(ModelMap model, @ModelAttribute("loginVo") LoginVo loginVo, HttpSession session) {
-		boolean ldapResult=loginService.ldapAuthentication(loginVo);
-		if(ldapResult){
-			return new ModelAndView("homepage", "home", null);
+		
+		ModelAndView modelView = new ModelAndView("homepage", "home", null);
+		User activeUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(activeUser.getUsername().equals("admin")){
+			modelView.addObject("displayName", "Kobayashi Maru");
+			modelView.addObject("displayImage", "img/admin.png");
 		}else{
-			model.addAttribute("loginMessage",messageSource.getMessage("login.message.notAuthorized", null, LocaleContextHolder.getLocale()));
-			return new ModelAndView("login", "login", new LoginVo());
+			modelView.addObject("displayName", "Cersei Lannister");
+			modelView.addObject("displayImage", "img/analyst.png");
 		}
+		return modelView;
 	}
 }
