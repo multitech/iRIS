@@ -31,6 +31,16 @@ public class NotificationController {
 	protected @ResponseBody String getTasks(ModelMap model, @ModelAttribute("loginVo") LoginVo loginVo, HttpServletRequest req, HttpServletResponse resp) {
 		return notificationService.getNotificationTasksList();
 	}
+	
+	@RequestMapping(value = "/get-message-count.htm", method = RequestMethod.GET)
+	protected @ResponseBody String getMessagesCount() {
+		return String.valueOf(notificationService.getMessagesCount());
+	}
+	
+	@RequestMapping(value = "/get-task-count.htm", method = RequestMethod.GET)
+	protected @ResponseBody String getTasksCount() {
+		return String.valueOf(notificationService.getTasksCount());
+	}
 
 
 }
