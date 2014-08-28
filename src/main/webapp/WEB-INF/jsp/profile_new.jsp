@@ -208,17 +208,31 @@
 									</select></div>
 									</div>
                                       <div class="form-group ">
-                                  	<label for="reoprtingEvent" class="control-label col-lg-2">Reporting Event (required)</label>
+                                  	<label for="reportingEvent" class="control-label col-lg-2">Reporting Event (required)</label>
                                   		<div class="col-lg-10">
-	                                  <select id="reoprtingEvent" name="reoprtingEvent" class=" form-control">
+	                                  <select id="reportingEvent" name="reportingEvent" class=" form-control">
 										  <option value='264a_8700_RE'>
 					                            264a_8700_RE
 					                        </option>
                                       </select>
                                       </div>
                                   </div>
-                                  <div class="form-group">
-                                  <label class="control-label col-lg-2">Upload Hierarchy </label>
+                                  <div class="form-group ">
+                                  	<label class="control-label col-lg-2">Rollover Options</label>
+                                  		<div class="col-lg-10">
+	                                	<label class="checkbox-inline">
+										  <input type="checkbox" id="inlineCheckbox1" value="option1"> Hierarchy
+										</label>
+										<label class="checkbox-inline">
+										   <input type="checkbox" id="inlineCheckbox2" value="option2"> Report Templates
+										</label>
+										<label class="checkbox-inline">
+										  <input type="checkbox" id="inlineCheckbox3" value="option3" disabled="disabled"> Data (Only if report templates are rollovered)
+										</label>
+                                      </div>
+                                  </div>
+                                  <div class="form-group" id="uploadHierarchyDiv">
+                                  <label class="control-label col-lg-2">Upload Hierarchy (required)</label>
                                   <div class="controls col-md-9">
                                       <div class="fileupload fileupload-new" data-provides="fileupload">
                                         <span class="btn btn-theme02 btn-file">
@@ -229,21 +243,32 @@
                                           <span class="fileupload-preview" style="margin-left:5px;"></span>
                                           <a href="advanced_form_components.html#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
                                       </div>
-                                      <label>
-									    or
-									  </label>
-                                      <div class="checkbox">
-									  <label>
-									    <input type="checkbox" value="">
-									    Use previous
-									  </label>
-									  </div>
+									  
                                   </div>
                               	</div>
+                              	  	<div class="form-group " id="rolloverFromDiv" hidden="true">
+                                  	<label for="rollover1" class="control-label col-lg-2">Rollover from (required)</label>
+                                  		<div class="col-lg-10">
+	                                  <select id="rollover1" name="rollover1" class=" form-control">
+										  <option value='a'>
+					                            Profile for Q2 2014
+					                        </option>
+					                      <option value='b'>
+					                            Profile for Q1 2014
+					                        </option>
+					                        <option value='c'>
+					                            Profile for Q4 2013
+					                        </option>
+					               			<option value='d'>
+					                            Profile for Q3 2013
+					                        </option>
+                                      </select>
+                                      </div>
+                                  </div>
                               	<div class="form-group">
 		                          <label class="control-label col-lg-2">Valuation Date (required)</label>
 		                          <div class="col-md-3 col-xs-11">
-		                              <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="">
+		                              <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="" required>
 		                              <span class="help-block">Select date</span>
 		                          </div>
 		                     	 </div>
@@ -255,8 +280,8 @@
                                   </div>
                                   <div class="form-group">
                                       <div class="col-lg-offset-2 col-lg-10">
-                                          <button class="btn btn-theme" type="submit">Save</button>
-                                          <button class="btn btn-theme04" type="button">Cancel</button>
+                                          <button class="btn btn-theme" type="submit" id="saveButton">Save</button>
+                                          <button class="btn btn-theme04" type="button" id="cancelButton">Cancel</button>
                                       </div>
                                   </div>
                               </form>
