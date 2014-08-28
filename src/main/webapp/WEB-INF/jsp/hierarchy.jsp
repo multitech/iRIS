@@ -22,7 +22,6 @@
         <link href="css/ng/style.css" rel="stylesheet">
     <link href="css/ng/style-responsive.css" rel="stylesheet">
     <link rel="stylesheet" href="css/ng/to-do.css">
-    
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -90,7 +89,7 @@
 	                                           
 	                                          </div>
 	                                          <div class="task-title">
-	                                              <span class="task-title-sp"><c:out value="${hierarchyDetailsVo.itemName}"/></span>
+	                                              <span class="task-title-sp"><c:out value="${hierarchyDetailsVo.itemId}"/></span>
 	                                              <div class="pull-right hidden-phone">
 	                                                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#${hierarchyDetailsVo.itemId}Modal"><i class="fa fa-pencil"></i></button>
 	                                                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
