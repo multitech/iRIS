@@ -24,7 +24,7 @@
     <!-- Custom styles for this template -->
     <link href="css/ng/style.css" rel="stylesheet">
     <link href="css/ng/style-responsive.css" rel="stylesheet">
-
+	
     <script src="js/ng/Chart.js"></script>
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -57,13 +57,13 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-          	<h3><i class="fa fa-angle-right"></i> Create New Profile </h3>
+          	<h3><i class="fa fa-angle-right"></i> Create New Master Configuration </h3>
           	
           	<!-- FORM VALIDATION -->
           	  <div class="row mt">
                   <div class="col-lg-12">
                  	 <div class="form-panel">
-                      <h4><i class="fa fa-angle-right"></i> Profile Details </h4>
+                      <h4><i class="fa fa-angle-right"></i> Configuration Details </h4>
                               <form class="cmxform form-horizontal style-form" id="profileForm" method="post" action="${pageContext.request.contextPath}/save_profile.htm"><hr/>
                                    <%
 								    		String successMessage=(String) request.getAttribute("successMessage");
@@ -71,15 +71,15 @@
 										%>
                                       <div class="alert alert-success alert-dismissable" id="saveAlert">
 									  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-									  <strong>Success!</strong> Profile saved successfully.
+									  <strong>Success!</strong> Configuration saved successfully.
 									  </div> 
 									  	    <%
 								    		}
 							      		%>
                                   <div class="form-group ">
-                                      <label for="profilename" class="control-label col-lg-2">Profile Name (required)</label>
+                                      <label for="profilename" class="control-label col-lg-2">Configuration Title (required)</label>
                                       <div class="col-lg-10">
-                                          <input class=" form-control" id="profilename" placeholder="Please enter a unique profile name here" name="profileName" minlength="2" type="text" required />
+                                          <input class=" form-control" id="profilename" placeholder="Please enter a unique configuration title here" name="profileName" minlength="2" type="text" required />
                                       </div>
                                   </div>
                                   <div class="form-group ">
@@ -218,21 +218,22 @@
                                       </div>
                                   </div>
                                   <div class="form-group ">
-                                  	<label class="control-label col-lg-2">Rollover Options</label>
+                                  	<label class="control-label col-lg-2">Rollover Needed for</label>
                                   		<div class="col-lg-10">
 	                                	<label class="checkbox-inline">
 										  <input type="checkbox" id="inlineCheckbox1" value="option1"> Hierarchy
 										</label>
 										<label class="checkbox-inline">
-										   <input type="checkbox" id="inlineCheckbox2" value="option2"> Report Templates
+										   <input type="checkbox" id="inlineCheckbox2" value="option2"> Data Items
 										</label>
 										<label class="checkbox-inline">
-										  <input type="checkbox" id="inlineCheckbox3" value="option3" disabled="disabled"> Data (Only if report templates are rollovered)
+										  <input type="checkbox" id="inlineCheckbox3" value="option3" disabled="disabled"> Data (Only if data items are rollovered)
 										</label>
+										<span class="help-block">Please select any of this if you want to rollover it from any previous configuration</span>
                                       </div>
                                   </div>
                                   <div class="form-group" id="uploadHierarchyDiv">
-                                  <label class="control-label col-lg-2">Upload Hierarchy (required)</label>
+                                  <label class="control-label col-lg-2">Load Hierarchy from file</label>
                                   <div class="controls col-md-9">
                                       <div class="fileupload fileupload-new" data-provides="fileupload">
                                         <span class="btn btn-theme02 btn-file">
@@ -251,16 +252,16 @@
                                   		<div class="col-lg-10">
 	                                  <select id="rollover1" name="rollover1" class=" form-control">
 										  <option value='a'>
-					                            Profile for Q2 2014
+					                            Q2 2014
 					                        </option>
 					                      <option value='b'>
-					                            Profile for Q1 2014
+					                            Q1 2014
 					                        </option>
 					                        <option value='c'>
-					                            Profile for Q4 2013
+					                            Q4 2013
 					                        </option>
 					               			<option value='d'>
-					                            Profile for Q3 2013
+					                            Q3 2013
 					                        </option>
                                       </select>
                                       </div>
