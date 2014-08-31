@@ -4,13 +4,13 @@ import java.util.List;
 
 public class ProfileVo {
 
-	private List<ProfileDetailsVo> profiles;
+	private List<ProfileInfo> profiles;
 
-	public List<ProfileDetailsVo> getProfiles() {
+	public List<ProfileInfo> getProfiles() {
 		return profiles;
 	}
 
-	public void setProfiles(List<ProfileDetailsVo> profiles) {
+	public void setProfiles(List<ProfileInfo> profiles) {
 		this.profiles = profiles;
 	}
 	

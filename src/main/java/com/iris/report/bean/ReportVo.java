@@ -4,13 +4,13 @@ import java.util.List;
 
 public class ReportVo {
 
-	private List<ReportDetailsVo> reports;
+	private List<ReportInfo> reports;
 	
-	public List<ReportDetailsVo> getReports() {
+	public List<ReportInfo> getReports() {
 		return reports;
 	}
 
-	public void setReports(List<ReportDetailsVo> reports) {
+	public void setReports(List<ReportInfo> reports) {
 		this.reports = reports;
 	}
 	
