@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.iris.report.bean.ReportVo;
+import com.iris.report.bean.Report;
 
 /**
  * The prime class which handles the in and out request of the application
@@ -35,7 +35,7 @@ public class ReportController {
 	 * @return
 	 */
 	@RequestMapping(value = "/create_report.htm", method = RequestMethod.GET)
-	protected String createReportAction(ModelMap model, @ModelAttribute("reportVo") ReportVo reportVo, HttpServletRequest req, HttpServletResponse resp) {
+	protected String createReportAction(ModelMap model, @ModelAttribute("reportVo") Report reportVo, HttpServletRequest req, HttpServletResponse resp) {
 		model.addAttribute("successMessage",null);
 		return "report_new";
 	}
@@ -48,7 +48,7 @@ public class ReportController {
 	 * @return
 	 */
 	@RequestMapping(value = "/save_report.htm", method = RequestMethod.POST)
-	protected String saveReportAction(ModelMap model, @ModelAttribute("reportVo") ReportVo reportVo, HttpServletRequest req, HttpServletResponse resp) {
+	protected String saveReportAction(ModelMap model, @ModelAttribute("reportVo") Report reportVo, HttpServletRequest req, HttpServletResponse resp) {
 		model.addAttribute("successMessage","Success");
 		return "report_new";
 	}

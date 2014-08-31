@@ -2,7 +2,7 @@ package com.iris.profile.bean;
 
 import java.util.List;
 
-public class ProfileVo {
+public class Profile {
 
 	private List<ProfileInfo> profiles;
 

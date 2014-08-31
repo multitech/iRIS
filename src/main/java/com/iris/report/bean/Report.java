@@ -2,7 +2,7 @@ package com.iris.report.bean;
 
 import java.util.List;
 
-public class ReportVo {
+public class Report {
 
 	private List<ReportInfo> reports;
 	
