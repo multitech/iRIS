@@ -34,10 +34,10 @@ public class ProfileController {
 	 * @param resp
 	 * @return
 	 */
-	@RequestMapping(value = "/create_profile.htm", method = RequestMethod.GET)
+	@RequestMapping(value = "/profile.htm", method = RequestMethod.GET)
 	protected String createProfileAction(ModelMap model, @ModelAttribute("profileVo") ProfileVo profileVo, HttpServletRequest req, HttpServletResponse resp) {
 		model.addAttribute("successMessage",null);
-		return "profile_new";
+		return "configuration";
 	}
 	
 	/**

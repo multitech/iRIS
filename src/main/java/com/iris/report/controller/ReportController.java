@@ -34,10 +34,10 @@ public class ReportController {
 	 * @param resp
 	 * @return
 	 */
-	@RequestMapping(value = "/create_report.htm", method = RequestMethod.GET)
+	@RequestMapping(value = "/data_item.htm", method = RequestMethod.GET)
 	protected String createReportAction(ModelMap model, @ModelAttribute("reportVo") ReportVo reportVo, HttpServletRequest req, HttpServletResponse resp) {
 		model.addAttribute("successMessage",null);
-		return "report_new";
+		return "data_item";
 	}
 	
 	/**
