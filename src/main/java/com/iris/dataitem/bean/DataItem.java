@@ -1,4 +1,4 @@
-package com.iris.report.bean;
+package com.iris.dataitem.bean;
 
 import com.iris.common.BaseInfo;
 

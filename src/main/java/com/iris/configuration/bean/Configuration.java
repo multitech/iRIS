@@ -1,4 +1,4 @@
-package com.iris.profile.bean;
+package com.iris.configuration.bean;
 
 import com.iris.common.BaseInfo;
 

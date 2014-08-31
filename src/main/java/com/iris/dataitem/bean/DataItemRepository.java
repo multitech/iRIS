@@ -1,4 +1,4 @@
-package com.iris.report.bean;
+package com.iris.dataitem.bean;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class DataItemRepository {
 	private DataItemHandler handler;
 	
 	public List<DataItem> getDataItems() {
-		return handler.fetchDataItemsFromFile();
+		return handler.getValues();
 	}
 
 	public boolean saveDataItem(DataItem dataItem){

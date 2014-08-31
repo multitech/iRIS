@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.iris.profile.bean.ConfigurationRepository;
+import com.iris.configuration.bean.ConfigurationRepository;
 
 /**
  * The prime class which handles the in and out request of the application

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.iris.report.bean.DataItemRepository;
+import com.iris.dataitem.bean.DataItemRepository;
 
 /**
  * The prime class which handles the in and out request of the application
