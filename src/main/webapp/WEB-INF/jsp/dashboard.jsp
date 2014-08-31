@@ -52,86 +52,493 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-          	<h3><i class="fa fa-angle-right"></i> Hierarchy </h3>
-          	
-          	<div class="row mt">
-                  <div class="col-md-12">
-                      <section class="task-panel tasks-widget">
-	                	<div class="panel-heading">
-	                        <div class="pull-left">
-	                        <div class="btn-group">
-						  <button type="button" class="btn btn-theme03"><i class="fa fa-cog"></i></button>
-						  <button type="button" class="btn btn-theme03 dropdown-toggle" data-toggle="dropdown">
-						    <span class="caret"></span>
-						    <span class="sr-only">Toggle Dropdown</span>
+        <!-- page start-->
+        <div class="row mt">
+            <div class="col-sm-3">
+                <section class="panel">
+                    <div class="panel-body">
+                        <h4>Hierarchy</h4>
+                        <ul class="nav nav-pills nav-stacked mail-nav">
+                        	<c:forEach items="${hierarchyVo.hierarchies}" var="hierarchyDetailsVo">
+                        	<li class="hierarchyLi">
+                        	<a href="#" style="padding-left: ${hierarchyDetailsVo.margin}px !important"> 
+                        	<c:if test="${hierarchyDetailsVo.childExists}" > 
+<%-- 	                                              <i class=" ${hierarchyDetailsVo.groupInfo}Button fa fa-minus"></i> --%>
+	                                            </c:if> 
+	                                                                  	<c:if test="${hierarchyDetailsVo.childExists==false}" > 
+<!-- 	                                             <i class="fa fa-check-square-o"></i>  -->
+	                                            </c:if>   
+                        
+                        	
+                        	${hierarchyDetailsVo.itemId}</a></li>
+                        	
+<%-- 	                                      	<li  style="padding-left: ${hierarchyDetailsVo.margin}px !important" id="${hierarchyDetailsVo.itemId}Li" class="${hierarchyDetailsVo.groupInfo}Li"> --%>
+	                                      	
+<!-- 	                                      	  <div class="task-checkbox"> -->
+<%-- 	                                      	  	<c:if test="${hierarchyDetailsVo.childExists}" > --%>
+<%-- 	                                              <button class="btn btn-primary btn-xs"><i class=" ${hierarchyDetailsVo.groupInfo}Button fa fa-minus"></i></button> --%>
+<%-- 	                                            </c:if> --%>
+	                                           
+<!-- 	                                          </div> -->
+<!-- 	                                          <div class="task-title"> -->
+<%-- 	                                              <span class="task-title-sp"><c:out value="${hierarchyDetailsVo.itemId}"/></span> --%>
+<!-- 	                                          </div> -->
+<!-- 	                                      	</li> -->
+	                        </c:forEach>
+<!--                             <li class="active"><a href="inbox.html"> <i class="fa fa-inbox"></i> Inbox  <span class="label label-theme pull-right inbox-notification">3</span></a></li> -->
+<!--                             <li><a href="#"> <i class="fa fa-envelope-o"></i> Send Mail</a></li> -->
+<!--                             <li><a href="#"> <i class="fa fa-exclamation-circle"></i> Important</a></li> -->
+<!--                             <li><a href="#"> <i class="fa fa-file-text-o"></i> Drafts <span class="label label-info pull-right inbox-notification">8</span></a></a></li> -->
+<!--                             <li><a href="#"> <i class="fa fa-trash-o"></i> Trash</a></li> -->
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            <div class="col-sm-9">
+                <section class="panel">
+                    <header class="panel-heading wht-bg">
+                       <h4 class="gen-case">Data Items
+                        <form action="#" class="pull-right mail-src-position">
+                            <div class="input-append">
+                                <input type="text" class="form-control " placeholder="Search Data Item">
+                            </div>
+                        </form>
+                       </h4>
+                    </header>
+                    <div class="panel-body minimal">
+                        <div class="mail-option">
+
+								<div class="btn-group">
+                                          <button class="btn btn-theme" type="submit" id="saveButton">Upload</button>
+                                      </div>
+
+								<div class="btn-group">
+						  <button type="button" class="btn btn-theme04 dropdown-toggle" data-toggle="dropdown">
+						    Download <span class="caret"></span>
 						  </button>
 						  <ul class="dropdown-menu" role="menu">
-						    <li><a href="#" id="collapseButton" >Collapse All</a></li>
+						    <li><a href="#">Report</a></li>
+						    <li class="divider"></li>
+						    <li><a href="#">Template</a></li>
 						  </ul>
-						</div> 
-	                        
-	                        </div>
-	                        <br>
-	                 	</div>
-	                 	<br>
-	                 	
-	                 	<br>
-                          <div class="panel-body">
-                              <div class="task-content">
-
-                                  <ul class="task-list">
-	                                  <c:forEach items="${hierarchyVo.hierarchies}" var="hierarchyDetailsVo">
-	                                      	<li  style="padding-left: ${hierarchyDetailsVo.margin}px !important" id="${hierarchyDetailsVo.itemId}Li" class="${hierarchyDetailsVo.groupInfo}Li">
-	                                      	  <div class="task-checkbox">
-	                                      	  	<c:if test="${hierarchyDetailsVo.childExists}" >
-	                                              <button class="btn btn-primary btn-xs"><i class=" ${hierarchyDetailsVo.groupInfo}Button fa fa-minus"></i></button>
-	                                            </c:if>
-	                                           
-	                                          </div>
-	                                          <div class="task-title">
-	                                              <span class="task-title-sp"><c:out value="${hierarchyDetailsVo.itemId}"/></span>
-	                                              <div class="pull-right hidden-phone">
-	                                                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#${hierarchyDetailsVo.itemId}Modal"><i class="fa fa-pencil"></i></button>
-	                                                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-	                                                  
-	                                                  <!-- Modal -->
-														<div class="modal fade" id="${hierarchyDetailsVo.itemId}Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-														  <div class="modal-dialog">
-														    <div class="modal-content">
-														      <div class="modal-header">
-														        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-														        <h4 class="modal-title" id="myModalLabel">Edit Hierarchy Node - ${hierarchyDetailsVo.itemName} ${hierarchyDetailsVo.groupInfo}</h4>
-														      </div>
-														      <div class="modal-body">
-														          <p>Currency</p>
-								                                  <input class=" form-control" id="currency" value="${hierarchyDetailsVo.currency}" minlength="2" type="text" required />
-								                                  <br><p>Segment</p>
-								                                  <input class=" form-control" id="currency" value="${hierarchyDetailsVo.segment}" minlength="2" type="text" required />
-								                                  <br><p>SM Only</p>
-								                                  <input class=" form-control" id="currency" value="${hierarchyDetailsVo.smOnly}" minlength="2" type="text" required />
-														      </div>
-														      <div class="modal-footer">
-														        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-														        <button type="button" class="btn btn-primary">Save changes</button>
-														      </div>
-														    </div>
-														  </div>
-														</div>  
+						</div>
 						
-	                                              </div>
-	                                          </div>
-	                                      	</li>
-	                                  </c:forEach>
-                                  </ul>
-                                  
-                              </div>
-                          </div>
-      				</div>
-                      </section>
-                  </div><!-- /col-md-12-->
-              </div><!-- /row -->
-          	
-          	
+                            <div class="btn-group">
+						  <button type="button" class="btn btn-theme03 dropdown-toggle" data-toggle="dropdown">
+						    Sort By <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" role="menu">
+						    <li><a href="#">Category A-Z</a></li>
+						    <li><a href="#">Category Z-A</a></li>
+						  </ul>
+						</div>
+                            
+                            <div class="btn-group hidden-phone pull-right">
+                                <a data-toggle="dropdown" href="#" class="btn mini blue">
+                                    More
+                                    <i class="fa fa-angle-down "></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><i class="fa fa-pencil"></i> Mark as Read</a></li>
+                                    <li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="table-inbox-wrap ">
+                            <table class="table table-inbox table-hover">
+                            <thead><tr>
+                         <h4 style="padding: 15px;">01 Balance Sheet</h4>
+                         </tr>
+                         </thead>
+                        <tbody>
+                         
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-book"></i></td>
+                            <td class="view-message  dont-show"><a href="mail_view.html">Balance Sheet Input</a></td>
+                            <td class="view-message "><a href="mail_view.html">Waiting for user upload</a></td>
+                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  text-right">08:10 AM</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-database"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">Deferred Tax</a></td>
+                            <td class="view-message"><a href="mail_view.html">Ready for database fetch</a></td>
+                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  text-right">Yesterday</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-database"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">MVBS</a></td>
+                            <td class="view-message"><a href="mail_view.html">Ready for database fetch</a></td>
+                            <td class="view-message "><a href="mail_view.html">Beny</a></td>
+                            <td class="view-message  text-right">10:10 PM</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-calendar"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">Balance Sheet</a></td>
+                            <td class="view-message"><a href="mail_view.html">Depencies not resolved</a></td>
+                            <td class="view-message "><a href="mail_view.html"></a></td>
+                            <td class="view-message text-right"></td>
+                        </tr>
+                        </tbody>
+                        </table>
+                            <table class="table table-inbox table-hover">
+                            <thead><tr>
+                         <h4 style="padding: 15px;">02 QIS5 Market Risk Inputs</h4>
+                         </tr>
+                         </thead>
+                        <tbody>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-book"></i></td>
+                            <td class="view-message  dont-show"><a href="mail_view.html">Balance Sheet Input</a></td>
+                            <td class="view-message "><a href="mail_view.html">Waiting for user upload</a></td>
+                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  text-right">08:10 AM</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-database"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">Deferred Tax</a></td>
+                            <td class="view-message"><a href="mail_view.html">Ready for database fetch</a></td>
+                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  text-right">Yesterday</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-database"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">MVBS</a></td>
+                            <td class="view-message"><a href="mail_view.html">Ready for database fetch</a></td>
+                            <td class="view-message "><a href="mail_view.html">Beny</a></td>
+                            <td class="view-message  text-right">10:10 PM</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-calendar"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">Balance Sheet</a></td>
+                            <td class="view-message"><a href="mail_view.html">Depencies not resolved</a></td>
+                            <td class="view-message "><a href="mail_view.html"></a></td>
+                            <td class="view-message text-right"></td>
+                        </tr>
+                         </tbody>
+                        </table>
+                            <table class="table table-inbox table-hover">
+                            <thead><tr>
+                         <h4 style="padding: 15px;">03a QIS5 Life</h4>
+                         </tr>
+                         </thead>
+                        <tbody>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-book"></i></td>
+                            <td class="view-message  dont-show"><a href="mail_view.html">Balance Sheet Input</a></td>
+                            <td class="view-message "><a href="mail_view.html">Waiting for user upload</a></td>
+                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  text-right">08:10 AM</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-database"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">Deferred Tax</a></td>
+                            <td class="view-message"><a href="mail_view.html">Ready for database fetch</a></td>
+                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  text-right">Yesterday</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-database"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">MVBS</a></td>
+                            <td class="view-message"><a href="mail_view.html">Ready for database fetch</a></td>
+                            <td class="view-message "><a href="mail_view.html">Beny</a></td>
+                            <td class="view-message  text-right">10:10 PM</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-calendar"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">Balance Sheet</a></td>
+                            <td class="view-message"><a href="mail_view.html">Depencies not resolved</a></td>
+                            <td class="view-message "><a href="mail_view.html"></a></td>
+                            <td class="view-message text-right"></td>
+                        </tr>
+                         </tbody>
+                        </table>
+                            <table class="table table-inbox table-hover">
+                            <thead><tr>
+                         <h4 style="padding: 15px;">03b QIS5 Non-Life</h4>
+                         </tr>
+                         </thead>
+                        <tbody>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-book"></i></td>
+                            <td class="view-message  dont-show"><a href="mail_view.html">Balance Sheet Input</a></td>
+                            <td class="view-message "><a href="mail_view.html">Waiting for user upload</a></td>
+                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  text-right">08:10 AM</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-database"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">Deferred Tax</a></td>
+                            <td class="view-message"><a href="mail_view.html">Ready for database fetch</a></td>
+                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  text-right">Yesterday</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-database"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">MVBS</a></td>
+                            <td class="view-message"><a href="mail_view.html">Ready for database fetch</a></td>
+                            <td class="view-message "><a href="mail_view.html">Beny</a></td>
+                            <td class="view-message  text-right">10:10 PM</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-calendar"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">Balance Sheet</a></td>
+                            <td class="view-message"><a href="mail_view.html">Depencies not resolved</a></td>
+                            <td class="view-message "><a href="mail_view.html"></a></td>
+                            <td class="view-message text-right"></td>
+                        </tr>
+                         </tbody>
+                        </table>
+                            <table class="table table-inbox table-hover">
+                            <thead><tr>
+                         <h4 style="padding: 15px;">03c QIS5 Health</h4>
+                         </tr>
+                         </thead>
+                        <tbody>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-book"></i></td>
+                            <td class="view-message  dont-show"><a href="mail_view.html">Balance Sheet Input</a></td>
+                            <td class="view-message "><a href="mail_view.html">Waiting for user upload</a></td>
+                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  text-right">08:10 AM</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-database"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">Deferred Tax</a></td>
+                            <td class="view-message"><a href="mail_view.html">Ready for database fetch</a></td>
+                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  text-right">Yesterday</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-database"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">MVBS</a></td>
+                            <td class="view-message"><a href="mail_view.html">Ready for database fetch</a></td>
+                            <td class="view-message "><a href="mail_view.html">Beny</a></td>
+                            <td class="view-message  text-right">10:10 PM</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-calendar"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">Balance Sheet</a></td>
+                            <td class="view-message"><a href="mail_view.html">Depencies not resolved</a></td>
+                            <td class="view-message "><a href="mail_view.html"></a></td>
+                            <td class="view-message text-right"></td>
+                        </tr>
+                         </tbody>
+                        </table>
+                            <table class="table table-inbox table-hover">
+                            <thead><tr>
+                         <h4 style="padding: 15px;">04 QIS5 Concentration & Counterparty Risk</h4>
+                         </tr>
+                         </thead>
+                        <tbody>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-book"></i></td>
+                            <td class="view-message  dont-show"><a href="mail_view.html">Balance Sheet Input</a></td>
+                            <td class="view-message "><a href="mail_view.html">Waiting for user upload</a></td>
+                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  text-right">08:10 AM</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-database"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">Deferred Tax</a></td>
+                            <td class="view-message"><a href="mail_view.html">Ready for database fetch</a></td>
+                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  text-right">Yesterday</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-database"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">MVBS</a></td>
+                            <td class="view-message"><a href="mail_view.html">Ready for database fetch</a></td>
+                            <td class="view-message "><a href="mail_view.html">Beny</a></td>
+                            <td class="view-message  text-right">10:10 PM</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-calendar"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">Balance Sheet</a></td>
+                            <td class="view-message"><a href="mail_view.html">Depencies not resolved</a></td>
+                            <td class="view-message "><a href="mail_view.html"></a></td>
+                            <td class="view-message text-right"></td>
+                        </tr>
+                         </tbody>
+                        </table>
+                            <table class="table table-inbox table-hover">
+                            <thead><tr>
+                         <h4 style="padding: 15px;">05 QIS5</h4>
+                         </tr>
+                         </thead>
+                        <tbody>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-book"></i></td>
+                            <td class="view-message  dont-show"><a href="mail_view.html">Balance Sheet Input</a></td>
+                            <td class="view-message "><a href="mail_view.html">Waiting for user upload</a></td>
+                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  text-right">08:10 AM</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-database"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">Deferred Tax</a></td>
+                            <td class="view-message"><a href="mail_view.html">Ready for database fetch</a></td>
+                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  text-right">Yesterday</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-database"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">MVBS</a></td>
+                            <td class="view-message"><a href="mail_view.html">Ready for database fetch</a></td>
+                            <td class="view-message "><a href="mail_view.html">Beny</a></td>
+                            <td class="view-message  text-right">10:10 PM</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-calendar"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">Balance Sheet</a></td>
+                            <td class="view-message"><a href="mail_view.html">Depencies not resolved</a></td>
+                            <td class="view-message "><a href="mail_view.html"></a></td>
+                            <td class="view-message text-right"></td>
+                        </tr>
+                        </tbody>
+                        </table>
+                            <table class="table table-inbox table-hover">
+                            <thead><tr>
+                         <h4 style="padding: 15px;">06 QRT Solo</h4>
+                         </tr>
+                         </thead>
+                        <tbody>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-book"></i></td>
+                            <td class="view-message  dont-show"><a href="mail_view.html">Balance Sheet Input</a></td>
+                            <td class="view-message "><a href="mail_view.html">Waiting for user upload</a></td>
+                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  text-right">08:10 AM</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-database"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">Deferred Tax</a></td>
+                            <td class="view-message"><a href="mail_view.html">Ready for database fetch</a></td>
+                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  text-right">Yesterday</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-database"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">MVBS</a></td>
+                            <td class="view-message"><a href="mail_view.html">Ready for database fetch</a></td>
+                            <td class="view-message "><a href="mail_view.html">Beny</a></td>
+                            <td class="view-message  text-right">10:10 PM</td>
+                        </tr>
+                        <tr class="">
+                            <td class="inbox-small-cells">
+                                <input type="checkbox" class="mail-checkbox">
+                            </td>
+                            <td class="inbox-small-cells"><i class="fa fa-calendar"></i></td>
+                            <td class="view-message dont-show"><a href="mail_view.html">Balance Sheet</a></td>
+                            <td class="view-message"><a href="mail_view.html">Depencies not resolved</a></td>
+                            <td class="view-message "><a href="mail_view.html"></a></td>
+                            <td class="view-message text-right"></td>
+                        </tr>
+                        </tbody>
+                        </table>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
 		</section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->
 
@@ -160,18 +567,9 @@
 	
   
   <script type="text/javascript">
-		$("#collapseButton").click(function() {
-			if($(this).text()=="Expand All"){
-				$('.SubGroupLi').slideDown();
-				$('.ConsGroupLi').slideDown();
-				$('.GroupButton').toggleClass('fa-plus fa-minus');
-				$(this).text("Collapse All");
-			}else{
-				$('.ConsGroupLi').slideUp();
-				$('.SubGroupLi').slideUp();
-				$('.GroupButton').toggleClass('fa-minus fa-plus');
-				$(this).text("Expand All");
-			}
+		$(".hierarchyLi").click(function() {
+			$(".hierarchyLi").removeClass('active');
+			$(this).toggleClass('inactive active');
 		});
 	</script>
 
