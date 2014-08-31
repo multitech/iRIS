@@ -1,14 +1,12 @@
 package com.iris.report.bean;
 
-public class ReportDetailsVo {
+import com.iris.common.RaiInfo;
+
+public class ReportInfo extends RaiInfo{
 
 	private String profileId;
 	
 	private String profileName;
-	
-	private String environment;
-	
-	private String reportingEvent;
 	
 	private String hierarchy;
 	
@@ -28,22 +26,6 @@ public class ReportDetailsVo {
 
 	public void setProfileName(String profileName) {
 		this.profileName = profileName;
-	}
-
-	public String getEnvironment() {
-		return environment;
-	}
-
-	public void setEnvironment(String environment) {
-		this.environment = environment;
-	}
-
-	public String getReportingEvent() {
-		return reportingEvent;
-	}
-
-	public void setReportingEvent(String reportingEvent) {
-		this.reportingEvent = reportingEvent;
 	}
 
 	public String getHierarchy() {

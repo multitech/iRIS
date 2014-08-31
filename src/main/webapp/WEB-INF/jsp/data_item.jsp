@@ -83,8 +83,8 @@
 		                            				<th></th>
 		                            				<th class="view-message"><a href="mail_view.html">Name</a></th>
 		                            				<th class="view-message"><a href="mail_view.html">Description</a></th>
-		                            				<th class="view-message"><a href="mail_view.html">Last updated by</a></th>
-		                            				<th class="view-message  text-right"><a href="mail_view.html">Last updated at</a></th>
+		                            				<th class="view-message"><a href="mail_view.html">Last Modified By</a></th>
+		                            				<th class="view-message  text-right"><a href="mail_view.html">Last Modified On</a></th>
 		                            			</tr>
 		                            		</thead>
 		                        			<tbody>
