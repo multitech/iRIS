@@ -1,6 +1,8 @@
 package com.iris.report.bean;
 
-public class ReportInfo {
+import com.iris.common.RaiInfo;
+
+public class ReportInfo extends RaiInfo{
 
 	private String profileId;
 	

@@ -1,6 +1,6 @@
 package com.iris.common;
 
-public class RaiInfo {
+public abstract class RaiInfo {
 
 	private String environment;
 	private String reportingEvent;
