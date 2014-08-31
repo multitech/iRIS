@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.iris.profile.bean.Profile;
+import com.iris.profile.bean.ConfigurationRepository;
 
 /**
  * The prime class which handles the in and out request of the application
@@ -35,7 +35,7 @@ public class ProfileController {
 	 * @return
 	 */
 	@RequestMapping(value = "/create_profile.htm", method = RequestMethod.GET)
-	protected String createProfileAction(ModelMap model, @ModelAttribute("profileVo") Profile profileVo, HttpServletRequest req, HttpServletResponse resp) {
+	protected String createProfileAction(ModelMap model, @ModelAttribute("profileVo") ConfigurationRepository profileVo, HttpServletRequest req, HttpServletResponse resp) {
 		model.addAttribute("successMessage",null);
 		return "profile_new";
 	}
