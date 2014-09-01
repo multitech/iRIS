@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,45 +83,36 @@
 		                            		<thead>
 		                            			<tr>
 		                            				<th class="inbox-small-cells"></th>
-		                            				<th></th>
 		                            				<th class="view-message"><a href="mail_view.html">Name</a></th>
 		                            				<th class="view-message"><a href="mail_view.html">Description</a></th>
+		                            				<th class="view-message"><a href="mail_view.html">Category</a></th>
 		                            				<th class="view-message"><a href="mail_view.html">Last Modified By</a></th>
 		                            				<th class="view-message  text-right"><a href="mail_view.html">Last Modified On</a></th>
 		                            			</tr>
 		                            		</thead>
 		                        			<tbody>
 		                        			<br/>
-		                        				<tr class="">
-		                            				<td class="inbox-small-cells">
-		                                				<input type="radio" name="mail-checkbox" class="mail-checkbox">
-		                            				</td>
-						                            <td></td>
-						                            <td class="view-message  dont-show"><a href="mail_view.html">Balance Sheet Input</a></td>
-						                            <td class="view-message "><a href="mail_view.html">This data item is mail for...</a></td>
-						                            <td class="view-message "><a href="mail_view.html">Renjith</a></td>
-						                            <td class="view-message  text-right">08:10 AM</td>
-					                       		</tr>
-		                        				<tr class="">
-		                            				<td class="inbox-small-cells">
-		                                				<input type="radio" name="mail-checkbox" class="mail-checkbox">
-		                            				</td>
-						                            <td></td>
-						                            <td class="view-message  dont-show"><a href="mail_view.html">Configuration for Q1 2012</a></td>
-						                            <td class="view-message "><a href="mail_view.html">This configuration is mail for...</a></td>
-						                            <td class="view-message "><a href="mail_view.html">Renjith</a></td>
-						                            <td class="view-message  text-right">08:10 AM</td>
-					                       		</tr>
-					                       		<tr class="">
-		                            				<td class="inbox-small-cells">
-		                                				<input type="radio" name="mail-checkbox" class="mail-checkbox">
-		                            				</td>
-						                            <td></td>
-						                            <td class="view-message  dont-show"><a href="mail_view.html">Configuration for Q1 2012</a></td>
-						                            <td class="view-message "><a href="mail_view.html">This configuration is mail for...</a></td>
-						                            <td class="view-message "><a href="mail_view.html">Renjith</a></td>
-						                            <td class="view-message  text-right">08:10 AM</td>
-					                       		</tr>
+		                        				<c:forEach var="dataitem" items="${dataset}" varStatus="loop">
+			                        				<tr class="">
+			                            				<td class="inbox-small-cells">
+			                                				<input type="radio" name="mail-checkbox" class="mail-checkbox">
+			                            				</td>
+							                            <td class="view-message  dont-show"><a href="${pageContext.request.contextPath}/dataitem.htm?index=${loop.index}">${dataitem.name}</a></td>
+							                            <td class="view-message ">
+							                            	<a href="${pageContext.request.contextPath}/config.htm?index=${loop.index}">
+								                            <c:if test="${fn:length(dataitem.description)>50}">
+																${fn:substring(dataitem.description, 0, 50)} ...
+															</c:if>
+															<c:if test="${fn:length(dataitem.description)<=50}">
+																${dataitem.description}
+															</c:if>
+															</a>
+														</td>
+														<td class="view-message "><a href="mail_view.html">${dataitem.category}</a></td>
+							                            <td class="view-message "><a href="mail_view.html">${dataitem.lastUpdatedUser}</a></td>
+							                            <td class="view-message  text-right">${dataitem.lastUpdationDate}</td>
+						                       		</tr>
+						                       	</c:forEach>
 		                        			</tbody>
 		                        		</table>
 		                        	</div>

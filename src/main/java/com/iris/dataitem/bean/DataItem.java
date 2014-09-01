@@ -4,10 +4,19 @@ import com.iris.common.Entity;
 
 public class DataItem extends Entity{
 
+	private String category;
 	private String dataItemType;
 	private String inputMode;
 	private boolean regulatoryReportRquired;
 	
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	public String getDataItemType() {
 		return dataItemType;
 	}

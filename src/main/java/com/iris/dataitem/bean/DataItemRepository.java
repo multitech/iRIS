@@ -3,9 +3,11 @@ package com.iris.dataitem.bean;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.iris.handler.DataItemHandler;
 
+@Component
 public class DataItemRepository {
 
 	@Autowired

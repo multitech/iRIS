@@ -3,6 +3,8 @@
  */
 package com.iris.dataitem.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,7 +15,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.iris.dataitem.bean.DataItem;
 import com.iris.dataitem.bean.DataItemRepository;
 
 /**
@@ -27,6 +31,9 @@ public class DataItemController {
 	@Autowired	
 	private MessageSource messageSource;
 	
+	@Autowired
+	private DataItemRepository dataItemRepository;
+	
 	/**
 	 * View Data items method
 	 * @param model
@@ -35,9 +42,12 @@ public class DataItemController {
 	 * @return
 	 */
 	@RequestMapping(value = "/view_dataitem.htm", method = RequestMethod.GET)
-	protected String viewDataItemAction(ModelMap model) {
-		model.addAttribute("successMessage",null);
-		return "dataitem_view";
+	protected ModelAndView viewDataItemAction(ModelMap model) {
+		List<DataItem> dataset = dataItemRepository.getDataItems();
+		ModelAndView modelView = new ModelAndView("dataitem_view", "dataitem", null);
+		modelView.addObject("successMessage", null);
+		modelView.addObject("dataset", dataset);
+		return modelView;
 	}
 	
 	/**
