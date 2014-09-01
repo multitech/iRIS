@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -63,7 +62,13 @@
           	  <div class="row mt">
                   <div class="col-lg-12">
                  	 <div class="form-panel">
-                      <h4><i class="fa fa-angle-right"></i> Configuration Details </h4>
+                      <h4><i class="fa fa-angle-right"></i> Configuration Details
+                      <form class="pull-right mail-src-position" method="get" action="${pageContext.request.contextPath}/view_config.htm">
+											<div class="btn-group">
+			                                	<button class="btn btn-theme" type="submit" id="newButton"><i class="fa fa-arrow-left"></i>  Go back</button>
+			                                </div>
+			                            </form>
+                      </h4>
                               <form class="cmxform form-horizontal style-form" id="profileForm" method="post" action="${pageContext.request.contextPath}/save_profile.htm"><hr/>
                                    <%
 								    		String successMessage=(String) request.getAttribute("successMessage");
@@ -281,8 +286,8 @@
                                   </div>
                                   <div class="form-group">
                                       <div class="col-lg-offset-2 col-lg-10">
-                                          <button class="btn btn-theme" type="submit" id="saveButton">Save</button>
-                                          <button class="btn btn-theme04" type="button" id="cancelButton">Cancel</button>
+                                          <button class="btn btn-theme" type="submit" id="saveButton"><i class="fa fa-save"></i>  Save</button>
+                                          <button class="btn btn-theme04" type="button" id="cancelButton"><i class="fa fa-eraser"></i>  Clear</button>
                                       </div>
                                   </div>
                               </form>

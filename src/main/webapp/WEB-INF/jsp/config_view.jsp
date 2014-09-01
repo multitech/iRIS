@@ -68,9 +68,11 @@
 		                    	</header>
 		                    	<div class="panel-body minimal">
 		                        	<div class="mail-option">
-										<div class="btn-group">
-		                                	<button class="btn btn-theme" type="submit" id="newButton"><i class="fa fa-plus"></i>  Create New</button>
-		                                </div>
+		                        	 	<form class="pull-left mail-src-position" method="get" action="${pageContext.request.contextPath}/create_config.htm">
+											<div class="btn-group">
+			                                	<button class="btn btn-theme" type="submit" id="newButton"><i class="fa fa-plus"></i>  Create New</button>
+			                                </div>
+			                            </form>
 		                                <div class="btn-group">
 		                                	<button class="btn btn-theme02" type="submit" id="activateButton"><i class="fa fa-check"></i>  Activate</button>
 		                                </div>
@@ -90,8 +92,7 @@
 		                            				<th class="view-message  text-right"><a href="mail_view.html">Last Modified On</a></th>
 		                            			</tr>
 		                            		</thead>
-		                        			<tbody>
-		                        			<br/>
+		                        			<tbody><br>
 		                        				<tr class="">
 		                            				<td class="inbox-small-cells">
 		                                				<input type="radio" name="mail-checkbox" class="mail-checkbox">
