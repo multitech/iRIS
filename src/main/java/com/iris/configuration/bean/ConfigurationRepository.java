@@ -3,9 +3,11 @@ package com.iris.configuration.bean;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.iris.handler.ConfigurationHandler;
 
+@Component
 public class ConfigurationRepository {
 
 	@Autowired

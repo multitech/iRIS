@@ -28,28 +28,41 @@ public class DataItemController {
 	private MessageSource messageSource;
 	
 	/**
-	 * Create report method
+	 * View Data items method
 	 * @param model
 	 * @param req
 	 * @param resp
 	 * @return
 	 */
-	@RequestMapping(value = "/data_item.htm", method = RequestMethod.GET)
-	protected String createReportAction(ModelMap model, @ModelAttribute("reportVo") DataItemRepository reportVo, HttpServletRequest req, HttpServletResponse resp) {
+	@RequestMapping(value = "/view_dataitem.htm", method = RequestMethod.GET)
+	protected String viewDataItemAction(ModelMap model) {
 		model.addAttribute("successMessage",null);
-		return "data_item";
+		return "dataitem_view";
 	}
 	
 	/**
-	 * Save report method
+	 * View Data items method
 	 * @param model
 	 * @param req
 	 * @param resp
 	 * @return
 	 */
-	@RequestMapping(value = "/save_report.htm", method = RequestMethod.POST)
-	protected String saveReportAction(ModelMap model, @ModelAttribute("reportVo") DataItemRepository reportVo, HttpServletRequest req, HttpServletResponse resp) {
+	@RequestMapping(value = "/create_dataitem.htm", method = RequestMethod.GET)
+	protected String createDataItemAction(ModelMap model) {
+		model.addAttribute("successMessage",null);
+		return "dataitem";
+	}
+	
+	/**
+	 * Save Data item method
+	 * @param model
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	@RequestMapping(value = "/save_dataitem.htm", method = RequestMethod.POST)
+	protected String saveDataItemAction(ModelMap model, @ModelAttribute("reportVo") DataItemRepository reportVo, HttpServletRequest req, HttpServletResponse resp) {
 		model.addAttribute("successMessage","Success");
-		return "report_new";
+		return "dataitem_view";
 	}
 }

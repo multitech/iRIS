@@ -17,7 +17,7 @@ import com.iris.dataitem.bean.DataItem;
 
 public class DataItemHandler implements CSVEntryParser<DataItem>{
 
-	private static final String DATA_FILE_PATH = "src/main/resources/dataItemsList.csv";
+	private static final String DATA_FILE_PATH = "resources/dataItemsList.csv";
 	
 	public List<DataItem> getValues() {
 		List<DataItem> dataItemsList = null;

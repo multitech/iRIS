@@ -64,7 +64,12 @@
           	  <div class="row mt">
                   <div class="col-lg-12">
                  	 <div class="form-panel">
-                      <h4><i class="fa fa-angle-right"></i> Data Item Details </h4>
+                      <h4><i class="fa fa-angle-right"></i> Data Item Details  
+                      <form class="pull-right mail-src-position" method="get" action="${pageContext.request.contextPath}/view_dataitem.htm">
+											<div class="btn-group">
+			                                	<button class="btn btn-theme" type="submit" id="newButton"><i class="fa fa-arrow-left"></i>  Go back</button>
+			                                </div>
+			                            </form></h4>
                               <form class="cmxform form-horizontal style-form" id="reportForm" method="post" action="${pageContext.request.contextPath}/save_report.htm"><hr/>
                                                                                                       <%
 								    		String successMessage=(String) request.getAttribute("successMessage");
@@ -157,8 +162,8 @@
                                   </div>
                                   <div class="form-group">
                                       <div class="col-lg-offset-2 col-lg-10">
-                                          <button class="btn btn-theme" type="submit">Save</button>
-                                          <button class="btn btn-theme04" type="button">Cancel</button>
+                                          <button class="btn btn-theme" type="submit"><i class="fa fa-save"></i>   Save</button>
+                                          <button class="btn btn-theme04" type="button"><i class="fa fa-eraser"></i>   Cancel</button>
                                       </div>
                                   </div>
                               </form>

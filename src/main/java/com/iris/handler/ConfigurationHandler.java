@@ -1,8 +1,8 @@
 package com.iris.handler;
 
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -10,25 +10,28 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.googlecode.jcsv.reader.CSVEntryParser;
 import com.googlecode.jcsv.reader.CSVReader;
 import com.googlecode.jcsv.reader.internal.CSVReaderBuilder;
 import com.iris.configuration.bean.Configuration;
 
+@Component
 public class ConfigurationHandler implements CSVEntryParser<Configuration>{
 	
-	private static final String CONFIG_FILE_PATH = "src/main/resources/configurationList.csv";
+	private static final String CONFIG_FILE_PATH = "resources/configurationList.csv";
 
 	public List<Configuration> getValues() {
-		List<Configuration> profileList = null;
+		List<Configuration> configurationList = null;
 		try {
-			Reader reader = new FileReader(CONFIG_FILE_PATH);
+			Reader reader = new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream(CONFIG_FILE_PATH));
 			CSVReader<Configuration> csvPersonReader = new CSVReaderBuilder<Configuration>(reader).entryParser(this).build();
-			profileList = csvPersonReader.readAll();
+			configurationList = csvPersonReader.readAll();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return profileList;
+		return configurationList;
 	}
 	
 	public boolean write(Configuration configuration){
@@ -52,7 +55,7 @@ public class ConfigurationHandler implements CSVEntryParser<Configuration>{
 		profileInfo.setReportingEvent(profileValues[3]);
 		profileInfo.setHierarchy(profileValues[4]);
 		profileInfo.setValuationDate(profileValues[5]);
-		profileInfo.setSaveSuccess(profileValues[6].equals("TRUE"));
+		profileInfo.setDescription(profileValues[6]);
 		profileInfo.setLastUpdatedUser(profileValues[7]);
 		profileInfo.setLastUpdationDate(profileValues[8]);
 		return profileInfo;
@@ -66,7 +69,7 @@ public class ConfigurationHandler implements CSVEntryParser<Configuration>{
 		.append(",").append(configuration.getReportingEvent())
 		.append(",").append(configuration.getHierarchy())
 		.append(",").append(configuration.getValuationDate())
-		.append(",").append(configuration.isSaveSuccess()==Boolean.TRUE)
+		.append(",").append(configuration.getDescription())
 		.append(",").append(configuration.getLastUpdatedUser())
 		.append(",").append(configuration.getLastUpdationDate());
 /*		String[] configValues = new String[9];

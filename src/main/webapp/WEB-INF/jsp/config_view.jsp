@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,11 +69,11 @@
 		                    	</header>
 		                    	<div class="panel-body minimal">
 		                        	<div class="mail-option">
-		                        	 	<form class="pull-left mail-src-position" method="get" action="${pageContext.request.contextPath}/create_config.htm">
-											<div class="btn-group">
-			                                	<button class="btn btn-theme" type="submit" id="newButton"><i class="fa fa-plus"></i>  Create New</button>
-			                                </div>
-			                            </form>
+		                        	 	<div class="btn-group">
+			                            	<form method="get" action="${pageContext.request.contextPath}/create_config.htm">
+			                               		<button class="btn btn-theme" type="submit" id="newButton"><i class="fa fa-plus"></i>  Create New</button>
+			                            	</form>
+			                            </div>
 		                                <div class="btn-group">
 		                                	<button class="btn btn-theme02" type="submit" id="activateButton"><i class="fa fa-check"></i>  Activate</button>
 		                                </div>
@@ -93,36 +94,27 @@
 		                            			</tr>
 		                            		</thead>
 		                        			<tbody><br>
-		                        				<tr class="">
-		                            				<td class="inbox-small-cells">
-		                                				<input type="radio" name="mail-checkbox" class="mail-checkbox">
-		                            				</td>
-						                            <td></td>
-						                            <td class="view-message  dont-show"><a href="mail_view.html">Configuration for Q1 2012</a></td>
-						                            <td class="view-message "><a href="mail_view.html">This configuration is mail for...</a></td>
-						                            <td class="view-message "><a href="mail_view.html">Renjith</a></td>
-						                            <td class="view-message  text-right">08:10 AM</td>
-					                       		</tr>
-		                        				<tr class="">
-		                            				<td class="inbox-small-cells">
-		                                				<input type="radio" name="mail-checkbox" class="mail-checkbox">
-		                            				</td>
-						                            <td></td>
-						                            <td class="view-message  dont-show"><a href="mail_view.html">Configuration for Q1 2012</a></td>
-						                            <td class="view-message "><a href="mail_view.html">This configuration is mail for...</a></td>
-						                            <td class="view-message "><a href="mail_view.html">Renjith</a></td>
-						                            <td class="view-message  text-right">08:10 AM</td>
-					                       		</tr>
-					                       		<tr class="">
-		                            				<td class="inbox-small-cells">
-		                                				<input type="radio" name="mail-checkbox" class="mail-checkbox">
-		                            				</td>
-						                            <td></td>
-						                            <td class="view-message  dont-show"><a href="mail_view.html">Configuration for Q1 2012</a></td>
-						                            <td class="view-message "><a href="mail_view.html">This configuration is mail for...</a></td>
-						                            <td class="view-message "><a href="mail_view.html">Renjith</a></td>
-						                            <td class="view-message  text-right">08:10 AM</td>
-					                       		</tr>
+		                        				<c:forEach var="configuration" items="${configurationList}" varStatus="loop">
+			                        				<tr class="">
+			                            				<td class="inbox-small-cells">
+			                                				<input type="radio" name="mail-checkbox" class="mail-checkbox">
+			                            				</td>
+							                            <td></td>
+							                            <td class="view-message  dont-show"><a href="${pageContext.request.contextPath}/config.htm?index=${loop.index}">${configuration.name}</a></td>
+							                            <td class="view-message ">
+							                            	<a href="${pageContext.request.contextPath}/config.htm?index=${loop.index}">
+								                            <c:if test="${fn:length(configuration.description)>50}">
+																${fn:substring(configuration.description, 0, 50)} ...
+															</c:if>
+															<c:if test="${fn:length(configuration.description)<=50}">
+																${configuration.description}
+															</c:if>
+															</a>
+														</td>
+							                            <td class="view-message "><a href="mail_view.html">${configuration.lastUpdatedUser}</a></td>
+							                            <td class="view-message  text-right">${configuration.lastUpdationDate}</td>
+						                       		</tr>
+						                       	</c:forEach>
 		                        			</tbody>
 		                        		</table>
 		                        	</div>
