@@ -1,7 +1,7 @@
 /**
  * @author iximqab
  */
-package com.iris.report.controller;
+package com.iris.configuration.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.iris.dataitem.bean.DataItemRepository;
+import com.iris.configuration.bean.ConfigurationRepository;
 
 /**
  * The prime class which handles the in and out request of the application
@@ -22,34 +22,35 @@ import com.iris.dataitem.bean.DataItemRepository;
  *
  */
 @Controller
-public class ReportController {
+public class ConfigurationController {
 
 	@Autowired	
 	private MessageSource messageSource;
 	
 	/**
-	 * Create report method
+	 * Create profile method
 	 * @param model
 	 * @param req
 	 * @param resp
 	 * @return
 	 */
-	@RequestMapping(value = "/data_item.htm", method = RequestMethod.GET)
-	protected String createReportAction(ModelMap model, @ModelAttribute("reportVo") DataItemRepository reportVo, HttpServletRequest req, HttpServletResponse resp) {
+	@RequestMapping(value = "/profile.htm", method = RequestMethod.GET)
+	protected String createProfileAction(ModelMap model, @ModelAttribute("profileVo") ConfigurationRepository profileVo, HttpServletRequest req, HttpServletResponse resp) {
 		model.addAttribute("successMessage",null);
-		return "data_item";
+		return "configuration";
 	}
 	
 	/**
-	 * Save report method
+	 * Save profile method
 	 * @param model
 	 * @param req
 	 * @param resp
 	 * @return
 	 */
-	@RequestMapping(value = "/save_report.htm", method = RequestMethod.POST)
-	protected String saveReportAction(ModelMap model, @ModelAttribute("reportVo") DataItemRepository reportVo, HttpServletRequest req, HttpServletResponse resp) {
+	@RequestMapping(value = "/save_profile.htm", method = RequestMethod.POST)
+	protected String saveProfileAction(ModelMap model) {
 		model.addAttribute("successMessage","Success");
-		return "report_new";
+		return "profile_new";
 	}
+	
 }
