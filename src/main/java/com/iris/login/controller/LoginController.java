@@ -20,6 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.iris.login.bean.LoginVo;
 import com.iris.login.service.LoginService;
+import com.iris.notification.NotificationMessage;
+import com.iris.notification.NotificationService;
+import com.iris.notification.NotificationTask;
 
 /**
  * The login action class
@@ -34,6 +37,9 @@ public class LoginController {
 	
 	@Autowired	
 	private MessageSource messageSource;
+	
+	@Autowired
+	private NotificationService notificationService;
 	
 	/**
 	 * Entry point method to the application
@@ -68,6 +74,17 @@ public class LoginController {
 			modelView.addObject("displayName", "Cersei Lannister");
 			modelView.addObject("displayImage", "img/analyst.png");
 		}
+		NotificationMessage message = new NotificationMessage();
+		message.setFrom("Vasco Fort");
+		message.setMessage("Please approve new Upload");
+		message.setSubject("New Upload");
+		message.setTo("Admin");
+		notificationService.addMessage(message);
+		NotificationTask task = new NotificationTask();
+		task.setDescription("Generate Market Risk Reports");
+		task.setPercentage("80%");
+		task.setStatusMessage("In Progress");
+		notificationService.addTask(task );
 		return modelView;
 	}
 }

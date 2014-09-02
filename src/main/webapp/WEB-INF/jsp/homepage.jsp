@@ -62,10 +62,10 @@
                   	<div class="row mtbox">
                   		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                   			<div class="box1">
-					  			<span class="li_heart"></span>
+					  			<span class="li_user"></span>
 					  			<h3>933</h3>
                   			</div>
-					  			<p>933 People liked your page the last 24hs. Whoohoo!</p>
+					  			<p>There are 20 Analysts connected to the server</p>
                   		</div>
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
@@ -132,7 +132,7 @@
                       	<div class="col-md-4 col-sm-4 mb">
                       		<div class="white-panel pn">
                       			<div class="white-header">
-						  			<h5>TOP PRODUCT</h5>
+						  			<h5>TOP REPORT</h5>
                       			</div>
 								<div class="row">
 									<div class="col-sm-6 col-xs-6 goleft">
@@ -141,7 +141,7 @@
 									<div class="col-sm-6 col-xs-6"></div>
 	                      		</div>
 	                      		<div class="centered">
-										<img src="assets/img/product.png" width="120">
+										<img src="img/product.png" width="120">
 	                      		</div>
                       		</div>
                       	</div><!-- /col-md-4 -->
@@ -152,8 +152,8 @@
 								<div class="white-header">
 									<h5>TOP USER</h5>
 								</div>
-								<p><img src="assets/img/ui-zac.jpg" class="img-circle" width="80"></p>
-								<p><b>Zac Snider</b></p>
+								<p><img src="img/analyst.png" class="img-circle" width="80"></p>
+								<p><b>Cersei Lannister</b></p>
 								<div class="row">
 									<div class="col-md-6">
 										<p class="small mt">MEMBER SINCE</p>
@@ -322,7 +322,7 @@
             // (string | mandatory) the heading of the notification
             title: 'Welcome to iRIS!',
             // (string | mandatory) the text inside the notification
-            text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo',
+            text: 'Publishing event for 2015 Q2 has been created in RAI.',
             // (string | optional) the image to display on the left
             image: 'img/user.png',
             // (bool | optional) if you want it to fade out on its own or just sit there
