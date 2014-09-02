@@ -12,13 +12,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.googlecode.jcsv.reader.CSVEntryParser;
 import com.googlecode.jcsv.reader.CSVReader;
 import com.googlecode.jcsv.reader.internal.CSVReaderBuilder;
-import com.iris.common.parser.DataItemParser;
 import com.iris.dataitem.bean.DataItem;
 
 @Component
-public class DataItemHandler{
+public class DataItemHandler implements CSVEntryParser<DataItem>{
 
 	private static final String DATA_FILE_PATH = "resources/dataItemsList.csv";
 	
@@ -26,7 +26,7 @@ public class DataItemHandler{
 		List<DataItem> dataItemsList = null;
 		try {
 			Reader reader = new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream(DATA_FILE_PATH));
-			CSVReader<DataItem> csvPersonReader = new CSVReaderBuilder<DataItem>(reader).entryParser(new DataItemParser()).build();
+			CSVReader<DataItem> csvPersonReader = new CSVReaderBuilder<DataItem>(reader).entryParser(this).build();
 			dataItemsList = csvPersonReader.readAll();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -44,6 +44,22 @@ public class DataItemHandler{
 		return true;
 	}
 
+	@Override
+	public DataItem parseEntry(String... dataItems) {
+		//String[] dataItems = dataItemString[0].split(",");
+		DataItem dataItem = new DataItem();
+		dataItem.setId(dataItems[0]);
+		dataItem.setName(dataItems[1]);
+		dataItem.setDescription(dataItems[2]);
+		dataItem.setDataItemType(dataItems[3]);
+		dataItem.setInputMode(dataItems[4]);
+		dataItem.setRegulatoryReportRquired(dataItems[5].equals("TRUE"));
+		dataItem.setLastUpdatedUser(dataItems[6]);
+		dataItem.setLastUpdationDate(dataItems[7]);
+		dataItem.setCategory(dataItems[8]);
+		return dataItem;
+	}
+	
 	private String convertEntry(DataItem dataItem) {
 		StringBuilder dataItemCsvBuilder = new StringBuilder();
 		dataItemCsvBuilder.append(dataItem.getId())

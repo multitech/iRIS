@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -71,21 +72,16 @@
 			                                </div>
 			                            </form></h4>
                               <form class="cmxform form-horizontal style-form" id="reportForm" method="post" action="${pageContext.request.contextPath}/save_report.htm"><hr/>
-                                                                                                      <%
-								    		String successMessage=(String) request.getAttribute("successMessage");
-								    		if(successMessage!=null){
-										%>
+                                                                                                     <c:if test="${not empty successMessage}">
                                       <div class="alert alert-success alert-dismissable" id="saveAlert">
 									  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 									  <strong>Success!</strong> Data Item saved successfully.
 									  </div> 
-									  	    <%
-								    		}
-							      		%>
+									  	    </c:if>
                                   <div class="form-group ">
                                       <label for="reportname" class="control-label col-lg-2">Data Item Name (required)</label>
                                       <div class="col-lg-10">
-                                          <input class=" form-control" id="reportname" placeholder="Please enter the name of the report" name="reportName" minlength="2" type="text" required />
+                                          <input class=" form-control" id="reportname" placeholder="Please enter the name of the report" value="${dataItem.name}" name="reportName" minlength="2" type="text" required />
                                       </div>
                                   </div>
                                   <div class="form-group ">
@@ -105,6 +101,19 @@
 										</div>
 										</div>
 									</div>
+									<div class="form-group ">
+		                                	<label for="inputMode" class="control-label col-lg-2">Input Mode (required)</label>
+		                                  	<div class="col-lg-10">
+			                                	<select id="inputMode" name="inputMode" class=" form-control">
+													<option value='0'>
+							                            External Database Import
+							                        </option>
+							                        <option value='1'>
+							                            Input Template
+							                        </option>
+		                                      	</select>
+		                                  	</div>
+		                             	</div>
 									<div class="form-group" id="uploadReportDiv">
                                   <label class="control-label col-lg-2">Upload Data Item Template (Required) </label>
                                   <div class="controls col-md-9">
@@ -119,6 +128,23 @@
                                       </div>
                                   </div>
                               	</div>
+                              	<div class="form-group ">
+                                  <label for="reportType" class="control-label col-lg-2">Output Formats</label>
+                                  <div class="col-lg-10">
+	                                  <div class="radio">
+										    <input type="checkbox" name="outputFormats" id="outputFormats1" value="outputFormat1" checked disabled="disabled">
+										    Excel Format
+										    <input type="checkbox" name="outputFormats" id="outputFormats2" value="outputFormat2">
+										    Pdf Format
+										</div>
+										</div>
+									</div>
+                              	<div class="form-group ">
+                                  <label for="reportType" class="control-label col-lg-2">Category (required)</label>
+                                      <div class="col-lg-10">
+                                          <input class=" form-control" id="reportname" placeholder="Please enter the category name" value="${dataItem.category}" name="reportName" minlength="2" type="text" required />
+                                      </div>
+									</div>
 <!--                               	<div class="form-group" id="outputReportFormat"> -->
 <!--                                   <label class="control-label col-lg-2">Additional Output Report Formats (Excel by default) </label> -->
 <!--                                   <div class="controls col-md-9"> -->
@@ -157,13 +183,13 @@
                                   <div class="form-group ">
                                       <label for="ccomment" class="control-label col-lg-2">Description (optional)</label>
                                       <div class="col-lg-10">
-                                          <textarea class="form-control " id="ccomment" name="comment"></textarea>
+                                          <textarea class="form-control " id="ccomment" name="comment">${dataItem.description}</textarea>
                                       </div>
                                   </div>
                                   <div class="form-group">
                                       <div class="col-lg-offset-2 col-lg-10">
                                           <button class="btn btn-theme" type="submit"><i class="fa fa-save"></i>   Save</button>
-                                          <button class="btn btn-theme04" type="button"><i class="fa fa-eraser"></i>   Cancel</button>
+                                          <button class="btn btn-theme04" type="button"><i class="fa fa-eraser"></i>   Clear</button>
                                       </div>
                                   </div>
                               </form>
@@ -210,15 +236,16 @@
 // 		$(document).ready(function() {
 // 			$('#uploadReportDiv').hide();
 // 		});
-// 		$('input[name=optionsRadios]:radio').change(function() {
-// 			if($('#optionsRadios1').is(":checked")) {
-// 				$('#uploadReportDiv').slideUp();
-// 				$('#dataSourceDiv').slideDown();
-// 		    }else{
-// 		    	$('#uploadReportDiv').slideDown();
-// 		    	$('#dataSourceDiv').slideUp();
-// 		    }
-// 		});
+		$('input[name=optionsRadios]:radio').change(function() {
+			$('#inputMode option').remove();
+			if($('#optionsRadios1').is(":checked")) {
+				$('#inputMode').append('<option value="0">External Database Import</option>');
+				$('#inputMode').append('<option value="1">Input Template</option>');
+		    }else{
+		    	$('#inputMode').append('<option value="2">Excel Calculation Model</option>');
+		    	$('#inputMode').append('<option value="2">Report Design</option>');
+		    }
+		});
 // 		$("#optionsRadios2").change(function() {
 // 			if(this.checked) {
 // 				$('#uploadReportDiv').slideDown();
@@ -226,6 +253,7 @@
 // 		    	$('#uploadReportDiv').slideUp();
 // 		    }
 // 		});
+
 		$("#cancelButton").click(function() {
 			$('#saveAlert').slideUp();			
 			$('#reportForm')[0].reset();

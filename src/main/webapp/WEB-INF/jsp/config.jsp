@@ -275,14 +275,15 @@
 		                              	<div class="form-group">
 				                        	<label class="control-label col-lg-2">Valuation Date (required)</label>
 				                          	<div class="col-md-3 col-xs-11">
-				                            	<input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="" required>
+				                            	<input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="${configuration.valuationDate}"  required>
 				                              	<span class="help-block">Select date</span>
 				                          	</div>
 				                     	</div>
 		                                <div class="form-group ">
 		                                	<label for="ccomment" class="control-label col-lg-2">Description (optional)</label>
 		                                    <div class="col-lg-10">
-		                                    	<textarea class="form-control " id="ccomment" name="comment"></textarea>
+		                                    	<textarea class="form-control " id="ccomment" name="comment">
+		                                    	${configuration.description}</textarea>
 		                                    </div>
 		                               	</div>
 		                                <div class="form-group">

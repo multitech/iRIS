@@ -69,11 +69,11 @@
 		                    	</header>
 		                    	<div class="panel-body minimal">
 		                        	<div class="mail-option">
-		                        		<form class="pull-left mail-src-position" method="get" action="${pageContext.request.contextPath}/create_dataitem.htm">
-											<div class="btn-group">
+										<div class="btn-group">
+											<form method="get" action="${pageContext.request.contextPath}/create_dataitem.htm">
 			                                	<button class="btn btn-theme" type="submit" id="newButton"><i class="fa fa-plus"></i>  Create New</button>
-			                                </div>
-			                            </form>
+			                                </form>
+		                                </div>
 		                                <div class="btn-group">
 		                                	<button class="btn btn-theme04" type="submit" id="removeButton"><i class="fa fa-trash-o"></i>  Remove</button>
 		                                </div>
@@ -99,11 +99,11 @@
 			                            				</td>
 							                            <td class="view-message  dont-show"><a href="${pageContext.request.contextPath}/dataitem.htm?index=${loop.index}">${dataitem.name}</a></td>
 							                            <td class="view-message ">
-							                            	<a href="${pageContext.request.contextPath}/config.htm?index=${loop.index}">
-								                            <c:if test="${fn:length(dataitem.description)>50}">
-																${fn:substring(dataitem.description, 0, 50)} ...
+							                            	<a href="${pageContext.request.contextPath}/dataitem.htm?index=${loop.index}">
+								                            <c:if test="${fn:length(dataitem.description)>35}">
+																${fn:substring(dataitem.description, 0, 35)} ...
 															</c:if>
-															<c:if test="${fn:length(dataitem.description)<=50}">
+															<c:if test="${fn:length(dataitem.description)<=35}">
 																${dataitem.description}
 															</c:if>
 															</a>

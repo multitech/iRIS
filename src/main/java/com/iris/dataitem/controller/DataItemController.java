@@ -15,6 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iris.dataitem.bean.DataItem;
@@ -42,7 +43,7 @@ public class DataItemController {
 	 * @return
 	 */
 	@RequestMapping(value = "/view_dataitem.htm", method = RequestMethod.GET)
-	protected ModelAndView viewDataItemAction(ModelMap model) {
+	protected ModelAndView showDataItemViewAction(ModelMap model) {
 		List<DataItem> dataset = dataItemRepository.getDataItems();
 		ModelAndView modelView = new ModelAndView("dataitem_view", "dataitem", null);
 		modelView.addObject("successMessage", null);
@@ -58,9 +59,26 @@ public class DataItemController {
 	 * @return
 	 */
 	@RequestMapping(value = "/create_dataitem.htm", method = RequestMethod.GET)
-	protected String createDataItemAction(ModelMap model) {
+	protected String showDataItemCreateAction(ModelMap model) {
 		model.addAttribute("successMessage",null);
 		return "dataitem";
+	}
+	
+	/**
+	 * Show data item
+	 * @param model
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	@RequestMapping(value = "/dataitem.htm", method = RequestMethod.GET)
+	protected ModelAndView showConfigAction(ModelMap model,@RequestParam(value="index") int index) {
+		List<DataItem> dataset = dataItemRepository.getDataItems();
+		DataItem dataItem = dataset.get(index);
+		ModelAndView modelView = new ModelAndView("dataitem", "dataItem", null);
+		modelView.addObject("successMessage", null);
+		modelView.addObject("dataItem", dataItem);
+		return modelView;
 	}
 	
 	/**

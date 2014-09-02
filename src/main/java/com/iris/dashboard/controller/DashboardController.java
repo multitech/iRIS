@@ -4,7 +4,10 @@
 package com.iris.dashboard.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -14,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iris.dataitem.bean.DataItem;
+import com.iris.dataitem.bean.DataItemRepository;
+import com.iris.dataitem.bean.DataSet;
 import com.iris.hierarchy.bean.HierarchyDetailsVo;
 import com.iris.hierarchy.bean.HierarchyVo;
 
@@ -27,6 +33,9 @@ public class DashboardController {
 	@Autowired	
 	private MessageSource messageSource;
 	
+	@Autowired
+	private DataItemRepository dataItemRepository;
+	
 	/**
 	 * Show Dashboard method
 	 * @param model
@@ -37,7 +46,41 @@ public class DashboardController {
 	@RequestMapping(value = "/dashboard.htm", method = RequestMethod.GET)
 	protected ModelAndView showHierarchyAction(ModelMap model) {
 		HierarchyVo hierarchyVo=loadHierarchy();
-		return new ModelAndView("dashboard", "hierarchyVo", hierarchyVo);
+		List<DataItem> dataItems = dataItemRepository.getDataItems();
+		List<DataSet> dataset = groupDataItems(dataItems);
+		ModelAndView modelView = new ModelAndView("dashboard", "dashboard", null);
+		modelView.addObject("hierarchy", hierarchyVo);
+		modelView.addObject("dataset", dataset);
+		modelView.addObject("dataitems", dataItems);
+		return modelView;
+	}
+
+	private List<DataSet> groupDataItems(List<DataItem> dataItems) {
+		
+		List<DataSet> datasetList=new ArrayList<DataSet>();
+		Set<String> dataItemSet=new LinkedHashSet<String>();
+		for(DataItem dataItem:dataItems){
+			dataItemSet.add(dataItem.getCategory());
+		}
+		
+		DataSet dataSet=null;
+		List<DataItem> dataItemList=null;
+		
+		Iterator<String> dataItemIterator = dataItemSet.iterator();
+		while(dataItemIterator.hasNext()){
+			String category = dataItemIterator.next();
+			dataSet=new DataSet();
+			dataItemList=new ArrayList<DataItem>();
+			for(DataItem dataItem:dataItems){
+				if(dataItem.getCategory().equals(category)){
+					dataItemList.add(dataItem);
+				}
+			}
+			dataSet.setCategoryName(category);
+			dataSet.setDataItems(dataItemList);
+			datasetList.add(dataSet);
+		}
+		return datasetList;
 	}
 
 	private HierarchyVo loadHierarchy() {
