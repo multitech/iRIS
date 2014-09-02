@@ -53,10 +53,11 @@ public class DataItemHandler implements CSVEntryParser<DataItem>{
 		dataItem.setDescription(dataItems[2]);
 		dataItem.setDataItemType(dataItems[3]);
 		dataItem.setInputMode(dataItems[4]);
-		dataItem.setRegulatoryReportRquired(dataItems[5].equals("TRUE"));
-		dataItem.setLastUpdatedUser(dataItems[6]);
-		dataItem.setLastUpdationDate(dataItems[7]);
-		dataItem.setCategory(dataItems[8]);
+		dataItem.setInputModeDescription(dataItems[5]);
+		dataItem.setRegulatoryReportRquired(dataItems[6].equals("TRUE"));
+		dataItem.setLastUpdatedUser(dataItems[7]);
+		dataItem.setLastUpdationDate(dataItems[8]);
+		dataItem.setCategory(dataItems[9]);
 		return dataItem;
 	}
 	
@@ -67,6 +68,7 @@ public class DataItemHandler implements CSVEntryParser<DataItem>{
 		.append(",").append(dataItem.getDescription())
 		.append(",").append(dataItem.getDataItemType())
 		.append(",").append(dataItem.getInputMode())
+		.append(",").append(dataItem.getInputModeDescription())
 		.append(",").append(dataItem.isRegulatoryReportRquired()?"TRUE":"FALSE")
 		.append(",").append(dataItem.getLastUpdatedUser())
 		.append(",").append(dataItem.getLastUpdationDate())

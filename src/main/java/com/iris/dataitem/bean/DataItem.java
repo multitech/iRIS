@@ -7,6 +7,7 @@ public class DataItem extends Entity{
 	private String category;
 	private String dataItemType;
 	private String inputMode;
+	private String inputModeDescription;
 	private boolean regulatoryReportRquired;
 	
 	public String getCategory() {
@@ -31,6 +32,14 @@ public class DataItem extends Entity{
 
 	public void setInputMode(String inputMode) {
 		this.inputMode = inputMode;
+	}
+
+	public String getInputModeDescription() {
+		return inputModeDescription;
+	}
+
+	public void setInputModeDescription(String inputModeDescription) {
+		this.inputModeDescription = inputModeDescription;
 	}
 
 	public boolean isRegulatoryReportRquired() {
