@@ -183,9 +183,9 @@
 	                            </c:when>
                             </c:choose>
                             </td>
-                            <td class="view-message  dont-show"><a href="${pageContext.request.contextPath}/dataitem.htm?index=${loop.index}">${dataitem.name}</a></td>
-                            <td class="view-message "><a href="mail_view.html">Waiting for user upload</a></td>
-                            <td class="view-message "><a href="mail_view.html">Balu Sabu</a></td>
+                            <td class="view-message  dont-show"><a href="${pageContext.request.contextPath}/dashboard.htm?id=${dataitem.id}">${dataitem.name}</a></td>
+                            <td class="view-message "><a href="${pageContext.request.contextPath}/dashboard.htm?id=${dataitem.id}">Waiting for user upload</a></td>
+                            <td class="view-message "><a href="${pageContext.request.contextPath}/dashboard.htm?id=${dataitem.id}">Balu Sabu</a></td>
                             <td class="view-message  text-right">08:10 AM</td>
                        		</tr>
                        	</c:forEach>

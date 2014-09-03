@@ -5,6 +5,8 @@ package com.iris.configuration.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -76,6 +78,21 @@ public class ConfigurationController {
 		modelView.addObject("successMessage", null);
 		modelView.addObject("configuration", configuration);
 		return modelView;
+	}
+	
+	/**
+	 * Save profile method
+	 * @param model
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	@RequestMapping(value = "/activate_config.htm", method = RequestMethod.GET)
+	protected String saveConfigAction(ModelMap model,HttpServletRequest req, @RequestParam(value="index") int index) {
+		List<Configuration> configurations = configurationRepository.getConfigurations();
+		Configuration configuration = configurations.get(index);
+		req.getSession().setAttribute("activeConfiguration", configuration.getName());
+		return configuration.getName();
 	}
 	
 	/**

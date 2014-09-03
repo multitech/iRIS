@@ -34,7 +34,7 @@ public class HierarchyController {
 	 * @param resp
 	 * @return
 	 */
-	@RequestMapping(value = "/hierarchy.htm", method = RequestMethod.GET)
+	@RequestMapping(value = "/view_hierarchy.htm", method = RequestMethod.GET)
 	protected ModelAndView showHierarchyAction(ModelMap model) {
 		HierarchyVo hierarchyVo=loadHierarchy();
 		return new ModelAndView("hierarchy", "hierarchyVo", hierarchyVo);
@@ -47,7 +47,7 @@ public class HierarchyController {
 	 * @param resp
 	 * @return
 	 */
-	@RequestMapping(value = "/assignment.htm", method = RequestMethod.GET)
+	@RequestMapping(value = "/view_assignment.htm", method = RequestMethod.GET)
 	protected String showAssignmentMatrixAction(ModelMap model) {
 		return "assignment";
 	}

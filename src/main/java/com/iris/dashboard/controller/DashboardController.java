@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iris.dataitem.bean.DataItem;
@@ -43,17 +44,41 @@ public class DashboardController {
 	 * @param resp
 	 * @return
 	 */
-	@RequestMapping(value = "/dashboard.htm", method = RequestMethod.GET)
-	protected ModelAndView showHierarchyAction(ModelMap model) {
+	@RequestMapping(value = "/view_dashboard.htm", method = RequestMethod.GET)
+	protected ModelAndView showDashboardAction(ModelMap model) {
 		HierarchyVo hierarchyVo=loadHierarchy();
 		List<DataItem> dataItems = dataItemRepository.getDataItems();
 		List<DataSet> dataset = groupDataItems(dataItems);
-		ModelAndView modelView = new ModelAndView("dashboard", "dashboard", null);
+		ModelAndView modelView = new ModelAndView("dashboard_view", "dashboard", null);
 		modelView.addObject("hierarchy", hierarchyVo);
 		modelView.addObject("dataset", dataset);
 		modelView.addObject("dataitems", dataItems);
 		return modelView;
 	}
+	
+	/**
+	 * Show data item
+	 * @param model
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	@RequestMapping(value = "/dashboard.htm", method = RequestMethod.GET)
+	protected ModelAndView showDashboardDataItemAction(ModelMap model,@RequestParam(value="id") int id) {
+		List<DataItem> dataItems = dataItemRepository.getDataItems();
+		DataItem dataItem=null;
+		for(DataItem tempItem:dataItems){
+			if(tempItem.getId().equals(String.valueOf(id))){
+				dataItem=tempItem;
+				break;
+			}
+		}
+		ModelAndView modelView = new ModelAndView("dashboard", "dataItem", null);
+		modelView.addObject("successMessage", null);
+		modelView.addObject("dataItem", dataItem);
+		return modelView;
+	}
+	
 
 	private List<DataSet> groupDataItems(List<DataItem> dataItems) {
 		

@@ -68,6 +68,31 @@
 			                       	</h4>
 		                    	</header>
 		                    	<div class="panel-body minimal">
+		                    	<! -- MODALS -->
+			      				<div class="showback" hidden="true">
+									<button class="btn btn-success btn-lg" id="abc" data-toggle="modal" data-target="#myModal">
+									  Launch Modal
+									</button>
+									<!-- Modal -->
+									
+			      				</div><!-- /showback -->
+      				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									  <div class="modal-dialog">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+									      </div>
+									      <div class="modal-body">
+									        Hi there, I am a Modal Example for Dashgum Admin Panel.
+									      </div>
+									      <div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									        <button type="button" class="btn btn-primary">Save changes</button>
+									      </div>
+									    </div>
+									  </div>
+									</div>
 		                        	<div class="mail-option">
 		                        	 	<div class="btn-group">
 			                            	<form method="get" action="${pageContext.request.contextPath}/create_config.htm">
@@ -97,7 +122,7 @@
 		                        				<c:forEach var="configuration" items="${configurationList}" varStatus="loop">
 			                        				<tr class="">
 			                            				<td class="inbox-small-cells">
-			                                				<input type="radio" name="mail-checkbox" class="mail-checkbox">
+			                                				<input type="radio" name="configRadio" class="mail-checkbox" value="${loop.index}">
 			                            				</td>
 							                            <td></td>
 							                            <td class="view-message  dont-show"><a href="${pageContext.request.contextPath}/config.htm?index=${loop.index}">${configuration.name}</a></td>
@@ -162,6 +187,15 @@
 					$('#activateButton').fadeOut();
 					$('#removeButton').fadeIn();
 				}
+			});
+			$("#activateButton").click(function() {
+				alert("data");
+				var url ="/	iRIS/activate_config.htm";
+				var value = $('input[name=configRadio]:checked').val();
+		        $.get(url, { index: value }, function (data) {
+		        		alert(data);
+// 		        	 $("#activeConfigNameSpan").text(data);
+		        });
 			});
 		</script>
 
