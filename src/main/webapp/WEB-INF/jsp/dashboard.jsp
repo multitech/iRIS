@@ -51,7 +51,7 @@
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">
+          <section class="wrapper site-min-height">
         <!-- page start-->
         <div class="row mt">
             <div class="col-sm-12">
@@ -68,80 +68,86 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="compose-btn pull-right">
-                                    <a href="mail_compose.html" class="btn btn-sm btn-theme" ><i class="fa fa-reply"></i> Reply</a>
-                                    <button class="btn  btn-sm tooltips" data-original-title="Print" type="button" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-print"></i> </button>
-                                    <button class="btn btn-sm tooltips" data-original-title="Trash" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-trash-o"></i></button>
+                                    <button class="btn  btn-sm tooltips" data-original-title="Go Back" type="button" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-arrow-left"></i></button>
+                                    <button class="btn  btn-sm tooltips" data-original-title="Previous Item" type="button" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-arrow-up"></i> </button>
+                                    <button class="btn btn-sm tooltips" data-original-title="Next Item" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-arrow-down"></i></button>
                                 </div>
                             </div>
 
                         </div>
                         <div class="mail-sender">
                             <div class="row">
-                                <div class="col-md-8">
-                                    <img src="assets/img/ui-zac.jpg" alt="">
-                                    <strong>Zac Doe</strong>
-                                    <span>[zac@youremail.com]</span>
-                                    to
-                                    <strong>me</strong>
-                                </div>
-                                <div class="col-md-4">
-                                    <p class="date"> 10:15AM 02 FEB 2014</p>
+                                <div class="col-md-12">
+                                    <div class="btn-group">
+		                                	<button class="btn btn-theme02" type="submit" id="activateButton"><i class="fa fa-upload"></i>  Upload</button>
+		                                </div>
+		                                <div class="btn-group" id="downloadButton">
+						  <button type="button" class="btn btn-theme04 dropdown-toggle" data-toggle="dropdown">
+						 <i class="fa fa-download"></i> Download <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" role="menu">
+						    <li><a href="#">Report</a></li>
+						    <li class="divider"></li>
+						    <li><a href="#">Template</a></li>
+						  </ul>
+						</div>
+						 <div class="btn-group hidden-phone pull-right">
+                                <a data-toggle="dropdown" href="#" class="btn mini blue">
+                                    More
+                                    <i class="fa fa-angle-down "></i>
+                                </a>
+                                <ul class="dropdown-menu">
+									<li><a href="#"><i class="fa fa-file-text-o"></i>  Details</a></li>
+                                    <li><a href="#"><i class="fa fa-money"></i>  Change Currency</a></li>
+                                </ul>
+                            </div>
                                 </div>
                             </div>
                         </div>
                         <div class="view-mail">
-                            <p>As he bent his head in his most courtly manner, there was a secrecy in his smiling face, and he conveyed an air of mystery to those words, which struck the eyes and ears of his nephew forcibly. At the same time, the thin straight lines of the setting of the eyes, and the thin straight lips, and the markings in the nose, curved with a sarcasm that looked handsomely diabolic. </p>
-                            <p>"Yes," repeated the Marquis. "A Doctor with a daughter. Yes. So commences the new philosophy! You are fatigued. Good night!"</p>
-                            <p>It would have been of as much avail to interrogate any stone face outside the chateau as to interrogate that face of his. The nephew looked at him, in vain, in passing on to the door. </p>
-                            <p>"Good night!" said the uncle. "I look to the pleasure of seeing you again in the morning. Good repose! Light Monsieur my nephew to his chamber there!--And burn Monsieur my nephew in his bed, if you will," he added to himself, before he rang his little bell again, and summoned his valet to his own bedroom.</p>
-                        </div>
-                        <div class="attachment-mail">
-                            <p>
-                                <span><i class="fa fa-paperclip"></i> 2 attachments — </span>
-                                <a href="#">Download all attachments</a>
-                                |
-                                <a href="#">View all images</a>
-                            </p>
-                            <ul>
-                                <li>
-                                    <a class="atch-thumb" href="#">
-                                        <img src="assets/img/instagram.jpg">
-                                    </a>
-
-                                    <a class="name" href="#">
-                                        IMG_001.jpg
-                                        <span>20KB</span>
-                                    </a>
-
-                                    <div class="links">
-                                        <a href="#">View</a> -
-                                        <a href="#">Download</a>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <a class="atch-thumb" href="#">
-                                        <img src="assets/img/weather.jpg">
-                                    </a>
-
-                                    <a class="name" href="#">
-                                        IMG_001.jpg
-                                        <span>20KB</span>
-                                    </a>
-
-                                    <div class="links">
-                                        <a href="#">View</a> -
-                                        <a href="#">Download</a>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
-                        <div class="compose-btn pull-left">
-                            <a href="mail_compose.html" class="btn btn-sm btn-theme" ><i class="fa fa-reply"></i> Reply</a>
-                            <button class="btn btn-sm " ><i class="fa fa-arrow-right"></i> Forward</button>
-                            <button class="btn  btn-sm tooltips" data-original-title="Print" type="button" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-print"></i> </button>
-                            <button class="btn btn-sm tooltips" data-original-title="Trash" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-trash-o"></i></button>
+                         	<h4>History</h4>
+	                            <div class="table-inbox-wrap ">
+	                            <table class="table">
+						<thead>
+						<tr>
+						<th style="width:60px" class="text-center">Revision</th>
+						<th class="text-left">Comment</th>
+						<th style="width:140px" class="text-right">Uploaded By</th>
+						<th style="width:120px" class="text-right">Uploaded On</th>
+						<th style="width:120px" class="text-right"></th>
+						</tr>
+						</thead>
+							<tbody>
+								<tr>
+								<td class="text-center">1</td>
+								<td>This is the first upload</td>
+								<td class="text-right">Renjith</td>
+								<td class="text-right">03-Sep-2014</td>
+								<td>
+								<div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-download tooltips" data-original-title="Download" type="button" data-toggle="tooltip" data-placement="top" title=""></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil tooltips" data-original-title="Modify" type="button" data-toggle="tooltip" data-placement="top" title=""></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o tooltips" data-original-title="Remove" type="button" data-toggle="tooltip" data-placement="top" title=""></button>
+                                              </div>
+                                              </td>
+								</tr>
+								<tr>
+								<td class="text-center">2</td>
+								<td>The second upload is here</td>
+								<td class="text-right">Renjith</td>
+								<td class="text-right">04-Sep-2014</td>
+								<td>
+								<div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs fa fa-download"></button>
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              </div>
+                                              </td>
+								</tr>
+							</tbody>
+					</table>
+	
+	                        </div>
                         </div>
                     </div>
                 </section>
@@ -176,34 +182,6 @@
 	
   
   <script type="text/javascript">
-		$(".hierarchyLi").click(function() {
-			$(".hierarchyLi").removeClass('active');
-			$(this).toggleClass('inactive active');
-		});
-		$(document).ready(function() {
-			$('#AllianzLi').toggleClass('inactive active');
-			$('#uploadButton').hide();
-			$('#fetchButton').hide();
-			$('#calculateButton').hide();
-			$('#runButton').hide();
-			$('#downloadButton').hide();
-		});
-		$(".mail-checkbox").change(function() {
-			$('#uploadButton').hide();
-			$('#fetchButton').hide();
-			$('#calculateButton').hide();
-			$('#runButton').hide();
-			if($('.checkbox0').is(":checked")) {
-				$('#uploadButton').show();
-			}else if($('.checkbox1').is(":checked")) {
-				$('#fetchButton').show();
-			}else if($('.checkbox2').is(":checked")) {
-				$('#calculateButton').show();
-			}else if($('.checkbox3').is(":checked")) {
-				$('#runButton').show();
-			}
-			$('#downloadButton').show();
-		});
 	</script>
 
   </body>
