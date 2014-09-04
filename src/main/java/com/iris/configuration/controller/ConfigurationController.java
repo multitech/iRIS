@@ -9,11 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iris.configuration.bean.Configuration;
@@ -41,11 +43,13 @@ public class ConfigurationController {
 	 * @return
 	 */
 	@RequestMapping(value = "/view_config.htm", method = RequestMethod.GET)
-	protected ModelAndView showConfigViewAction(ModelMap model) {
+	protected ModelAndView showConfigViewAction(ModelMap model,HttpServletRequest req) {
 		List<Configuration> configurations = configurationRepository.getConfigurations();
 		ModelAndView modelView = new ModelAndView("config_view", "configuration", null);
 		modelView.addObject("successMessage", null);
 		modelView.addObject("configurationList", configurations);
+		String activeConfig = (String) req.getSession().getAttribute("activeConfigName");
+		modelView.addObject("activeConfigName", activeConfig);
 		return modelView;
 	}
 	
@@ -71,12 +75,14 @@ public class ConfigurationController {
 	 * @return
 	 */
 	@RequestMapping(value = "/config.htm", method = RequestMethod.GET)
-	protected ModelAndView showConfigAction(ModelMap model,@RequestParam(value="index") int index) {
+	protected ModelAndView showConfigAction(ModelMap model,@RequestParam(value="index") int index,HttpServletRequest req) {
 		List<Configuration> configurations = configurationRepository.getConfigurations();
 		Configuration configuration = configurations.get(index);
 		ModelAndView modelView = new ModelAndView("config", "configuration", null);
 		modelView.addObject("successMessage", null);
 		modelView.addObject("configuration", configuration);
+		String activeConfig = (String) req.getSession().getAttribute("activeConfigName");
+		modelView.addObject("activeConfigName", activeConfig);
 		return modelView;
 	}
 	
@@ -88,10 +94,10 @@ public class ConfigurationController {
 	 * @return
 	 */
 	@RequestMapping(value = "/activate_config.htm", method = RequestMethod.GET)
-	protected String saveConfigAction(ModelMap model,HttpServletRequest req, @RequestParam(value="index") int index) {
+	public @ResponseBody String saveConfigAction(HttpServletRequest req, @RequestParam(value="index") int index) {
 		List<Configuration> configurations = configurationRepository.getConfigurations();
 		Configuration configuration = configurations.get(index);
-		req.getSession().setAttribute("activeConfiguration", configuration.getName());
+		req.getSession().setAttribute("activeConfigName", configuration.getName());
 		return configuration.getName();
 	}
 	

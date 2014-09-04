@@ -71,24 +71,22 @@
 		                    	<! -- MODALS -->
 			      				<div class="showback" hidden="true">
 									<button class="btn btn-success btn-lg" id="abc" data-toggle="modal" data-target="#myModal">
-									  Launch Modal
 									</button>
 									<!-- Modal -->
 									
 			      				</div><!-- /showback -->
-      				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 									  <div class="modal-dialog">
 									    <div class="modal-content">
 									      <div class="modal-header">
 									        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+									        <h4 class="modal-title" id="myModalLabel">Configuration Activated</h4>
 									      </div>
-									      <div class="modal-body">
-									        Hi there, I am a Modal Example for Dashgum Admin Panel.
+									      <div class="modal-body" id="modalTextDiv">
+									         ${activeConfigName} Configuration is now active!
 									      </div>
 									      <div class="modal-footer">
 									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									        <button type="button" class="btn btn-primary">Save changes</button>
 									      </div>
 									    </div>
 									  </div>
@@ -189,13 +187,27 @@
 				}
 			});
 			$("#activateButton").click(function() {
-				alert("data");
 				var url ="/	iRIS/activate_config.htm";
 				var value = $('input[name=configRadio]:checked').val();
 		        $.get(url, { index: value }, function (data) {
-		        		alert(data);
-// 		        	 $("#activeConfigNameSpan").text(data);
+		        	$("#activeConfigNameSpan").text("Active : "+data);
+    		        	$("#modalTextDiv").text(data+" Configuration is now active!");
+    		        	$("#abc").click();
 		        });
+// 		        $.ajax({
+//                     type: "GET", 		//GET or POST or PUT or DELETE verb
+//                     url: url, 		// Location of the service
+//                     data: { index: value }, 		//Data sent to server
+//                     contentType: "",		// content type sent to server
+//                     dataType: "text", 	//Expected data format from server
+//                     processdata: true, 	//True or False
+//                     async: tr, 	
+//                     success: function (data) {//On Successful service call
+//     		        	$("#activeConfigNameSpan").text(data);
+//     		        	$("#modalTextDiv").text(data+" Configuration is now active!");
+//     		        	$("#abc").click();
+//                     },
+//                 });
 			});
 		</script>
 

@@ -9,6 +9,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -45,7 +47,7 @@ public class DashboardController {
 	 * @return
 	 */
 	@RequestMapping(value = "/view_dashboard.htm", method = RequestMethod.GET)
-	protected ModelAndView showDashboardAction(ModelMap model) {
+	protected ModelAndView showDashboardAction(ModelMap model,HttpServletRequest req) {
 		HierarchyVo hierarchyVo=loadHierarchy();
 		List<DataItem> dataItems = dataItemRepository.getDataItems();
 		List<DataSet> dataset = groupDataItems(dataItems);
@@ -53,6 +55,8 @@ public class DashboardController {
 		modelView.addObject("hierarchy", hierarchyVo);
 		modelView.addObject("dataset", dataset);
 		modelView.addObject("dataitems", dataItems);
+		String activeConfig = (String) req.getSession().getAttribute("activeConfigName");
+		modelView.addObject("activeConfigName", activeConfig);
 		return modelView;
 	}
 	
@@ -64,7 +68,7 @@ public class DashboardController {
 	 * @return
 	 */
 	@RequestMapping(value = "/dashboard.htm", method = RequestMethod.GET)
-	protected ModelAndView showDashboardDataItemAction(ModelMap model,@RequestParam(value="id") int id) {
+	protected ModelAndView showDashboardDataItemAction(ModelMap model,@RequestParam(value="id") int id,HttpServletRequest req) {
 		List<DataItem> dataItems = dataItemRepository.getDataItems();
 		DataItem dataItem=null;
 		for(DataItem tempItem:dataItems){
@@ -76,6 +80,8 @@ public class DashboardController {
 		ModelAndView modelView = new ModelAndView("dashboard", "dataItem", null);
 		modelView.addObject("successMessage", null);
 		modelView.addObject("dataItem", dataItem);
+		String activeConfig = (String) req.getSession().getAttribute("activeConfigName");
+		modelView.addObject("activeConfigName", activeConfig);
 		return modelView;
 	}
 	

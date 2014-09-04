@@ -43,11 +43,13 @@ public class DataItemController {
 	 * @return
 	 */
 	@RequestMapping(value = "/view_dataitem.htm", method = RequestMethod.GET)
-	protected ModelAndView showDataItemViewAction(ModelMap model) {
+	protected ModelAndView showDataItemViewAction(ModelMap model,HttpServletRequest req) {
 		List<DataItem> dataset = dataItemRepository.getDataItems();
 		ModelAndView modelView = new ModelAndView("dataitem_view", "dataitem", null);
 		modelView.addObject("successMessage", null);
 		modelView.addObject("dataset", dataset);
+		String activeConfig = (String) req.getSession().getAttribute("activeConfigName");
+		modelView.addObject("activeConfigName", activeConfig);
 		return modelView;
 	}
 	
@@ -72,12 +74,14 @@ public class DataItemController {
 	 * @return
 	 */
 	@RequestMapping(value = "/dataitem.htm", method = RequestMethod.GET)
-	protected ModelAndView showConfigAction(ModelMap model,@RequestParam(value="index") int index) {
+	protected ModelAndView showConfigAction(ModelMap model,@RequestParam(value="index") int index,HttpServletRequest req) {
 		List<DataItem> dataset = dataItemRepository.getDataItems();
 		DataItem dataItem = dataset.get(index);
 		ModelAndView modelView = new ModelAndView("dataitem", "dataItem", null);
 		modelView.addObject("successMessage", null);
 		modelView.addObject("dataItem", dataItem);
+		String activeConfig = (String) req.getSession().getAttribute("activeConfigName");
+		modelView.addObject("activeConfigName", activeConfig);
 		return modelView;
 	}
 	

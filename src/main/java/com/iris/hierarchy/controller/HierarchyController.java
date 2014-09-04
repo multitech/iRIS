@@ -6,6 +6,8 @@ package com.iris.hierarchy.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -35,9 +37,13 @@ public class HierarchyController {
 	 * @return
 	 */
 	@RequestMapping(value = "/view_hierarchy.htm", method = RequestMethod.GET)
-	protected ModelAndView showHierarchyAction(ModelMap model) {
+	protected ModelAndView showHierarchyAction(ModelMap model,HttpServletRequest req) {
 		HierarchyVo hierarchyVo=loadHierarchy();
-		return new ModelAndView("hierarchy", "hierarchyVo", hierarchyVo);
+		ModelAndView modelView = new ModelAndView("hierarchy", "hierarchyVo", null);
+		String activeConfig = (String) req.getSession().getAttribute("activeConfigName");
+		modelView.addObject("hierarchyVo", hierarchyVo);
+		modelView.addObject("activeConfigName", activeConfig);
+		return modelView;
 	}
 
 	/**
@@ -48,8 +54,11 @@ public class HierarchyController {
 	 * @return
 	 */
 	@RequestMapping(value = "/view_assignment.htm", method = RequestMethod.GET)
-	protected String showAssignmentMatrixAction(ModelMap model) {
-		return "assignment";
+	protected ModelAndView showAssignmentMatrixAction(ModelMap model,HttpServletRequest req) {
+		ModelAndView modelView = new ModelAndView("assignment", "assignment", null);
+		String activeConfig = (String) req.getSession().getAttribute("activeConfigName");
+		modelView.addObject("activeConfigName", activeConfig);
+		return modelView;
 	}
 	
 	private HierarchyVo loadHierarchy() {
