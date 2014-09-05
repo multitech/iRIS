@@ -74,6 +74,8 @@ public class LoginController {
 			modelView.addObject("displayName", "Cersei Lannister");
 			modelView.addObject("displayImage", "img/analyst.png");
 		}
+		notificationService.getAllTasks().clear();
+		notificationService.getAllMessages().clear();
 		NotificationMessage message = new NotificationMessage();
 		message.setFrom("Vasco Fort");
 		message.setMessage("Please approve new Upload");

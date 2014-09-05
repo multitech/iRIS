@@ -59,15 +59,15 @@
                   <aside class="col-lg-3 mt">
                       <h4><i class="fa fa-angle-right"></i>Drag and drop Input Reports in to the hierarchy to assign them</h4>
                       <div id="external-events">
-                          <div class="external-event label label-theme">My Report 1</div>
-                          <div class="external-event label label-success">My Report 2</div>
-                          <div class="external-event label label-info">My Report 3</div>
-                          <div class="external-event label label-warning">My Report 4</div>
-                          <div class="external-event label label-danger">My Report 5</div>
-                          <div class="external-event label label-default">My Report 6</div>
-                          <div class="external-event label label-theme">My Report 7</div>
-                          <div class="external-event label label-info">My Report 8</div>
-                          <div class="external-event label label-success">My Report 9</div>
+                          <div class="external-event label label-theme">MVBS</div>
+                          <div class="external-event label label-success">Deferred Tax</div>
+                          <div class="external-event label label-info">Balance Sheet Input</div>
+                          <div class="external-event label label-warning">Credit Relief Factor</div>
+                          <div class="external-event label label-danger">SCR - Market Risk</div>
+                          <div class="external-event label label-default">Shocked Values Report</div>
+                          <div class="external-event label label-theme">SCR - Life</div>
+                          <div class="external-event label label-info">USP Revision – Life</div>
+                          <div class="external-event label label-success">Changes.csv Master</div>
                           <p class="drop-after">
                               <input type="checkbox" id="drop-remove">
                               Remove After Drop
