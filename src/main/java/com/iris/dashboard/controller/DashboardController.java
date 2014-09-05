@@ -3,13 +3,17 @@
  */
 package com.iris.dashboard.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -85,6 +89,33 @@ public class DashboardController {
 		return modelView;
 	}
 	
+	/**
+	 * Download Report and Report Template
+	 * @param id
+	 */
+	@RequestMapping(value = "/dashboard_download.htm", method = RequestMethod.GET)
+	public void downloadReport(@RequestParam(value="filename") String fileName,HttpServletResponse resp){
+		InputStream in = this.getClass().getClassLoader().getResourceAsStream("resources/reports/"+fileName);
+		resp.setHeader("Content-Disposition", "attachment; filename=\""+ fileName + "\"");
+		ServletOutputStream out=null;
+		try {
+			out = resp.getOutputStream();
+		} catch (IOException e) {
+			System.err.println("Error while creating output stream : "+e.getMessage());
+		}
+		byte[] buffer = new byte[1024];
+		int len;
+		try {
+			while ((len = in.read(buffer)) != -1) {
+			    out.write(buffer, 0, len);
+			}
+			out.flush();
+			out.close();
+			in.close();
+		} catch (IOException e) {
+			System.err.println("Error while writing to output stream : "+e.getMessage());
+		}
+	}
 
 	private List<DataSet> groupDataItems(List<DataItem> dataItems) {
 		
@@ -104,6 +135,7 @@ public class DashboardController {
 			dataItemList=new ArrayList<DataItem>();
 			for(DataItem dataItem:dataItems){
 				if(dataItem.getCategory().equals(category)){
+					setStatus(dataItem);
 					dataItemList.add(dataItem);
 				}
 			}
@@ -114,6 +146,28 @@ public class DashboardController {
 		return datasetList;
 	}
 
+	private void setStatus(DataItem dataItem) {
+		if(dataItem.getStatus()==0){
+			switch (dataItem.getInputMode()) {
+			case 0:
+				dataItem.setStatusDescription("Ready to fetch from database");
+				break;
+			case 1:
+				dataItem.setStatusDescription("Waiting for user upload");
+				break;
+			case 2:
+				dataItem.setStatusDescription("Waiting for dependencies");
+				break;
+			case 3:
+				dataItem.setStatusDescription("Waiting for dependencies");
+				break;
+			default:
+				break;
+			}
+			
+		}
+	}
+	
 	private HierarchyVo loadHierarchy() {
 		
 		HierarchyVo hierarchyVo=new HierarchyVo();

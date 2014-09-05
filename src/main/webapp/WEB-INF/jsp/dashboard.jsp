@@ -99,6 +99,7 @@
                                 <ul class="dropdown-menu">
 									<li><a href="#"><i class="fa fa-file-text-o"></i>  Details</a></li>
                                     <li><a href="#"><i class="fa fa-money"></i>  Change Currency</a></li>
+                                     <li><a href="#"><i class="fa fa-exchange"></i> Dependencies</a></li>
                                 </ul>
                             </div>
                                 </div>

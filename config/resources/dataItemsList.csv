@@ -1,56 +1,56 @@
-1;MVBS;Manual Input for Statutory accounts valuation basis;Dependent;0;External Database Import;FALSE;Felix Fiedler;03-07-2014;01 Balance Sheet
-2;Deferred Tax;Import from RAI: DTA,DTL,Tax Rate 1;Independent;0;External Database Import;FALSE;Felix Fiedler;03-07-2014;01 Balance Sheet
-3;Balance Sheet Input;Manual Input for Statutory accounts valuation basis;Independent;1;Input Template;FALSE;Felix Fiedler;03-07-2014;01 Balance Sheet
-4;Balance Sheet;Balance Sheet model: input for QRT BS-C1, Market risk, Lapse risk;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;01 Balance Sheet
-5;Credit Relief Factor;Import from RAI: spread data for helper tab;Independent;0;External Database Import;FALSE;Felix Fiedler;03-07-2014;02 QIS5 Market Risk Inputs
-6;Input template credit derivatives;Manual Input for Spread Risk: credit derivatives, Solo;Independent;1;Input Template;FALSE;Felix Fiedler;03-07-2014;02 QIS5 Market Risk Inputs
-7;SCR - Market Risk;SCR - Market Risk [Solo];Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;02 QIS5 Market Risk Inputs
-8;Shocked Values Report;;Independent;0;External Database Import;FALSE;Felix Fiedler;03-07-2014;02 QIS5 Market Risk Inputs
-9;QIS5 Spread Helper;Populated based on H_Spread, Credit Relief Factor;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;02 QIS5 Market Risk Inputs
-10;Gross of RI Life SCR;Input for Counterparty Default Risk: risk mitigation effect;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;03a QIS5 Life
-11;Technical Provisions - Life;Populated based on Life SCR - MCR RAI import;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;03a QIS5 Life
-12;SCR - Life;Populated based on Life SCR - MCR RAI import;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;03a QIS5 Life
-13;Life SCR - MCR;Import from RAI: for SCR and MCR;Independent;0;External Database Import;FALSE;Felix Fiedler;03-07-2014;03a QIS5 Life
-14;USP Revision – Life;;Independent;1;Input Template;FALSE;Felix Fiedler;03-07-2014;03a QIS5 Life
-15;QIS5: Net of reinsurance;Input for Gross of RI Life SCR for (Counterparty Default Risk: Risk Mitigation Effect);Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;03a QIS5 Life
-16;QIS5: Net of RI;Input for Counterparty Default Risk: risk mitigation effect;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;03b QIS5 Non-Life
-17;QIS5: Gross of RI;Input for Counterparty Default Risk: risk mitigation effect;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;03b QIS5 Non-Life
-18;Technical Provisions - Non Life;Populated based on Non-Life SCR MCR;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;03b QIS5 Non-Life
-19;Premium - Future - Non Life;Populated based on Non-Life SCR MCR;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;03b QIS5 Non-Life
-20;Non Life SCR MCR;Import from RAI: for SCR and MCR;Independent;0;External Database Import;FALSE;Felix Fiedler;03-07-2014;03b QIS5 Non-Life
-21;SCR - non-life;Manual Input for Lapse, Catastrophe risks;Independent;1;Input Template;FALSE;Felix Fiedler;03-07-2014;03b QIS5 Non-Life
-22;Premium - Past - Non Life;Populated based on Non-Life SCR MCR, requires manual input;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;03b QIS5 Non-Life
-23;SCR - non-SLT - Health;Manual Input for Non-Life;Independent;1;Input Template;FALSE;Felix Fiedler;03-07-2014;03c QIS5 Health
-24;SCR - Health SLT;Populated based on Life SCR - MCR RAI import;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;03c QIS5 Health
-25;Premium - Future - Health;Populated based on Non-Life SCR MCR;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;03c QIS5 Health
-26;SCR - Health Cat;Manual Input for Health (Life, Non-Life);Independent;1;Input Template;FALSE;Felix Fiedler;03-07-2014;03c QIS5 Health
-27;USP Revision – Health SLT;;Independent;1;Input Template;FALSE;Felix Fiedler;03-07-2014;03c QIS5 Health
-28;Technical Provisions - Health - non-SLT;Populated based on Non-Life SCR MCR;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;03c QIS5 Health
-29;Premium - Past - Health;Populated for Non-Life, Manual input for Life;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;03c QIS5 Health
-30;Technical Provisions - Health SLT;Populated based on Life SCR - MCR RAI import;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;03c QIS5 Health
-31;Credit Risk Helper Tab OE Input Data;;Independent;1;Input Template;FALSE;Felix Fiedler;03-07-2014;04 QIS5 Concentration & Counterparty Risk
-32;Signoff Progress Overview Report;[Group,SubGroup];Dependent;3;Report Design;FALSE;Felix Fiedler;03-07-2014;04 QIS5 Concentration & Counterparty Risk
-33;Credit Risk Helper Tab;QIS5 Concentration Risk and Counterparty Default Risk Helper Tab;Dependent;3;Report Design;FALSE;Felix Fiedler;03-07-2014;04 QIS5 Concentration & Counterparty Risk
-34;Underwriting SCR;;Dependent;3;Report Design;FALSE;Felix Fiedler;03-07-2014;04 QIS5 Concentration & Counterparty Risk
-35;Changes.csv Master;[Group];Dependent;3;Report Design;FALSE;Felix Fiedler;03-07-2014;04 QIS5 Concentration & Counterparty Risk
-36;Changes.xls;;Independent;1;Input Template;FALSE;Felix Fiedler;03-07-2014;04 QIS5 Concentration & Counterparty Risk
-37;Participant Info;Manual input, required for MCR;Independent;1;Input Template;FALSE;Felix Fiedler;03-07-2014;05 QIS5
-38;IM report;Input from RAI: IM report- Group, SubGroup, Solo;Independent;0;External Database Import;FALSE;Felix Fiedler;03-07-2014;05 QIS5
-39;Additional Past Premiums Operational Risk;Manual input: required for Operational Risk;Independent;1;Input Template;FALSE;Felix Fiedler;03-07-2014;05 QIS5
-40;QIS5;QIS 5 Calculation: Solo;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;05 QIS5
-41;SCR - B2B;Import from RAI for SCR - B2B (partial IM): Solo, Group, SubGroup;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;06 QRT Solo
-42;SCR - B2C;Import from RAI for SCR - B2C (full Internal Model): Solo, Group, SubGroup;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;06 QRT Solo
-43;SCR - B3F;Required for Non-Life Catastrophe (including Health Cat for Non-Life and Life): Group, SubGroup, Solo;Independent;1;Input Template;FALSE;Felix Fiedler;03-07-2014;06 QRT Solo
-44;QRT Solo;For Solo;Dependent;2;Excel Calculation Model;TRUE;Felix Fiedler;03-07-2014;06 QRT Solo
-45;AMCR;Parameters to be provided by Group;Independent;1;Input Template;FALSE;Felix Fiedler;03-07-2014;FX Rates and AMCR
-46;RAI FX Rates;Import FX Rates from RAI [Group];Independent;0;External Database Import;FALSE;Felix Fiedler;03-07-2014;FX Rates and AMCR
-47;FX Rates;FX Rates used by the system, will receive values from RAI FX Rates [Group];Dependent;5;FX Rates;FALSE;Felix Fiedler;03-07-2014;FX Rates and AMCR
-48;SCR Report;[Group, SubGroup];Dependent;3;Report Design;FALSE;Felix Fiedler;03-07-2014;Group Aggregation
-49;QIS5: Group / SubGroup;QIS5 model for Group / SubGroup;Dependent;2;Excel Calculation Model;FALSE;Felix Fiedler;03-07-2014;Group Aggregation
-50;IFRS Residuals;IFRS Residuals for Group / SubGroup;Independent;0;External Database Import;FALSE;Felix Fiedler;03-07-2014;Group Aggregation
-51;QRT-Group / SubGroup;For Group, SubGroup;Dependent;2;Excel Calculation Model;TRUE;Felix Fiedler;03-07-2014;Group Aggregation
-52;SM Residuals Report;;Dependent;3;Report Design;FALSE;Felix Fiedler;03-07-2014;Group Aggregation
-53;Group Risk Aggregation;SCR - Market Risk, Lapse Risk, Operational Risk, FDB [Group,SubGroup];Dependent;3;Report Design;FALSE;Felix Fiedler;03-07-2014;Group Aggregation
-54;Exposure Lookup Tables;[Group];Independent;1;Input Template;FALSE;Felix Fiedler;03-07-2014;QIS5 Concentration & Counterparty Risk Helpers
-55;Raw Credit Risk Exposure File;[Group];Dependent;4;External File Definition;FALSE;Felix Fiedler;03-07-2014;QIS5 Concentration & Counterparty Risk Helpers
-56;QRT Group;[Group, SubGroup];Dependent;3;Report Design;TRUE;Felix Fiedler;03-07-2014;QRT Group
+0;Balance Sheet Input;Manual Input for Statutory accounts valuation basis;Independent;;1;Input Template;FALSE;0;Felix Fiedler;03-07-2014;01 Balance Sheet
+1;Deferred Tax;Import from RAI: DTA,DTL,Tax Rate 1;Independent;;0;External Database Import;FALSE;0;Felix Fiedler;03-07-2014;01 Balance Sheet
+2;MVBS;Manual Input for Statutory accounts valuation basis;Independent;;0;External Database Import;FALSE;0;Felix Fiedler;03-07-2014;01 Balance Sheet
+3;Balance Sheet;Balance Sheet model: input for QRT BS-C1, Market risk, Lapse risk;Dependent;1#2#3;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;01 Balance Sheet
+4;Credit Relief Factor;Import from RAI: spread data for helper tab;Independent;;0;External Database Import;FALSE;0;Felix Fiedler;03-07-2014;02 QIS5 Market Risk Inputs
+5;H_Spread;Manual Input for Spread Risk: credit derivatives, Solo;Independent;;0;External Database Import;FALSE;0;Felix Fiedler;03-07-2014;02 QIS5 Market Risk Inputs
+6;SCR - Market Risk;SCR - Market Risk [Solo];Dependent;5#6;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;02 QIS5 Market Risk Inputs
+7;Shocked Values Report;;Independent;;0;External Database Import;FALSE;0;Felix Fiedler;03-07-2014;02 QIS5 Market Risk Inputs
+8;QIS5 Spread Helper;Populated based on H_Spread, Credit Relief Factor;Dependent;5#6#8;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;02 QIS5 Market Risk Inputs
+9;Gross of RI Life SCR;Input for Counterparty Default Risk: risk mitigation effect;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;03a QIS5 Life
+10;Technical Provisions - Life;Populated based on Life SCR - MCR RAI import;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;03a QIS5 Life
+11;SCR - Life;Populated based on Life SCR - MCR RAI import;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;03a QIS5 Life
+12;Life SCR - MCR;Import from RAI: for SCR and MCR;Independent;;0;External Database Import;FALSE;0;Felix Fiedler;03-07-2014;03a QIS5 Life
+13;USP Revision – Life;;Independent;;1;Input Template;FALSE;0;Felix Fiedler;03-07-2014;03a QIS5 Life
+14;QIS5: Net of reinsurance;Input for Gross of RI Life SCR for (Counterparty Default Risk: Risk Mitigation Effect);Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;03a QIS5 Life
+15;QIS5: Net of RI;Input for Counterparty Default Risk: risk mitigation effect;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;03b QIS5 Non-Life
+16;QIS5: Gross of RI;Input for Counterparty Default Risk: risk mitigation effect;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;03b QIS5 Non-Life
+17;Technical Provisions - Non Life;Populated based on Non-Life SCR MCR;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;03b QIS5 Non-Life
+18;Premium - Future - Non Life;Populated based on Non-Life SCR MCR;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;03b QIS5 Non-Life
+19;Non Life SCR MCR;Import from RAI: for SCR and MCR;Independent;;0;External Database Import;FALSE;0;Felix Fiedler;03-07-2014;03b QIS5 Non-Life
+20;SCR - non-life;Manual Input for Lapse, Catastrophe risks;Independent;;1;Input Template;FALSE;0;Felix Fiedler;03-07-2014;03b QIS5 Non-Life
+21;Premium - Past - Non Life;Populated based on Non-Life SCR MCR, requires manual input;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;03b QIS5 Non-Life
+22;SCR - non-SLT - Health;Manual Input for Non-Life;Independent;;1;Input Template;FALSE;0;Felix Fiedler;03-07-2014;03c QIS5 Health
+23;SCR - Health SLT;Populated based on Life SCR - MCR RAI import;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;03c QIS5 Health
+24;Premium - Future - Health;Populated based on Non-Life SCR MCR;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;03c QIS5 Health
+25;SCR - Health Cat;Manual Input for Health (Life, Non-Life);Independent;;1;Input Template;FALSE;0;Felix Fiedler;03-07-2014;03c QIS5 Health
+26;USP Revision – Health SLT;;Independent;;1;Input Template;FALSE;0;Felix Fiedler;03-07-2014;03c QIS5 Health
+27;Technical Provisions - Health - non-SLT;Populated based on Non-Life SCR MCR;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;03c QIS5 Health
+28;Premium - Past - Health;Populated for Non-Life, Manual input for Life;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;03c QIS5 Health
+29;Technical Provisions - Health SLT;Populated based on Life SCR - MCR RAI import;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;03c QIS5 Health
+30;Credit Risk Helper Tab OE Input Data;;Independent;;1;Input Template;FALSE;0;Felix Fiedler;03-07-2014;04 QIS5 Concentration & Counterparty Risk
+31;Signoff Progress Overview Report;[Group,SubGroup];Dependent;;3;Report Design;FALSE;0;Felix Fiedler;03-07-2014;04 QIS5 Concentration & Counterparty Risk
+32;Credit Risk Helper Tab;QIS5 Concentration Risk and Counterparty Default Risk Helper Tab;Dependent;;3;Report Design;FALSE;0;Felix Fiedler;03-07-2014;04 QIS5 Concentration & Counterparty Risk
+33;Underwriting SCR;;Dependent;;3;Report Design;FALSE;0;Felix Fiedler;03-07-2014;04 QIS5 Concentration & Counterparty Risk
+34;Changes.csv Master;[Group];Dependent;;3;Report Design;FALSE;0;Felix Fiedler;03-07-2014;04 QIS5 Concentration & Counterparty Risk
+35;Changes.xls;;Independent;;1;Input Template;FALSE;0;Felix Fiedler;03-07-2014;04 QIS5 Concentration & Counterparty Risk
+36;Participant Info;Manual input, required for MCR;Independent;;1;Input Template;FALSE;0;Felix Fiedler;03-07-2014;05 QIS5
+37;IM report;Input from RAI: IM report- Group, SubGroup, Solo;Independent;;0;External Database Import;FALSE;0;Felix Fiedler;03-07-2014;05 QIS5
+38;Additional Past Premiums Operational Risk;Manual input: required for Operational Risk;Independent;;1;Input Template;FALSE;0;Felix Fiedler;03-07-2014;05 QIS5
+39;QIS5;QIS 5 Calculation: Solo;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;05 QIS5
+40;SCR - B2B;Import from RAI for SCR - B2B (partial IM): Solo, Group, SubGroup;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;06 QRT Solo
+41;SCR - B2C;Import from RAI for SCR - B2C (full Internal Model): Solo, Group, SubGroup;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;06 QRT Solo
+42;SCR - B3F;Required for Non-Life Catastrophe (including Health Cat for Non-Life and Life): Group, SubGroup, Solo;Independent;;1;Input Template;FALSE;0;Felix Fiedler;03-07-2014;06 QRT Solo
+43;QRT Solo;For Solo;Dependent;;2;Excel Calculation Model;TRUE;0;Felix Fiedler;03-07-2014;06 QRT Solo
+44;AMCR;Parameters to be provided by Group;Independent;;1;Input Template;FALSE;0;Felix Fiedler;03-07-2014;FX Rates and AMCR
+45;RAI FX Rates;Import FX Rates from RAI [Group];Independent;;0;External Database Import;FALSE;0;Felix Fiedler;03-07-2014;FX Rates and AMCR
+46;FX Rates;FX Rates used by the system, will receive values from RAI FX Rates [Group];Dependent;;5;FX Rates;FALSE;0;Felix Fiedler;03-07-2014;FX Rates and AMCR
+47;SCR Report;[Group, SubGroup];Dependent;;3;Report Design;FALSE;0;Felix Fiedler;03-07-2014;Group Aggregation
+48;QIS5: Group / SubGroup;QIS5 model for Group / SubGroup;Dependent;;2;Excel Calculation Model;FALSE;0;Felix Fiedler;03-07-2014;Group Aggregation
+49;IFRS Residuals;IFRS Residuals for Group / SubGroup;Independent;;0;External Database Import;FALSE;0;Felix Fiedler;03-07-2014;Group Aggregation
+50;QRT-Group / SubGroup;For Group, SubGroup;Dependent;;2;Excel Calculation Model;TRUE;0;Felix Fiedler;03-07-2014;Group Aggregation
+51;SM Residuals Report;;Dependent;;3;Report Design;FALSE;0;Felix Fiedler;03-07-2014;Group Aggregation
+52;Group Risk Aggregation;SCR - Market Risk, Lapse Risk, Operational Risk, FDB [Group,SubGroup];Dependent;;3;Report Design;FALSE;0;Felix Fiedler;03-07-2014;Group Aggregation
+53;Exposure Lookup Tables;[Group];Independent;;1;Input Template;FALSE;0;Felix Fiedler;03-07-2014;QIS5 Concentration & Counterparty Risk Helpers
+54;Raw Credit Risk Exposure File;[Group];Dependent;;4;External File Definition;FALSE;0;Felix Fiedler;03-07-2014;QIS5 Concentration & Counterparty Risk Helpers
+55;QRT Group;[Group, SubGroup];Dependent;;3;Report Design;TRUE;0;Felix Fiedler;03-07-2014;QRT Group

@@ -187,7 +187,7 @@
 				}
 			});
 			$("#activateButton").click(function() {
-				var url ="/	iRIS/activate_config.htm";
+				var url ="/iRIS/activate_config.htm";
 				var value = $('input[name=configRadio]:checked').val();
 		        $.get(url, { index: value }, function (data) {
 		        	$("#activeConfigNameSpan").text("Active : "+data);

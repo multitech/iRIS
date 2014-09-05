@@ -8,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -52,12 +53,18 @@ public class DataItemHandler implements CSVEntryParser<DataItem>{
 		dataItem.setName(dataItems[1]);
 		dataItem.setDescription(dataItems[2]);
 		dataItem.setDataItemType(dataItems[3]);
-		dataItem.setInputMode(dataItems[4]);
-		dataItem.setInputModeDescription(dataItems[5]);
-		dataItem.setRegulatoryReportRquired(dataItems[6].equals("TRUE"));
-		dataItem.setLastUpdatedUser(dataItems[7]);
-		dataItem.setLastUpdationDate(dataItems[8]);
-		dataItem.setCategory(dataItems[9]);
+		if(!dataItems[4].isEmpty()){
+			String[] dependencyStrings = dataItems[4].split("#");
+			List<String> dependencies = Arrays.asList(dependencyStrings);
+			dataItem.setDependencies(dependencies);
+		}
+		dataItem.setInputMode(Integer.parseInt(dataItems[5]));
+		dataItem.setInputModeDescription(dataItems[6]);
+		dataItem.setRegulatoryReportRquired(dataItems[7].equals("TRUE"));
+		dataItem.setStatus(Integer.parseInt(dataItems[8]));
+		dataItem.setLastUpdatedUser(dataItems[9]);
+		dataItem.setLastUpdationDate(dataItems[10]);
+		dataItem.setCategory(dataItems[11]);
 		return dataItem;
 	}
 	

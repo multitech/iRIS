@@ -1,14 +1,19 @@
 package com.iris.dataitem.bean;
 
+import java.util.List;
+
 import com.iris.common.Entity;
 
 public class DataItem extends Entity{
 
 	private String category;
 	private String dataItemType;
-	private String inputMode;
+	private int inputMode;
 	private String inputModeDescription;
 	private boolean regulatoryReportRquired;
+	private List<String> dependencies;
+	private int status;
+	private String statusDescription;
 	
 	public String getCategory() {
 		return category;
@@ -26,11 +31,11 @@ public class DataItem extends Entity{
 		this.dataItemType = dataItemType;
 	}
 
-	public String getInputMode() {
+	public int getInputMode() {
 		return inputMode;
 	}
 
-	public void setInputMode(String inputMode) {
+	public void setInputMode(int inputMode) {
 		this.inputMode = inputMode;
 	}
 
@@ -48,6 +53,30 @@ public class DataItem extends Entity{
 
 	public void setRegulatoryReportRquired(boolean regulatoryReportRquired) {
 		this.regulatoryReportRquired = regulatoryReportRquired;
+	}
+
+	public List<String> getDependencies() {
+		return dependencies;
+	}
+
+	public void setDependencies(List<String> dependencies) {
+		this.dependencies = dependencies;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public String getStatusDescription() {
+		return statusDescription;
+	}
+
+	public void setStatusDescription(String statusDescription) {
+		this.statusDescription = statusDescription;
 	}
 	
 }
