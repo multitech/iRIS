@@ -3,15 +3,17 @@
  */
 package com.iris.configuration.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -109,8 +111,15 @@ public class ConfigurationController {
 	 * @return
 	 */
 	@RequestMapping(value = "/save_config.htm", method = RequestMethod.POST)
-	protected String saveConfigAction(ModelMap model) {
+	protected String saveConfigAction(ModelMap model,@ModelAttribute("configuration") Configuration configuration ) {
 		model.addAttribute("successMessage","Success");
+		List<Configuration> configurations = configurationRepository.getConfigurations();
+		configuration.setId(String.valueOf(configurations.size()+1));
+		configuration.setLastUpdatedUser("Administrator");
+		Date date = new Date();
+		String modifiedDate= new SimpleDateFormat("dd-MMM-yyyy").format(date);
+		configuration.setLastUpdationDate(modifiedDate);
+		configurationRepository.saveConfiguration(configuration);
 		return "config";
 	}
 	

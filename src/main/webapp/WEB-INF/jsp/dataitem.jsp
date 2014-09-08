@@ -71,7 +71,7 @@
 			                                	<button class="btn btn-theme" type="submit" id="newButton"><i class="fa fa-arrow-left"></i>  Go back</button>
 			                                </div>
 			                            </form></h4>
-                              <form class="cmxform form-horizontal style-form" id="reportForm" method="post" action="${pageContext.request.contextPath}/save_report.htm"><hr/>
+                              <form class="cmxform form-horizontal style-form" id="reportForm" method="post" action="${pageContext.request.contextPath}/save_dataitem.htm"><hr/>
                                                                                                      <c:if test="${not empty successMessage}">
                                       <div class="alert alert-success alert-dismissable" id="saveAlert">
 									  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -135,7 +135,9 @@
 										    <input type="checkbox" name="outputFormats" id="outputFormats1" value="outputFormat1" checked disabled="disabled">
 										    Excel Format
 										    <input type="checkbox" name="outputFormats" id="outputFormats2" value="outputFormat2">
-										    Pdf Format
+										    PDF Format
+										   	<input type="checkbox" name="outputFormats" id="outputFormats2" value="outputFormat2">
+										    XBRL Format
 										</div>
 										</div>
 									</div>

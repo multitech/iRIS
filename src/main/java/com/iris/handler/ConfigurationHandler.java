@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -35,11 +36,14 @@ public class ConfigurationHandler implements CSVEntryParser<Configuration>{
 	}
 	
 	public boolean write(Configuration configuration){
-		try(BufferedWriter out = Files.newBufferedWriter(Paths.get(CONFIG_FILE_PATH), StandardCharsets.UTF_8, StandardOpenOption.APPEND)) {
+		try(BufferedWriter out = Files.newBufferedWriter(Paths.get(this.getClass().getClassLoader().getResource(CONFIG_FILE_PATH).toURI()), StandardCharsets.UTF_8, StandardOpenOption.APPEND)) {
 			out.newLine();
 			out.write(convertEntry(configuration));
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (URISyntaxException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		return true;
 	}

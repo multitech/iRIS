@@ -53,21 +53,46 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-          	<h3><i class="fa fa-angle-right"></i>Report Assignment</h3>
+          	<h3><i class="fa fa-angle-right"></i>Assignment Matrix</h3>
               <!-- page start-->
               <div class="row mt">
                   <aside class="col-lg-3 mt">
                       <h4><i class="fa fa-angle-right"></i>Drag and drop Input Reports in to the hierarchy to assign them</h4>
+                      <div class="form-group " id="rolloverFromDiv">
+		                                	Category
+		                                 	<div>
+		                                  		<select id="categorySelect" name="categorySelect" class="form-control">
+		                                  		 	<c:forEach items="${categories}" var="category" varStatus="loop">
+												  		<option value='${loop.index}'>
+								                            ${category}
+								                        </option>
+						                        	</c:forEach>
+		                                     	</select>
+		                                     </div>
+		                             	</div>
                       <div id="external-events">
-                          <div class="external-event label label-theme">MVBS</div>
-                          <div class="external-event label label-success">Deferred Tax</div>
-                          <div class="external-event label label-info">Balance Sheet Input</div>
-                          <div class="external-event label label-warning">Credit Relief Factor</div>
-                          <div class="external-event label label-danger">SCR - Market Risk</div>
-                          <div class="external-event label label-default">Shocked Values Report</div>
-                          <div class="external-event label label-theme">SCR - Life</div>
-                          <div class="external-event label label-info">USP Revision – Life</div>
-                          <div class="external-event label label-success">Changes.csv Master</div>
+                      	  <c:forEach items="${dataItems}" var="dataItem" varStatus="loop">
+                      	  <c:choose>
+                      	  		<c:when test="${dataItem.inputMode==0}">
+	                            	<div class="external-event label label-theme">${dataItem.name}</div>
+	                            </c:when>
+	                            <c:when test="${dataItem.inputMode==1}">
+	                            	<div class="external-event label label-success">${dataItem.name}</div>
+	                            </c:when>
+	                           	<c:when test="${dataItem.inputMode==2}">
+	                            	<div class="external-event label label-warning">${dataItem.name}</div>
+	                            </c:when>
+	                            <c:when test="${dataItem.inputMode==3}">
+	                            	<div class="external-event label label-danger">${dataItem.name}</div>
+	                            </c:when>
+	                            <c:when test="${dataItem.inputMode==4}">
+	                            	<div class="external-event label label-default">${dataItem.name}</div>
+	                            </c:when>
+	                            <c:when test="${dataItem.inputMode==5}">
+	                            	<div class="external-event label label-info">${dataItem.name}</div>
+	                            </c:when>
+	                           </c:choose>
+                          </c:forEach>
                           <p class="drop-after">
                               <input type="checkbox" id="drop-remove">
                               Remove After Drop
@@ -110,6 +135,50 @@
 	
 	<script src="js/ng/calendar-conf-events.js"></script>  
 
-
+	<script type="text/javascript">
+			$("#categorySelect").change(function() {
+				var url ="/iRIS/view_assignment_ajax.htm";
+				var value =$("#categorySelect").val();
+				alert(value);
+		        $.ajax({
+		            url: url,
+		            data: 'id=' + value,
+		            type: "GET",
+		             
+		            beforeSend: function(xhr) {
+		                xhr.setRequestHeader("Accept", "application/json");
+		                xhr.setRequestHeader("Content-Type", "application/json");
+		            },
+		            success: function(dataItems) {
+		                var respContent = "";
+		                for (var i in dataItems) {
+		                      alert(i.name);
+		                  }
+// 		                respContent += "<span class='success'>Smartphone was created: [";
+// 		                respContent += smartphone.producer + " : ";
+// 		                respContent += smartphone.model + " : " ;
+// 		                respContent += smartphone.price + "]</span>";
+		                 
+// 		                $("#sPhoneFromResponse").html(respContent);         
+		            }
+		        });
+		        
+// 		        $.ajax({
+//                     type: "GET", 		//GET or POST or PUT or DELETE verb
+//                     url: url, 		// Location of the service
+//                     data: { index: value }, 		//Data sent to server
+//                     contentType: "",		// content type sent to server
+//                     dataType: "text", 	//Expected data format from server
+//                     processdata: true, 	//True or False
+//                     async: tr, 	
+//                     success: function (data) {//On Successful service call
+//     		        	$("#activeConfigNameSpan").text(data);
+//     		        	$("#modalTextDiv").text(data+" Configuration is now active!");
+//     		        	$("#abc").click();
+//                     },
+//                 });
+			});
+		</script>
+		
   </body>
 </html>

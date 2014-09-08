@@ -72,7 +72,7 @@
 					                    </div>
 					                </form>
 		                      	</h4>
-		                        <form class="cmxform form-horizontal style-form" id="profileForm" method="post" action="${pageContext.request.contextPath}/save_profile.htm" ><hr/>
+		                        <form class="cmxform form-horizontal style-form" id="profileForm" method="post" action="${pageContext.request.contextPath}/save_config.htm" ><hr/>
 		                        	<c:if test="${not empty successMessage}">
 									    <div class="alert alert-success alert-dismissable" id="saveAlert">
 											<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -275,14 +275,14 @@
 		                              	<div class="form-group">
 				                        	<label class="control-label col-lg-2">Valuation Date (required)</label>
 				                          	<div class="col-md-3 col-xs-11">
-				                            	<input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="${configuration.valuationDate}"  required>
+				                            	<input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="${configuration.valuationDate}" name="valuationDate" required>
 				                              	<span class="help-block">Select date</span>
 				                          	</div>
 				                     	</div>
 		                                <div class="form-group ">
 		                                	<label for="ccomment" class="control-label col-lg-2">Description (optional)</label>
 		                                    <div class="col-lg-10">
-		                                    	<textarea class="form-control " id="ccomment" name="comment">
+		                                    	<textarea class="form-control " id="ccomment" name="description">
 		                                    	${configuration.description}</textarea>
 		                                    </div>
 		                               	</div>
@@ -331,6 +331,7 @@
 			<img src="http:///-web.washer-/trans.gif?foo=1">
 		  	<script type="text/javascript">
 				$(document).ready(function() {
+					$('#profileForm')[0].reset();
 					$('#profilename').focus();
 				});
 		// 			$('#inlineCheckbox1').click(function() {
@@ -359,8 +360,8 @@
 				    }
 				});
 				$("#cancelButton").click(function() {
-					$('#saveAlert').slideUp();			
-					$('#profileForm')[0].reset();
+					$('#saveAlert').slideUp();	
+					$('#profilename').val("");
 					$('#profilename').focus();
 				})
 			</script>

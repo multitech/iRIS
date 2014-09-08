@@ -10,12 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iris.dataitem.bean.DataItem;
+import com.iris.dataitem.bean.DataItemRepository;
 import com.iris.hierarchy.bean.HierarchyDetailsVo;
 import com.iris.hierarchy.bean.HierarchyVo;
 
@@ -28,6 +33,9 @@ public class HierarchyController {
 
 	@Autowired	
 	private MessageSource messageSource;
+	
+	@Autowired
+	private DataItemRepository dataItemRepository;
 	
 	/**
 	 * Show Hierarchy method
@@ -54,13 +62,49 @@ public class HierarchyController {
 	 * @return
 	 */
 	@RequestMapping(value = "/view_assignment.htm", method = RequestMethod.GET)
-	protected ModelAndView showAssignmentMatrixAction(ModelMap model,HttpServletRequest req) {
+	protected ModelAndView showAssignmentMatrixAction(ModelMap model,HttpServletRequest req, @RequestParam(value="id") int id) {
 		ModelAndView modelView = new ModelAndView("assignment", "assignment", null);
+		List<DataItem> dataSet = dataItemRepository.getDataItems();
+		List<String> categories = extractCategories(dataSet);
+		String category = categories.get(id);
+		List<DataItem> dataItems = extractCategory(dataSet,category);
 		String activeConfig = (String) req.getSession().getAttribute("activeConfigName");
 		modelView.addObject("activeConfigName", activeConfig);
+		modelView.addObject("categories", categories);
+		modelView.addObject("dataItems", dataItems);
 		return modelView;
 	}
 	
+	@RequestMapping(value = "/view_assignment_ajax.htm", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	protected List<DataItem> showAssignmentMatrixAjaxAction(ModelMap model,HttpServletRequest req, @RequestParam(value="id") int id) {
+		List<DataItem> dataSet = dataItemRepository.getDataItems();
+		List<String> categories = extractCategories(dataSet);
+		String category = categories.get(id);
+		List<DataItem> dataItems = extractCategory(dataSet,category);
+		return dataItems;
+	}
+	
+	private List<DataItem> extractCategory(List<DataItem> dataSet, String category) {
+		List<DataItem> dataItems=new ArrayList<DataItem>();
+		for(DataItem dataItem:dataSet){
+			if(category.equals(dataItem.getCategory())){
+				dataItems.add(dataItem);
+			}
+		}
+		return dataItems;
+	}
+
+	private List<String> extractCategories(List<DataItem> dataItems) {
+		List<String> categories=new ArrayList<String>();
+		for(DataItem dataItem:dataItems){
+			if(!categories.contains(dataItem.getCategory())){
+				categories.add(dataItem.getCategory());
+			}
+		}
+		return categories;
+	}
+
 	private HierarchyVo loadHierarchy() {
 		
 		HierarchyVo hierarchyVo=new HierarchyVo();

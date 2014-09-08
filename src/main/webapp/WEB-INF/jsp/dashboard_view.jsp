@@ -94,7 +94,7 @@
 									    <div class="modal-content">
 									      <div class="modal-header">
 									        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									        <h4 class="modal-title" id="myModalLabel">User Upload</h4>
+									        <h4 class="modal-title" id="myModalLabel">Upload Progress</h4>
 									      </div>
 									      <div class="modal-body" id="modalTextDiv">
 							      				<div class="progress progress-striped active" id="uploadModalProgress">
@@ -245,7 +245,7 @@
                      				<tr class="">
                      				
                    			<td class="inbox-small-cells">
-                                <input type="radio" name="dataitemradio" class="mail-checkbox checkbox${dataitem.inputMode}">
+                                <input type="radio" name="dataitemradio" class="mail-checkbox checkbox${dataitem.inputMode}" value="${dataitem.id}">
                             </td>
                             <td class="inbox-small-cells">
                             <c:choose>
@@ -263,8 +263,23 @@
 	                            </c:when>
                             </c:choose>
                             </td>
-                            <td class="view-message  dont-show"><a href="${pageContext.request.contextPath}/dashboard.htm?id=${dataitem.id}">${dataitem.name}</a></td>
-                            <td class="view-message "><a href="${pageContext.request.contextPath}/dashboard.htm?id=${dataitem.id}">${dataitem.statusDescription}</a></td>
+                            <td class="view-message  dont-show"><a href="${pageContext.request.contextPath}/dashboard.htm?id=${dataitem.id}">${dataitem.name}</a>
+                            <c:choose>
+                            	<c:when test="${dataitem.inputMode==0}">
+	                            	<span id="span${dataitem.id}" class="label label-success pull-right spanMessage">processed</span>
+	                            </c:when>
+	                            <c:when test="${dataitem.inputMode==1}">
+	                            	<span id="span${dataitem.id}" class="label label-info pull-right spanMessage">processed</span>
+	                            </c:when>
+	                           	<c:when test="${dataitem.inputMode==2}">
+	                            	<span id="span${dataitem.id}" class="label label-default pull-right spanMessage">processed</span>
+	                            </c:when>
+	                            <c:when test="${dataitem.inputMode==3}">
+	                            	<span id="span${dataitem.id}" class="label label-primary pull-right spanMessage">processed</span>
+	                            </c:when>
+                            </c:choose>
+                            </td>
+                            <td class="view-message "><a href="${pageContext.request.contextPath}/dashboard.htm?id=${dataitem.id}" id="ahref${dataitem.id}">${dataitem.statusDescription}</a></td>
                             <td class="view-message "><a href="${pageContext.request.contextPath}/dashboard.htm?id=${dataitem.id}">Balu Sabu</a></td>
                             <td class="view-message  text-right">08:10 AM</td>
                        		</tr>
@@ -313,6 +328,7 @@
 		});
 		$(document).ready(function() {
 			$('#AllianzLi').toggleClass('inactive active');
+			$('.spanMessage').hide();
 			$('#uploadButton').hide();
 			$('#fetchButton').hide();
 			$('#calculateButton').hide();
@@ -324,11 +340,13 @@
 			$('#fetchButton').hide();
 			$('#calculateButton').hide();
 			$('#runButton').hide();
+			var af=$("input[name='dataitemradio']:checked").val();
 			if($('.checkbox0').is(":checked")) {
 				$('#fetchButton').show();
 			}else if($('.checkbox1').is(":checked")) {
 				$('#uploadButton').show();
-			}else if($('.checkbox2').is(":checked")) {
+			}else if($('.checkbox2').is(":checked")
+					&& $('#ahref'+af).text()=="Ready to calculate") {
 				$('#calculateButton').show();
 			}else if($('.checkbox3').is(":checked")) {
 				$('#runButton').show();
@@ -344,7 +362,24 @@
 			setTimeout(function (){
 				$("#uploadModalProgress").hide();
 				$("#uploadModalMessageText").fadeIn();
-	         }, 5000); 
+				var af=$("input[name='dataitemradio']:checked").val();
+				$('#ahref'+af).text("Input file uploaded");
+				$('#span'+af).show();
+				if($('#span0').is(':visible')
+						&& $('#span1').is(':visible')
+						&& $('#span2').is(':visible')){
+					$('#ahref3').text("Ready to calculate");
+				}
+				if($('#span4').is(':visible')
+						&& $('#span5').is(':visible')){
+					$('#ahref6').text("Ready to calculate");
+				}
+				if($('#span4').is(':visible')
+						&& $('#span5').is(':visible')
+						&& $('#span7').is(':visible')){
+					$('#ahref8').text("Ready to calculate");
+				}
+	         }, 5000);
 		});
 	      
 		$("#finalFetchButton").click(function() {
@@ -355,8 +390,26 @@
 			setTimeout(function (){
 				$("#fetchModalProgress").hide();
 				$("#fetchModalMessageText").fadeIn();
+				var af=$("input[name='dataitemradio']:checked").val();
+				$('#ahref'+af).text("Data fetched from database");
+				$('#span'+af).show();
+				if($('#span0').is(':visible')
+						&& $('#span1').is(':visible')
+						&& $('#span2').is(':visible')){
+					$('#ahref3').text("Ready to calculate");
+				}
+				if($('#span4').is(':visible')
+						&& $('#span5').is(':visible')){
+					$('#ahref6').text("Ready to calculate");
+				}
+				if($('#span4').is(':visible')
+						&& $('#span5').is(':visible')
+						&& $('#span7').is(':visible')){
+					$('#ahref8').text("Ready to calculate");
+				}
 	         }, 5000);  
 		});
+		
 	</script>
 
   </body>

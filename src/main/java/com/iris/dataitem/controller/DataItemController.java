@@ -95,6 +95,6 @@ public class DataItemController {
 	@RequestMapping(value = "/save_dataitem.htm", method = RequestMethod.POST)
 	protected String saveDataItemAction(ModelMap model, @ModelAttribute("reportVo") DataItemRepository reportVo, HttpServletRequest req, HttpServletResponse resp) {
 		model.addAttribute("successMessage","Success");
-		return "dataitem_view";
+		return "dataitem";
 	}
 }

@@ -92,7 +92,6 @@
 	                                              <span class="task-title-sp"><c:out value="${hierarchyDetailsVo.itemId}"/></span>
 	                                              <div class="pull-right hidden-phone">
 	                                                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#${hierarchyDetailsVo.itemId}Modal"><i class="fa fa-pencil"></i></button>
-	                                                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
 	                                                  
 	                                                  <!-- Modal -->
 														<div class="modal fade" id="${hierarchyDetailsVo.itemId}Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

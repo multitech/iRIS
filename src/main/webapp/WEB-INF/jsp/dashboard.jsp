@@ -68,9 +68,9 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="compose-btn pull-right">
-                                    <button class="btn  btn-sm tooltips" data-original-title="Go Back" type="button" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-arrow-left"></i></button>
-                                    <button class="btn  btn-sm tooltips" data-original-title="Previous Item" type="button" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-arrow-up"></i> </button>
-                                    <button class="btn btn-sm tooltips" data-original-title="Next Item" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-arrow-down"></i></button>
+                                	<a class="btn  btn-sm tooltips" href="${pageContext.request.contextPath}/view_dashboard.htm" data-original-title="Go Back" type="button" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-arrow-left"></i></a>
+                                	<a class="btn  btn-sm tooltips" href="${pageContext.request.contextPath}/dashboard.htm?id=${dataItem.id-1}" data-original-title="Previous Item" type="button" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-arrow-up"></i> </a>
+                                    <a class="btn btn-sm tooltips" href="${pageContext.request.contextPath}/dashboard.htm?id=${dataItem.id+1}" data-original-title="Next Item" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-arrow-down"></i></a>
                                 </div>
                             </div>
 

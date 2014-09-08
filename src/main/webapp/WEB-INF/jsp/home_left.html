@@ -7,22 +7,16 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="#"><img src="img/dummy.png" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Marco Polo</h5>
+              	  <br>
+              	  <br>
+              	  <br>
               	  	
-                  <li class="mt">
-                      <a href="view_dashboard.htm">
-                          
-                          <span style = "color:#fff"><font size="4" face="calibri"><i class="fa fa-dashboard"></i>Dashboard</font></span>
-                      </a>
-                  </li>
-
                   <li class="sub-menu">
                       <a href="view_config.htm" >
                           
-                          <span style = "color:#fff;"><font size="4" face="calibri"><i class="fa fa-desktop"></i>Configuration</font><br>
+                          <span style = "color:#fff;"><font size="4" face="calibri"><i class="fa fa-cogs"></i>Configuration</font><br>
                           <span id="activeConfigNameSpan">
-                          Active : ${activeConfigName}
+                          Active : <font color="#68dff0" style="font-weight: bold;">${activeConfigName} </font>
                           </span>
                           </span>
                       </a>
@@ -31,21 +25,28 @@
                   <li class="sub-menu">
                       <a href="view_dataitem.htm" >
                           
-                          <span style = "color:#fff;"><font size="4" face="calibri"><i class="fa fa-cogs"></i>Data Set</font></span>
+                          <span style = "color:#fff;"><font size="4" face="calibri"><i class="fa fa-file-o"></i>Data Items</font></span>
                       </a>
                   </li>
                   
                   <li class="sub-menu">
                       <a href="view_hierarchy.htm" >
                          
-                          <span style = "color:#fff;"><font size="4" face="calibri"> <i class="fa fa-list-alt"></i>Hierarchy</font></span>
+                          <span style = "color:#fff;"><font size="4" face="calibri"> <i class="fa fa-tasks"></i>Hierarchy</font></span>
                       </a>
                   </li>
                   
                   <li class="sub-menu">
-                      <a href="view_assignment.htm" >
+                      <a href="view_assignment.htm?id=0" >
                           
-                          <span style = "color:#fff;"><font size="4" face="calibri"><i class="fa fa-list-alt"></i>Assignment Matrix</font></span>
+                          <span style = "color:#fff;"><font size="4" face="calibri"><i class="fa fa-table"></i>Assignment Matrix</font></span>
+                      </a>
+                  </li>
+                  
+                                    <li class="sub-menu">
+                      <a href="view_dashboard.htm">
+                          
+                          <span style = "color:#fff"><font size="4" face="calibri"><i class="fa fa-copy"></i>Reports</font></span>
                       </a>
                   </li>
               </ul>
