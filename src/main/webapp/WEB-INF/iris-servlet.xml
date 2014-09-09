@@ -12,22 +12,40 @@
    	http://www.springframework.org/schema/context 
    	http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 	
+	<mvc:annotation-driven />
+	
 	<import resource="spring-security.xml"/>
+	
    	<context:component-scan base-package="com.iris" />
 
 	<context:property-placeholder location="classpath:iris-config.properties"/>
 
-	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-	    <property name="basenames">
-	        <list>
-	            <value>classpath:resources/iris-messages</value>
-	        </list>
-	    </property>
-	</bean>
 	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	   <property name="prefix" value="/WEB-INF/jsp/" />
-	   <property name="suffix" value=".jsp" />
-	</bean>
+		<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		    <property name="basenames">
+		        <list>
+		            <value>classpath:resources/iris-messages</value>
+		        </list>
+		    </property>
+		</bean>
+	
+		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		   <property name="prefix" value="/WEB-INF/jsp/" />
+		   <property name="suffix" value=".jsp" />
+		</bean>
 
+	<!-- Configure to plugin JSON as request and response in method handler -->
+	    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+	        <property name="messageConverters">
+	            <list>
+	                <ref bean="jsonMessageConverter"/>
+	            </list>
+	        </property>
+	    </bean>
+     
+    <!-- Configure bean to convert JSON to POJO and vice versa -->
+    <bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+    </bean> 
+     
+     
 </beans>

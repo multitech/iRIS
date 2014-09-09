@@ -57,7 +57,7 @@
               <!-- page start-->
               <div class="row mt">
                   <aside class="col-lg-3 mt">
-                      <h4><i class="fa fa-angle-right"></i>Drag and drop Input Reports in to the hierarchy to assign them</h4>
+                      <h4><i class="fa fa-angle-right"></i>Drag and drop Data Items in to the hierarchy to assign them</h4>
                       <div class="form-group " id="rolloverFromDiv">
 		                                	Category
 		                                 	<div>
@@ -137,32 +137,76 @@
 
 	<script type="text/javascript">
 			$("#categorySelect").change(function() {
-				var url ="/iRIS/view_assignment_ajax.htm";
 				var value =$("#categorySelect").val();
-				alert(value);
-		        $.ajax({
-		            url: url,
-		            data: 'id=' + value,
-		            type: "GET",
-		             
-		            beforeSend: function(xhr) {
-		                xhr.setRequestHeader("Accept", "application/json");
-		                xhr.setRequestHeader("Content-Type", "application/json");
-		            },
-		            success: function(dataItems) {
-		                var respContent = "";
-		                for (var i in dataItems) {
-		                      alert(i.name);
-		                  }
-// 		                respContent += "<span class='success'>Smartphone was created: [";
-// 		                respContent += smartphone.producer + " : ";
-// 		                respContent += smartphone.model + " : " ;
-// 		                respContent += smartphone.price + "]</span>";
-		                 
-// 		                $("#sPhoneFromResponse").html(respContent);         
-		            }
-		        });
-		        
+				var url ="/iRIS/view_assignment_ajax.htm";
+				$.ajax({
+			           type:'GET',
+			           url:url,
+			           data:{id: value},
+			           beforeSend: function(xhr) {
+			               xhr.setRequestHeader("Accept", "application/json");
+			               xhr.setRequestHeader("Content-Type", "application/json");
+			           },
+			            headers: {
+			             Accept: 'application/json'
+			            },
+			           dataType: 'json',
+
+			           success:function(data){
+			        	   $("#external-events").closest('div').find('.external-event').remove();
+		        		   $("#external-events").find('.drop-after').remove();
+			        	   $.each(data, function(i, item) {
+			        			if(item.inputMode=="0"){
+			        				$("#external-events").append($('<div/>').text(item.name).addClass("external-event label label-theme ui-draggable").attr('style', 'position: relative'));
+			        			}else if(item.inputMode=="1"){
+			        				$("#external-events").append($('<div/>').text(item.name).addClass("external-event label label-success ui-draggable"));
+			        			}else if(item.inputMode=="2"){
+			        				$("#external-events").append($('<div/>').text(item.name).addClass("external-event label label-warning ui-draggable"));
+			        			}else if(item.inputMode=="3"){
+			        				$("#external-events").append($('<div/>').text(item.name).addClass("external-event label label-danger ui-draggable"));
+			        			}else if(item.inputMode=="4"){
+			        				$("#external-events").append($('<div/>').text(item.name).addClass("external-event label label-default ui-draggable"));
+			        			}else{
+			        				$("#external-events").append($('<div/>').text(item.name).addClass("external-event label label-info ui-draggable"));
+			        			}
+		                    });
+			        	  
+			        	   var input = $('<input>', {
+			        		    id: 'drop-remove',
+			        		    type: 'checkbox'
+			        		   
+			        		});
+			        	   
+			        	   var pClass = $('<p>', {
+			        		    class: 'drop-after',
+			        		    text: ' Remove After Drop'
+			        		}).prepend(input);
+			        	   
+			        	   $("#external-events").append(pClass);
+			        	   
+			        	   $('#external-events div.external-event').each(function() {
+
+			        	        // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+			        	        // it doesn't need to have a start or end
+			        	        var eventObject = {
+			        	            title: $.trim($(this).text()) // use the element's text as the event title
+			        	        };
+
+			        	        // store the Event Object in the DOM element so we can get to it later
+			        	        $(this).data('eventObject', eventObject);
+
+			        	        // make the event draggable using jQuery UI
+			        	        $(this).draggable({
+			        	            zIndex: 999,
+			        	            revert: true,      // will cause the event to go back to its
+			        	            revertDuration: 0  //  original position after the drag
+			        	        });
+
+			        	    });
+			        	   
+			           }
+
+			       });
 // 		        $.ajax({
 //                     type: "GET", 		//GET or POST or PUT or DELETE verb
 //                     url: url, 		// Location of the service

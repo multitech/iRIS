@@ -3,20 +3,24 @@
  */
 package com.iris.hierarchy.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonWriter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iris.dataitem.bean.DataItem;
@@ -75,14 +79,34 @@ public class HierarchyController {
 		return modelView;
 	}
 	
-	@RequestMapping(value = "/view_assignment_ajax.htm", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	protected List<DataItem> showAssignmentMatrixAjaxAction(ModelMap model,HttpServletRequest req, @RequestParam(value="id") int id) {
+	@RequestMapping(value = "/view_assignment_ajax.htm", method = RequestMethod.GET)
+	public void showAssignmentMatrixAjaxAction(@RequestParam(value="id") int id,HttpServletResponse resp) throws IOException {
 		List<DataItem> dataSet = dataItemRepository.getDataItems();
 		List<String> categories = extractCategories(dataSet);
 		String category = categories.get(id);
 		List<DataItem> dataItems = extractCategory(dataSet,category);
-		return dataItems;
+		
+		JsonArrayBuilder dataItemBuilder = Json.createArrayBuilder();
+		
+		
+		for(DataItem dataItem:dataItems){
+			dataItemBuilder.add(Json.createObjectBuilder()
+			         .add("name", dataItem.getName())
+			         .add("inputMode", dataItem.getInputMode()));
+		}
+		
+         
+        //write to file
+        JsonWriter jsonWriter = Json.createWriter(resp.getOutputStream());
+        JsonArray dataItemArray=dataItemBuilder.build();
+		/**
+         * We can get JsonWriter from JsonWriterFactory also
+        JsonWriterFactory factory = Json.createWriterFactory(null);
+        jsonWriter = factory.createWriter(os);
+        */
+        jsonWriter.writeArray(dataItemArray);
+        jsonWriter.close();
+		
 	}
 	
 	private List<DataItem> extractCategory(List<DataItem> dataSet, String category) {

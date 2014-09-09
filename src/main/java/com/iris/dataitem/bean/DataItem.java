@@ -1,11 +1,13 @@
 package com.iris.dataitem.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.iris.common.Entity;
 
-public class DataItem extends Entity{
+public class DataItem extends Entity implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private String category;
 	private String dataItemType;
 	private int inputMode;
@@ -79,4 +81,9 @@ public class DataItem extends Entity{
 		this.statusDescription = statusDescription;
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
 }
