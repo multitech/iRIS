@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class NotificationServiceImpl implements NotificationService {
 
-	List<NotificationMessage> notificationMessages = new ArrayList<>();
-	List<NotificationTask> notificationTasks = new ArrayList<>();
+	List<NotificationMessage> notificationMessages = new ArrayList<NotificationMessage>();
+	List<NotificationTask> notificationTasks = new ArrayList<NotificationTask>();
 	
 	@Override
 	public void addMessage(NotificationMessage message) {

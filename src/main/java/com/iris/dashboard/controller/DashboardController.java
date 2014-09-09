@@ -6,9 +6,12 @@ package com.iris.dashboard.controller;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 
 import javax.servlet.ServletOutputStream;
@@ -42,6 +45,14 @@ public class DashboardController {
 	
 	@Autowired
 	private DataItemRepository dataItemRepository;
+	
+	private static final String TEMPLATE_LIST_PATH = "resources/templateList.properties";
+	
+	private static final String REPORTS_LIST_PATH = "resources/reportList.properties";
+
+	private static final String DEFAULT_TEMPLATE_NAME = "Sample_Template.xls";
+	
+	private static final String DEFAULT_REPORT_NAME = "Sample_Report.xls";
 	
 	/**
 	 * Show Dashboard method
@@ -93,8 +104,14 @@ public class DashboardController {
 	 * Download Report and Report Template
 	 * @param id
 	 */
-	@RequestMapping(value = "/dashboard_download.htm", method = RequestMethod.GET)
-	public void downloadReport(@RequestParam(value="filename") String fileName,HttpServletResponse resp){
+	@RequestMapping(value = "/download_report.htm", method = RequestMethod.GET)
+	public void downloadReport(@RequestParam(value="id") int id,HttpServletResponse resp){
+		Map<Integer, String> reportsMap = getReportsMap();
+		String fileName = reportsMap.get(id);
+		if(fileName==null
+				|| fileName.isEmpty()){
+			fileName=DEFAULT_REPORT_NAME;
+		}
 		InputStream in = this.getClass().getClassLoader().getResourceAsStream("resources/reports/"+fileName);
 		resp.setHeader("Content-Disposition", "attachment; filename=\""+ fileName + "\"");
 		ServletOutputStream out=null;
@@ -117,6 +134,40 @@ public class DashboardController {
 		}
 	}
 
+	/**
+	 * Download Report Template
+	 * @param id
+	 */
+	@RequestMapping(value = "/download_template.htm", method = RequestMethod.GET)
+	public void downloadReportTemplate(@RequestParam(value="id") int id,HttpServletRequest req,HttpServletResponse resp){
+		Map<Integer, String> templateMap = getTemplateMap();
+		String fileName = templateMap.get(id);
+		if(fileName==null
+				|| fileName.isEmpty()){
+			fileName=DEFAULT_TEMPLATE_NAME;
+		}
+		InputStream in = this.getClass().getClassLoader().getResourceAsStream("resources/templates/"+fileName);
+		resp.setHeader("Content-Disposition", "attachment; filename=\""+ fileName + "\"");
+		ServletOutputStream out=null;
+		try {
+			out = resp.getOutputStream();
+		} catch (IOException e) {
+			System.err.println("Error while creating output stream : "+e.getMessage());
+		}
+		byte[] buffer = new byte[1024];
+		int len;
+		try {
+			while ((len = in.read(buffer)) != -1) {
+			    out.write(buffer, 0, len);
+			}
+			out.flush();
+			out.close();
+			in.close();
+		} catch (IOException e) {
+			System.err.println("Error while writing to output stream : "+e.getMessage());
+		}
+	}
+	
 	private List<DataSet> groupDataItems(List<DataItem> dataItems) {
 		
 		List<DataSet> datasetList=new ArrayList<DataSet>();
@@ -172,7 +223,7 @@ public class DashboardController {
 		
 		HierarchyVo hierarchyVo=new HierarchyVo();
 		
-		List<HierarchyDetailsVo> hierarchies = new ArrayList<>();
+		List<HierarchyDetailsVo> hierarchies = new ArrayList<HierarchyDetailsVo>();
 
 		HierarchyDetailsVo hierarchy1 = new HierarchyDetailsVo("Allianz","Allianz","Group",null,"EUR",null,false,false,true,"20");
 		HierarchyDetailsVo hierarchy2 = new HierarchyDetailsVo("S0405","Eurovida","ConsGroup","Life","EUR","Y",true,true,false,"50");
@@ -198,5 +249,37 @@ public class DashboardController {
 		hierarchyVo.setHierarchies(hierarchies);
 		
 		return hierarchyVo;
+	}
+	
+	public Map<Integer,String> getTemplateMap() {
+		Map<Integer,String> tempMap=new HashMap<Integer, String>();
+		Properties properties = new Properties();
+		try {
+			properties.load(this.getClass().getClassLoader().getResourceAsStream(TEMPLATE_LIST_PATH));              
+		}
+		catch (Exception e) {
+			System.err.println("Unable to load input templates properties : "+e.getMessage());
+		}
+	    for (String key : properties.stringPropertyNames()) {
+	      String value = properties.getProperty(key);
+	      tempMap.put(Integer.valueOf(key),value);
+	    }
+	    return tempMap;
+	}
+	
+	public Map<Integer,String> getReportsMap() {
+		Map<Integer,String> tempMap=new HashMap<Integer, String>();
+		Properties properties = new Properties();
+		try {
+			properties.load(this.getClass().getClassLoader().getResourceAsStream(REPORTS_LIST_PATH));              
+		}
+		catch (Exception e) {
+			System.err.println("Unable to load input templates properties : "+e.getMessage());
+		}
+	    for (String key : properties.stringPropertyNames()) {
+	      String value = properties.getProperty(key);
+	      tempMap.put(Integer.valueOf(key),value);
+	    }
+	    return tempMap;
 	}
 }

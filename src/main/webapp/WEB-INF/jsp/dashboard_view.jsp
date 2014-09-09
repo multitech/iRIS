@@ -140,6 +140,33 @@
 									    </div>
 									  </div>
 									</div>
+									<div class="showback" hidden="true">
+								<button class="btn btn-success btn-lg" id="calculateMessageModal" data-toggle="modal" data-target="#myCalculateModal"></button>
+								<!-- Modal -->
+			      				</div><!-- /showback -->
+      							<div class="modal fade" id="myCalculateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									  <div class="modal-dialog">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									        <h4 class="modal-title" id="myModalLabel">Calculation Progress</h4>
+									      </div>
+									      <div class="modal-body" id="modalTextDiv">
+							      				<div class="progress progress-striped active" id="calculateModalProgress">
+												  <div class="progress-bar"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+												    <span class="sr-only"></span>
+												  </div>
+												</div>
+												<div id="calculateModalMessageText">
+												 Completed Successfully, You can now download the results!
+												</div>
+									      </div>
+									      <div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+									    </div>
+										</div>
+									</div>
+								</div>
 								<div class="btn-group" id="uploadButton">
                                           <button class="btn btn-theme" type="submit" data-toggle="modal" data-target="#uploadModal"><i class="fa fa-upload"></i> Upload</button>
                                       </div>
@@ -147,7 +174,7 @@
                                           <button class="btn btn-theme" type="submit" data-toggle="modal" data-target="#fetchModal" ><i class="fa fa-database"></i> Fetch</button>
                                       </div>
                                       								<div class="btn-group" id="calculateButton">
-                                          <button class="btn btn-theme" type="submit" ><i class="fa fa-calculator"></i> Calculate</button>
+                                          <button class="btn btn-theme" type="submit" data-toggle="modal" data-target="#calculateModal"><i class="fa fa-calculator"></i> Calculate</button>
                                       </div>
                                       								<div class="btn-group" id="runButton">
                                           <button class="btn btn-theme" type="submit" ><i class="fa fa-cog"></i> Run</button>
@@ -199,15 +226,34 @@
 														      </div>
 														    </div>
 														  </div>
-														</div> 
+														</div>
+														<div class="modal fade" id="calculateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+														  <div class="modal-dialog">
+														    <div class="modal-content">
+														      <div class="modal-header">
+														        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+														        <h4 class="modal-title" id="myModalLabel">Calculation</h4>
+														      </div>
+														      <div class="modal-body">
+								                                  <p>Comment</p>
+								                                  <textarea class="form-control " id="ccomment" name="comment">
+		                                    						</textarea>
+														      </div>
+														      <div class="modal-footer">
+														        <button type="button" class="btn btn-default" id="calculateModalCloseButton" data-dismiss="modal">Close</button>
+														        <button type="button" class="btn btn-primary" id="finalCalculateButton">Calculate</button>
+														      </div>
+														    </div>
+														  </div>
+														</div>
 								<div class="btn-group" id="downloadButton">
 								  <button type="button" class="btn btn-theme04 dropdown-toggle" data-toggle="dropdown">
 								 <i class="fa fa-download"></i> Download <span class="caret"></span>
 								  </button>
 						  <ul class="dropdown-menu" role="menu">
-						    <li><a href="${pageContext.request.contextPath}/dashboard_download.htm?filename=Balance_Sheet_Input_Templatev0.5.xls">Report</a></li>
+						    <li><a id="downloadReportHref" href="#">Report</a></li>
 						    <li class="divider"></li>
-						    <li><a href="#">Template</a></li>
+						    <li><a id="downloadTemplateHref" href="#">Template</a></li>
 						  </ul>
 						</div>
 						 <div class="btn-group hidden-phone pull-right">
@@ -216,9 +262,96 @@
                                     <i class="fa fa-angle-down "></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#"><i class="fa fa-exchange"></i> Dependencies</a></li>
+                                    <li><a href="#" id="dependenciesHref" data-toggle="modal" data-target="#dependenciesModal"><i class="fa fa-exchange"></i> Dependencies</a></li>
                                 </ul>
                             </div>
+                            <! -- MESSAGEMODALS -->
+      							<div class="modal fade" id="dependenciesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									  <div class="modal-dialog">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									        <h4 class="modal-title" id="myModalLabel">Depencies</h4>
+									      </div>
+									      <div class="modal-body" id="modalTextDiv">
+							      				<div class="view-mail">
+						                            <div class="table-inbox-wrap ">
+						                            <table class="table">
+											<thead>
+											<tr>
+											<th style="width:60px" class="text-center"></th>
+											<th class="text-left">Name</th>
+											<th style="width:140px" class="text-right">Requires</th>
+											<th style="width:120px" class="text-right">Status</th>
+											</tr>
+											</thead>
+												<tbody>
+													<tr>
+													<td class="text-center"><i class="fa fa-arrow-circle-up"></i></td>
+													<td>Balance Sheet Input Allianz</td>
+													<td class="text-right">Yes</td>
+													<td class="text-right">Processed</td>
+													</tr>
+													<tr>
+													<td class="text-center"><i class="fa fa-arrow-circle-up"></i></td>
+													<td>MVBS Allianz</td>
+													<td class="text-right">Yes</td>
+													<td class="text-right">Processed</td>
+													</tr>
+													<tr>
+													<td class="text-center"><i class="fa fa-arrow-circle-up"></i></td>
+													<td>Deferred Tax Allianz</td>
+													<td class="text-right">Yes</td>
+													<td class="text-right">Processed</td>
+													</tr>
+													<tr>
+													<td class="text-center"><i class="fa fa-arrow-circle-down"></i></td>
+													<td>Technical Provisions - Life Allianz</td>
+													<td class="text-right">No</td>
+													<td class="text-right">New</td>
+													</tr>
+													<tr>
+													<td class="text-center"><i class="fa fa-arrow-circle-down"></i></td>
+													<td>SCR - Health SLT Allianz</td>
+													<td class="text-right">No</td>
+													<td class="text-right">New</td>
+													</tr>
+													<tr>
+													<td class="text-center"><i class="fa fa-arrow-circle-down"></i></td>
+													<td>Technical Provisions - Health SLT Allianz</td>
+													<td class="text-right">No</td>
+													<td class="text-right">New</td>
+													</tr>
+													<tr>
+													<td class="text-center"><i class="fa fa-arrow-circle-down"></i></td>
+													<td>SCR Report Allianz</td>
+													<td class="text-right">No</td>
+													<td class="text-right">New</td>
+													</tr>
+													<tr>
+													<td class="text-center"><i class="fa fa-arrow-circle-down"></i></td>
+													<td>QIS5: Net of RI Allianz</td>
+													<td class="text-right">No</td>
+													<td class="text-right">New</td>
+													</tr>
+													<tr>
+													<td class="text-center"><i class="fa fa-arrow-circle-down"></i></td>
+													<td>SCR - Life Allianz</td>
+													<td class="text-right">No</td>
+													<td class="text-right">New</td>
+													</tr>
+												</tbody>
+										</table>
+						
+						                        </div>
+					                        </div>
+									      </div>
+									      <div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+									    </div>
+										</div>
+									</div>
+								</div>
                             <div class="btn-group hidden-phone pull-right">
 						  <a data-toggle="dropdown" href="#" class="btn mini blue">
                                     Sort By	
@@ -272,10 +405,10 @@
 	                            	<span id="span${dataitem.id}" class="label label-info pull-right spanMessage">processed</span>
 	                            </c:when>
 	                           	<c:when test="${dataitem.inputMode==2}">
-	                            	<span id="span${dataitem.id}" class="label label-default pull-right spanMessage">processed</span>
+	                            	<span id="span${dataitem.id}" class="label label-primary pull-right spanMessage">calculated</span>
 	                            </c:when>
 	                            <c:when test="${dataitem.inputMode==3}">
-	                            	<span id="span${dataitem.id}" class="label label-primary pull-right spanMessage">processed</span>
+	                            	<span id="span${dataitem.id}" class="label label-default pull-right spanMessage">processed</span>
 	                            </c:when>
                             </c:choose>
                             </td>
@@ -352,6 +485,8 @@
 				$('#runButton').show();
 			}
 			$('#downloadButton').show();
+			$("#downloadTemplateHref").attr("href", "/iRIS/download_template.htm?id="+af)
+			$("#downloadReportHref").attr("href", "/iRIS/download_report.htm?id="+af)
 		});
 		
 		$("#finalUploadButton").click(function() {
@@ -407,6 +542,20 @@
 						&& $('#span7').is(':visible')){
 					$('#ahref8').text("Ready to calculate");
 				}
+	         }, 5000);  
+		});
+		
+		$("#finalCalculateButton").click(function() {
+			$("#calculateMessageModal").click();
+			$("#calculateModalProgress").show();
+			$("#calculateModalMessageText").hide();
+			$("#calculateModalCloseButton").click();
+			setTimeout(function (){
+				$("#calculateModalProgress").hide();
+				$("#calculateModalMessageText").fadeIn();
+				var af=$("input[name='dataitemradio']:checked").val();
+				$('#ahref'+af).text("Calculated, Reports ready for download");
+				$('#span'+af).show();
 	         }, 5000);  
 		});
 		
